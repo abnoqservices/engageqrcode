@@ -552,7 +552,7 @@ const templates = {
   
       /* SOCIAL LINKS */
       .social-item {
-        display:flex;
+       
         background:#f7f7f7;
         padding:14px;
         margin:10px 0;
@@ -607,6 +607,222 @@ const templates = {
         font-size:22px;
         color:var(--primary);
       }
+      /* FOLLOW US SECTION */
+.section.card {
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.section.card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #061244;
+  margin-bottom: 16px;
+}
+
+/* SOCIAL LIST */
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-item {
+  margin-bottom: 14px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  background: #f8f9fc;
+  border-radius: 14px;
+  padding: 14px;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Hover / Mobile Tap Feel */
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* ICON */
+.social-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 14px;
+}
+
+/* TEXT */
+.social-text {
+  flex: 1;
+  text-align: left;
+}
+
+.social-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.social-text p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ARROW ICON */
+.social-link i {
+  font-size: 16px;
+  color: #999;
+}
+
+/* MOBILE OPTIMIZED */
+@media (max-width: 480px) {
+  .social-link {
+    padding: 12px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-text h4 {
+    font-size: 14px;
+  }
+
+  .social-text p {
+    font-size: 12px;
+  }
+}
+/* CONTACT CARD WRAPPER */
+.qrc_contact.qr_cc_card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin: 20px 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  font-family: "Inter", "SF Pro Text", sans-serif;
+  text-align: left;  /* LEFT ALIGN EVERYTHING */
+}
+
+/* HEADER */
+.qrc_contact_header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px dashed #e6e7ef;
+}
+
+.qrc_contact_hdr_img {
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
+
+.qrc_contact_hdr_text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* INFO BLOCKS (Call, Email, Address) */
+.qrc_contact_info,
+.qrc_email_info,
+.qrc_address_info {
+  margin-bottom: 20px;
+}
+
+.qrc_contact_info_title,
+.qrc_email_info_title,
+.qrc_address_info_title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* TEXT VALUES */
+.qrc_contact_number a,
+.qrc_email_id a {
+  font-size: 14px;
+  color: #777;
+  text-decoration: none;
+  display: block;
+  margin-top: 2px;
+}
+
+.qrc_contact_number a:hover,
+.qrc_email_id a:hover {
+  text-decoration: underline;
+}
+
+/* ADDRESS TEXT */
+.qrc_address_text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* DIRECTION BUTTON */
+.qrc_direction_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0b57cf;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .2s ease;
+}
+
+.qrc_direction_btn:hover {
+  background: #0947ad;
+}
+
+.qrc_direction_btn .icon-direction_1 {
+  font-size: 16px;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .qrc_contact.qr_cc_card {
+    padding: 16px;
+  }
+
+  .qrc_contact_hdr_text {
+    font-size: 18px;
+  }
+
+  .qrc_contact_hdr_img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .qrc_address_text,
+  .qrc_contact_number a,
+  .qrc_email_id a {
+    font-size: 13px;
+  }
+}
+
     </style>
   </head>
   
@@ -676,8 +892,7 @@ const templates = {
   </script>
   
   </body>
-  </html>
-  `,
+  </html>`,
     standerd: `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -1763,12 +1978,12 @@ function renderLanding(raw, templateName) {
     const YOUTUBE_CARD = `
   <div class="section card">
     <h2>Watch Our Story</h2>
-    <div class="video-wrapper">
+    
       <iframe 
         src="${videoEmbedUrl || "https://www.youtube.com/embed/bOuLmR8K5Tk"}" 
         allowfullscreen
       ></iframe>
-    </div>
+   
   </div>`;
     const FEATURED_PRODUCTS_CARD = `
 <div class="section">

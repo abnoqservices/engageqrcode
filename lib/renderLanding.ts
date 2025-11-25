@@ -294,12 +294,12 @@ const PRODUCT_SPOTLIGHT_CARD = product.custom_fields_meta.length > 0 ? `
   const YOUTUBE_CARD = `
   <div class="section card">
     <h2>Watch Our Story</h2>
-    <div class="video-wrapper">
+    
       <iframe 
         src="${videoEmbedUrl || "https://www.youtube.com/embed/bOuLmR8K5Tk"}" 
         allowfullscreen
       ></iframe>
-    </div>
+   
   </div>`;
   
   const FEATURED_PRODUCTS_CARD = `
