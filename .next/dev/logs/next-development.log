@@ -1,0 +1,1125 @@
+[00:00:00.688] Server  LOG      ✓ Ready in 448ms
+[00:00:07.611] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.725] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:07.725] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:07.725] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764043636478}
+[00:00:09.549] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://localhost:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764043638285}
+[00:00:10.892] Browser LOG     [v0] Sign up with google
+[00:00:11.883] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764043640523}
+[00:09:03.999] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products color: rgb(120, 120, 120) color: inherit {"dp":"/products","o":"http://localhost:3000/products","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764044172748}
+[00:09:04.332] Browser LOG     Response: {"products":[{"category":"wearables","id":"product-1763642937352","image":"/upload/productgallery/product-1763703625733-9fiuxv.webp","leads":0,"name":"Allen Cooper Performance Ankle Boot S3","price":"₹1500","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S3S FO SR","status":true,"views":0},{"category":"audio","id":"product-1763704611910","image":"/upload/productgallery/gallery-1763640897246-yrfocg.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹450.20","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S1 PS FO SR","status":true,"views":0},{"category":"Protection","id":"product-1763704611912","image":"/upload/productgallery/gallery-1763640897247-llesmx.jpg","leads":0,"name":"Allen Cooper Sporty S1","price":"₹3221.00","scans":0,"sku":"EN ISO 20345 S1 PS FO SR","status":true,"views":0},{"category":"Fancy","id":"product-1763704611913","image":"/upload/productgallery/gallery-1763640897248-zfth58.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹800","scans":0,"sku":"EN ISO 20345:2022","status":true,"views":0},{"category":"Casual","id":"product-1763704611914","image":"/upload/productgallery/gallery-1763640897248-cyv19j.jpg","leads":0,"name":"Allen Cooper Low Ankle Sporty S1","price":"₹1500","scans":0,"sku":"2022/A1:2024 S1 PS FO SR","status":true,"views":0}],"success":true}
+[00:09:04.332] Browser LOG     Response: {"products":[{"category":"wearables","id":"product-1763642937352","image":"/upload/productgallery/product-1763703625733-9fiuxv.webp","leads":0,"name":"Allen Cooper Performance Ankle Boot S3","price":"₹1500","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S3S FO SR","status":true,"views":0},{"category":"audio","id":"product-1763704611910","image":"/upload/productgallery/gallery-1763640897246-yrfocg.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹450.20","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S1 PS FO SR","status":true,"views":0},{"category":"Protection","id":"product-1763704611912","image":"/upload/productgallery/gallery-1763640897247-llesmx.jpg","leads":0,"name":"Allen Cooper Sporty S1","price":"₹3221.00","scans":0,"sku":"EN ISO 20345 S1 PS FO SR","status":true,"views":0},{"category":"Fancy","id":"product-1763704611913","image":"/upload/productgallery/gallery-1763640897248-zfth58.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹800","scans":0,"sku":"EN ISO 20345:2022","status":true,"views":0},{"category":"Casual","id":"product-1763704611914","image":"/upload/productgallery/gallery-1763640897248-cyv19j.jpg","leads":0,"name":"Allen Cooper Low Ankle Sporty S1","price":"₹1500","scans":0,"sku":"2022/A1:2024 S1 PS FO SR","status":true,"views":0}],"success":true}
+[00:09:04.332] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/product-1763703625733-9fiuxv.webp" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:04.332] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897246-yrfocg.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:04.332] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897248-zfth58.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:04.332] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897248-cyv19j.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:04.332] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897247-llesmx.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:44.880] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products/new color: rgb(120, 120, 120) color: inherit {"dp":"/products/new","o":"http://localhost:3000/products/new","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764044210089}
+[00:09:54.695] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764044223443}
+[00:48:20.420] Server  LOG      ✓ Compiled in 66ms
+[00:49:26.579] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:49:28.241] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:49:28.660] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:49:28.907] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:49:29.079] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:49:43.473] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:49:59.205] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:50:27.330] Server  ERROR   Error generating landing page: ReferenceError: convertToYouTubeEmbed is not defined
+[00:52:50.395] Server  LOG      ✓ Compiled in 59ms
+[00:53:36.597] Server  LOG      ✓ Compiled in 60ms
+[00:56:23.709] Server  LOG      ✓ Compiled in 63ms
+[01:03:45.234] Server  LOG      ✓ Compiled in 60ms
+[01:04:04.735] Server  LOG      ✓ Compiled in 64ms
+[01:07:17.220] Server  LOG      ✓ Compiled in 61ms
+[01:07:44.072] Server  LOG      ✓ Compiled in 56ms
+[01:08:45.072] Server  LOG      ✓ Compiled in 53ms
+[01:09:12.769] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:51.214] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:52.225] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:52.870] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:53.049] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:53.279] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:53.496] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:53.682] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:53.890] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:09:54.082] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:10:00.662] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:10:01.023] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:10:01.315] Server  ERROR   Error generating landing page: ReferenceError: specs is not defined
+[01:18:58.370] Server  LOG      ✓ Compiled in 57ms
+[01:19:04.670] Server  ERROR    ⨯ ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[01:19:05.175] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[01:19:05.320] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:05.320] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:05.420] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:05.420] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:05.420] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:05.420] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:06.832] Server  ERROR    ⨯ ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[01:19:06.917] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[01:19:07.053] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:07.054] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:07.420] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:07.420] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:39.788] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:19:40.422] Browser ERROR   ./lib/renderLanding.ts:297:9
+Ecmascript file had an error
+  295 |      SPECIFICATIONS TABLE
+  296 |   ---------------------------------------------- */
+> 297 |   const SPECS_CARD = product.custom_fields_meta.length > 0 ? `
+      |         ^^^^^^^^^^
+  298 |   <div class="section card">
+  299 |     <h2>Specifications</h2>
+  300 |     <table class="specs-table">
+
+the name `SPECS_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[01:20:14.395] Server  LOG      ✓ Compiled in 57ms
+[01:21:31.887] Server  LOG      ✓ Compiled in 60ms
+[01:21:45.814] Server  LOG      ✓ Compiled in 54ms
+[01:21:50.539] Server  LOG      ✓ Compiled in 58ms
+[01:22:13.019] Server  LOG      ✓ Compiled in 64ms
+[01:22:31.167] Server  LOG      ✓ Compiled in 55ms
+[01:23:31.808] Server  LOG      ✓ Compiled in 60ms
+[01:29:11.199] Server  LOG      ✓ Compiled in 59ms
+[01:29:46.484] Server  LOG      ✓ Compiled in 61ms
+[01:30:09.394] Server  LOG      ✓ Compiled in 57ms
+[01:30:20.739] Server  LOG      ✓ Compiled in 56ms
+[01:30:28.341] Server  LOG      ✓ Compiled in 55ms
+[01:30:44.748] Server  LOG      ✓ Compiled in 57ms
+[01:31:10.389] Server  LOG      ✓ Compiled in 57ms
+[01:31:22.451] Server  LOG      ✓ Compiled in 57ms
+[01:32:04.581] Server  LOG      ✓ Compiled in 57ms
+[01:47:56.932] Server  LOG      ✓ Compiled in 58ms
+[02:02:20.960] Server  LOG      ✓ Compiled in 57ms
+[02:02:23.244] Server  LOG      ✓ Compiled in 62ms
+[02:08:56.304] Server  ERROR   Error generating landing page: ReferenceError: custom_fields_meta is not defined
+[02:16:27.583] Server  ERROR    ⨯ ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:16:27.680] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:16:27.826] Browser ERROR   ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:16:27.826] Browser ERROR   ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:16:28.422] Browser ERROR   ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:16:28.422] Browser ERROR   ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:16:41.404] Browser ERROR   ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:16:41.420] Browser ERROR   ./lib/renderLanding.ts:103:5
+Parsing ecmascript source code failed
+  101 |     "custom_fields_meta",
+  102 |     "description,"
+> 103 |     "og_image"
+      |     ^^^^^^^^^^
+  104 |   ];
+  105 |
+  106 |   fields.forEach((k) => {
+
+Expected ',', got 'string literal (og_image, "og_image")'
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:28:31.834] Server  ERROR    ⨯ ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:28:31.926] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:28:32.066] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:28:32.066] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:28:32.422] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:28:32.422] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:53.421] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:53.422] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:58.750] Server  ERROR    ⨯ ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:29:58.835] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:29:58.971] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:58.971] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:59.422] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:59.422] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:29:59.824] Server  ERROR    ⨯ ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:29:59.909] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:30:00.045] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:00.045] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:00.422] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:00.422] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:20.296] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:20.420] Browser ERROR   ./lib/renderLanding.ts:382:5
+Parsing ecmascript source code failed
+  380 |     .replace("{{about_brand}}", ABOUT_BRAND_CARD)
+  381 |     output = output.replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD);
+> 382 |     .replace("{{specifications}}", SPECS_CARD)
+      |     ^
+  383 |     .replace("{{our_collection}}", OUR_COLLECTION_CARD)
+  384 |     .replace("{{youtube}}", YOUTUBE_CARD)
+  385 |     .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
+
+Expression expected
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:21.971] Server  ERROR    ⨯ ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:30:22.053] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:30:22.188] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:22.188] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:22.421] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:22.421] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:23.009] Server  ERROR    ⨯ ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:30:23.077] Browser ERROR   uncaughtError: Error: ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+
+
+[02:30:23.213] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:23.213] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:23.421] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:23.421] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:36.812] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:30:37.421] Browser ERROR   ./lib/renderLanding.ts:187:9
+Ecmascript file had an error
+  185 |      PRODUCT SPOTLIGHT
+  186 |   ---------------------------------------------- */
+> 187 |   const ABOUT_BRAND_CARD = `
+      |         ^^^^^^^^^^^^^^^^
+  188 | <div class="section card">
+  189 |   <h2>About Our Brand</h2>
+  190 |   <p>${product.description}</p>
+
+the name `ABOUT_BRAND_CARD` is defined multiple times
+
+Import trace:
+  App Route:
+    ./lib/renderLanding.ts
+    ./app/api/landing-html/[slug]/route.ts
+[02:43:29.661] Server  LOG      ✓ Compiled in 63ms
+[02:43:47.467] Server  LOG      ✓ Compiled in 55ms
+[02:48:10.251] Server  LOG      ✓ Compiled in 60ms
+[02:49:48.041] Server  LOG      ✓ Compiled in 64ms
+[02:50:50.807] Server  LOG      ✓ Compiled in 91ms
+[02:51:13.307] Server  LOG      ✓ Compiled in 63ms
+[02:54:04.340] Server  LOG      ✓ Compiled in 60ms
+[02:54:32.124] Server  LOG      ✓ Compiled in 61ms
+[02:55:12.124] Server  LOG      ✓ Compiled in 64ms
+[02:55:51.116] Server  LOG      ✓ Compiled in 63ms
+[02:56:47.937] Server  LOG      ✓ Compiled in 68ms
+[02:57:17.360] Server  LOG      ✓ Compiled in 62ms
+[02:57:58.380] Server  LOG      ✓ Compiled in 63ms
+[03:00:05.421] Server  LOG      ✓ Compiled in 62ms
+[03:00:40.895] Server  LOG      ✓ Compiled in 65ms
+[03:00:55.827] Server  LOG      ✓ Compiled in 65ms
+[03:02:58.886] Server  LOG      ✓ Compiled in 61ms
+[03:04:23.547] Server  LOG      ✓ Compiled in 62ms
+[03:07:31.704] Server  LOG      ✓ Compiled in 59ms
+[03:08:54.502] Server  LOG      ✓ Compiled in 62ms
+[03:09:03.576] Server  LOG      ✓ Compiled in 42ms
+[03:09:15.370] Server  LOG      ✓ Compiled in 59ms
+[03:09:25.067] Server  LOG      ✓ Compiled in 56ms
+[03:17:16.682] Server  LOG      ✓ Compiled in 60ms
+[03:18:11.895] Server  LOG      ✓ Compiled in 60ms
+[03:20:19.814] Server  LOG      ✓ Compiled in 56ms
+[03:21:53.856] Server  LOG      ✓ Compiled in 61ms
+[03:22:01.150] Server  LOG      ✓ Compiled in 60ms
+[03:22:49.008] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:22:49.164] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:22:49.164] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing-pages","route":"/landing-pages"}
+[03:22:49.164] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764055797865}
+[03:23:44.582] Server  LOG      ✓ Compiled in 59ms
+[03:24:00.361] Server  LOG      ✓ Compiled in 58ms
+[03:24:17.954] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:24:18.105] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:24:18.105] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing-pages","route":"/landing-pages"}
+[03:24:18.105] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764055886803}
+[03:25:20.703] Server  LOG      ✓ Compiled in 61ms
+[03:25:35.306] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:25:35.441] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:25:35.441] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing-pages","route":"/landing-pages"}
+[03:25:35.441] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764055964139}
+[03:27:14.671] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:27:14.819] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:27:14.819] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing-pages","route":"/landing-pages"}
+[03:27:14.819] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764056063516}
+[03:27:22.633] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products/new color: rgb(120, 120, 120) color: inherit {"dp":"/products/new","o":"http://localhost:3000/products/new","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764056068479}
+[03:27:32.745] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/products color: rgb(120, 120, 120) color: inherit {"dp":"/products","o":"http://localhost:3000/products","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764056081244}
+[03:27:32.745] Browser LOG     Response: {"products":[{"category":"wearables","id":"product-1763642937352","image":"/upload/productgallery/product-1763703625733-9fiuxv.webp","leads":0,"name":"Allen Cooper Performance Ankle Boot S3","price":"₹1500","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S3S FO SR","status":true,"views":0},{"category":"audio","id":"product-1763704611910","image":"/upload/productgallery/gallery-1763640897246-yrfocg.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹450.20","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S1 PS FO SR","status":true,"views":0},{"category":"Protection","id":"product-1763704611912","image":"/upload/productgallery/gallery-1763640897247-llesmx.jpg","leads":0,"name":"Allen Cooper Sporty S1","price":"₹3221.00","scans":0,"sku":"EN ISO 20345 S1 PS FO SR","status":true,"views":0},{"category":"Fancy","id":"product-1763704611913","image":"/upload/productgallery/gallery-1763640897248-zfth58.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹800","scans":0,"sku":"EN ISO 20345:2022","status":true,"views":0},{"category":"Casual","id":"product-1763704611914","image":"/upload/productgallery/gallery-1763640897248-cyv19j.jpg","leads":0,"name":"Allen Cooper Low Ankle Sporty S1","price":"₹1500","scans":0,"sku":"2022/A1:2024 S1 PS FO SR","status":true,"views":0}],"success":true}
+[03:27:32.745] Browser LOG     Response: {"products":[{"category":"wearables","id":"product-1763642937352","image":"/upload/productgallery/product-1763703625733-9fiuxv.webp","leads":0,"name":"Allen Cooper Performance Ankle Boot S3","price":"₹1500","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S3S FO SR","status":true,"views":0},{"category":"audio","id":"product-1763704611910","image":"/upload/productgallery/gallery-1763640897246-yrfocg.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹450.20","scans":0,"sku":"EN ISO 20345:2022/A1:2024 S1 PS FO SR","status":true,"views":0},{"category":"Protection","id":"product-1763704611912","image":"/upload/productgallery/gallery-1763640897247-llesmx.jpg","leads":0,"name":"Allen Cooper Sporty S1","price":"₹3221.00","scans":0,"sku":"EN ISO 20345 S1 PS FO SR","status":true,"views":0},{"category":"Fancy","id":"product-1763704611913","image":"/upload/productgallery/gallery-1763640897248-zfth58.jpg","leads":0,"name":"Allen Cooper High Ankle Fire Fighting Boot S3","price":"₹800","scans":0,"sku":"EN ISO 20345:2022","status":true,"views":0},{"category":"Casual","id":"product-1763704611914","image":"/upload/productgallery/gallery-1763640897248-cyv19j.jpg","leads":0,"name":"Allen Cooper Low Ankle Sporty S1","price":"₹1500","scans":0,"sku":"2022/A1:2024 S1 PS FO SR","status":true,"views":0}],"success":true}
+[03:27:32.745] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897247-llesmx.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:27:32.745] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897248-zfth58.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:27:32.745] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/product-1763703625733-9fiuxv.webp" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:27:32.745] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897246-yrfocg.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:27:32.745] Browser WARN    Image with src "http://localhost:3000/upload/productgallery/gallery-1763640897248-cyv19j.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:27:34.535] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764056083121}
+[03:30:14.847] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764056243540}
+[03:30:33.484] Server  LOG      ✓ Compiled in 64ms
+[03:30:50.797] Server  LOG      ✓ Compiled in 68ms
+[03:30:58.276] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:30:58.416] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:30:58.416] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/landing-pages","route":"/landing-pages"}
+[03:30:58.416] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/landing-pages color: rgb(120, 120, 120) color: inherit {"dp":"/landing-pages","o":"http://localhost:3000/landing-pages","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764056287112}
