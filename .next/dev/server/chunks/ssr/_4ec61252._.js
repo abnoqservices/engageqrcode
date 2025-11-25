@@ -1333,7 +1333,7 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__default__export__
 ]);
 const templates = {
-    ecommerce: `<!DOCTYPE html>
+    modern: `<!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1350,12 +1350,18 @@ const templates = {
       :root {
         --primary: #061244;
         --primary-light: #B7E6FF;
-        --text: #292929;
+      
+        --text: #091042;
         --bg: #ffffff;
-        --radius: 14px;
-        --shadow: 0 6px 20px rgba(0, 0, 0, .08);
-     
+      
+        --radius: 0.875rem;            /* 14px */
+        --shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
+      
+        --h2: 1.5rem;                  /* 24px */
+        --qrc_contact_hdr_text: 1.875rem; /* 30px */
+        --p: 1.625rem;                 /* 26px */
       }
+      
   
       * { margin:0; padding:0; box-sizing:border-box; }
       body {
@@ -1875,7 +1881,7 @@ const templates = {
   
     {{our_collection}}
   
-    {{youtube}}
+   
   
     {{product_spotlight}}
   
@@ -1884,6 +1890,1881 @@ const templates = {
     {{join_club}}
   
     {{natural_ingredients}}
+    {{youtube}}
+    {{social_media}}
+  
+    {{contact}}
+  
+    {{rate_experience}}
+  
+  </div>
+  
+  <!-- Floating Buttons -->
+  <div class="footer-actions">
+    <button onclick="alert('QR Code Shown')"><i class="fas fa-qrcode"></i></button>
+    <button onclick="if(navigator.share){navigator.share({title:'Page', url:location.href})}">
+      <i class="fas fa-share-alt"></i>
+    </button>
+  </div>
+  
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    // Hero Fade Slider
+    new Swiper('.hero-slider', {
+        effect: 'fade',
+        loop: true,
+        autoplay: { delay: 4000 },
+        pagination: { el: '.swiper-pagination', clickable: true }
+    });
+
+    // Gallery & Products
+    new Swiper('.gallery-swiper, .products-swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 15,
+        centeredSlides: false,
+        loop: true,
+        autoplay: { delay: 3500 }
+    });
+        new Swiper('.gallery-header', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          loop: true,
+          autoplay: { delay: 3000 },
+          coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+          },
+          pagination: { el: '.swiper-pagination' },
+      });
+  
+      new Swiper('.products-swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: 15,
+          pagination: { el: '.swiper-pagination' },
+      });
+      function rate(n) {
+        document.querySelectorAll('.stars i').forEach((star, i) => {
+          star.className = i < n ? 'fas fa-star active' : 'far fa-star';
+        });
+      }
+</script>
+  
+  </body>
+  </html>`,
+    ecommerce: `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {{meta_seo}}
+  
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <style>
+      :root {
+        --primary: #061244;
+        --primary-light: #B7E6FF;
+      
+        --text: #091042;
+        --bg: #ffffff;
+      
+        --radius: 0.875rem;            /* 14px */
+        --shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
+      
+        --h2: 1.5rem;                  /* 24px */
+        --qrc_contact_hdr_text: 1.875rem; /* 30px */
+        --p: 1.625rem;                 /* 26px */
+      }
+      
+  
+      * { margin:0; padding:0; box-sizing:border-box; }
+      body {
+        font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+        background:#f4f6f9;
+        color:var(--text);
+        line-height:1.5;
+      }
+    
+      .container {
+        max-width: 520px;
+        margin: 0 auto;
+        background: #241313;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding:2vh;
+      }
+  
+      /* HEADER */
+      .header { position:relative; overflow:hidden; border-radius:0 0 18px 18px; }
+      .header-swiper .swiper-slide {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      @media (max-width: 390px) {
+        .header-swiper .swiper-slide { height: 240px; }
+      }
+    
+      .header-overlay {
+        position:absolute;
+        bottom:0; left:0; right:0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 30px 15px;
+        text-align:center;
+        color:white;
+      }
+  
+      .header-overlay h1 { font-size:24px; }
+      .header-overlay p { font-size:14px; opacity:.9; }
+  
+      /* SECTIONS */
+      .section {
+        padding: 20px 16px;
+        text-align:center;
+      }
+  
+      .card {
+        background:white;
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        padding:18px;
+        margin-bottom:18px;
+      }
+  
+      h2 {
+        font-size:20px;
+        color:var(--primary);
+        margin-bottom:10px;
+        font-weight:700;
+      }
+  
+      p { font-size:14px; color:#555; }
+  
+      /* GALLERY */
+      .gallery-swiper img {
+        width:100%; height:300px; object-fit:cover;
+        border-radius:12px;
+      }
+  
+      @media (max-width:480px) {
+        .gallery-swiper img 
+      }
+  
+      /* VIDEO */
+      .video-wrapper {
+        position:relative; padding-bottom:56%; height:0;
+        border-radius:12px; overflow:hidden; box-shadow:var(--shadow);
+        margin-bottom:20px;
+      }
+  
+      /* PRODUCTS */
+      .product {
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:var(--shadow);
+        background:white;
+        margin:12px 8px;
+      }
+  
+      .product img {
+        width:100%;  object-fit:cover;
+      }
+  
+      .product-info { padding:16px; text-align:center; }
+  
+      .product-title { font-weight:600; font-size:15px; margin-bottom:6px; }
+      .rating { font-size:13px; color:#ffc107; }
+      .price { font-size:18px; font-weight:bold; color:var(--primary); }
+  
+      .buy-btn {
+        width:100%; padding:12px;
+        background:var(--primary); color:white;
+        border:none; border-radius:8px;
+        font-size:15px; cursor:pointer;
+        margin-top:12px;
+      }
+  
+      /* CTA BUTTON */
+      .cta-btn {
+        display:block;
+        margin:20px auto;
+        padding:15px 40px;
+        background:var(--primary);
+        color:white;
+        text-decoration:none;
+        border-radius:40px;
+        font-size:17px;
+        box-shadow:0 4px 12px rgba(6,18,68,.25);
+      }
+  
+      /* SOCIAL LINKS */
+      .social-item {
+       
+        background:#f7f7f7;
+        padding:14px;
+        margin:10px 0;
+        border-radius:12px;
+        align-items:center;
+      }
+  
+      .social-icon {
+        width:42px; height:42px;
+        background-size:cover;
+        border-radius:10px;
+      }
+  
+      .social-text { margin-left:14px; flex:1; text-align:left; }
+      .social-text h4 { font-size:15px; font-weight:600; }
+      .social-text p { font-size:12px; color:#777; }
+  
+      /* CONTACT CARD */
+      .ql-contact-wrapper {
+        padding:20px; margin:20px; border-radius:12px;
+        background:white; box-shadow:var(--shadow);
+      }
+  
+      .qrc_contact_hdr_text { font-size:18px; font-weight:700; }
+  
+      .qrc_contact_number a, .qrc_email_id a {
+        font-size:13px; color:#666; text-decoration:none;
+      }
+  
+      /* RATING */
+      .stars { display:flex; justify-content:center; gap:12px; margin-top:20px; }
+      .stars i {
+        font-size:34px;
+        color:#ddd;
+        transition:.3s;
+      }
+      .stars i.active { color:#ffc107; }
+  
+      /* FLOATING BUTTONS */
+      .footer-actions {
+        position:fixed; bottom:18px; left:50%;
+        transform:translateX(-50%);
+        background:white;
+        border-radius:50px;
+        box-shadow:0 8px 20px rgba(0,0,0,.15);
+        padding:10px 20px;
+        display:flex; gap:25px;
+        z-index:100;
+      }
+  
+      .footer-actions i {
+        font-size:22px;
+        color:var(--primary);
+      }
+      /* FOLLOW US SECTION */
+.section.card {
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.section.card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #061244;
+  margin-bottom: 16px;
+}
+
+/* SOCIAL LIST */
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-item {
+  margin-bottom: 14px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  background: #f8f9fc;
+  border-radius: 14px;
+  padding: 14px;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Hover / Mobile Tap Feel */
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* ICON */
+.social-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 14px;
+}
+
+/* TEXT */
+.social-text {
+  flex: 1;
+  text-align: left;
+}
+
+.social-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.social-text p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ARROW ICON */
+.social-link i {
+  font-size: 16px;
+  color: #999;
+}
+
+/* MOBILE OPTIMIZED */
+@media (max-width: 480px) {
+  .social-link {
+    padding: 12px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-text h4 {
+    font-size: 14px;
+  }
+
+  .social-text p {
+    font-size: 12px;
+  }
+}
+/* CONTACT CARD WRAPPER */
+.qrc_contact.qr_cc_card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin: 20px 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  font-family: "Inter", "SF Pro Text", sans-serif;
+  text-align: left;  /* LEFT ALIGN EVERYTHING */
+}
+
+/* HEADER */
+.qrc_contact_header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px dashed #e6e7ef;
+}
+
+.qrc_contact_hdr_img {
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
+
+.qrc_contact_hdr_text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* INFO BLOCKS (Call, Email, Address) */
+.qrc_contact_info,
+.qrc_email_info,
+.qrc_address_info {
+  margin-bottom: 20px;
+}
+
+.qrc_contact_info_title,
+.qrc_email_info_title,
+.qrc_address_info_title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* TEXT VALUES */
+.qrc_contact_number a,
+.qrc_email_id a {
+  font-size: 14px;
+  color: #777;
+  text-decoration: none;
+  display: block;
+  margin-top: 2px;
+}
+
+.qrc_contact_number a:hover,
+.qrc_email_id a:hover {
+  text-decoration: underline;
+}
+
+/* ADDRESS TEXT */
+.qrc_address_text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* DIRECTION BUTTON */
+.qrc_direction_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0b57cf;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .2s ease;
+}
+
+.qrc_direction_btn:hover {
+  background: #0947ad;
+}
+
+.qrc_direction_btn .icon-direction_1 {
+  font-size: 16px;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .qrc_contact.qr_cc_card {
+    padding: 16px;
+  }
+
+  .qrc_contact_hdr_text {
+    font-size: 18px;
+  }
+
+  .qrc_contact_hdr_img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .qrc_address_text,
+  .qrc_contact_number a,
+  .qrc_email_id a {
+    font-size: 13px;
+  }
+}
+.premium-header-section {
+  text-align: center;
+  padding: 40px 20px 30px;
+  
+}
+
+.logo-wrapper {
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(6, 18, 68, 0.15);
+  padding: 12px;
+  background: #188ca2;
+  border: 1px solid #f0f0f0;
+  transition: all 0.4s ease;
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+/* Subtle bottom divider */
+.header-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0e0e0 30%, #e0e0e0 70%, transparent);
+  margin: 35px auto 0;
+  width: 60%;
+  border-radius: 1px;
+}
+
+/* Extra polish on small phones */
+@media (max-width: 480px) {
+  .premium-header-section { padding: 35px 15px 25px; }
+  .brand-logo { width: 100px; height: 100px; }
+  .brand-title { font-size: 26px; }
+  .brand-tagline { font-size: 15.5px; }
+}
+.luxury-floating-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 18px;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #333;
+  font-weight: 500;
+  gap: 6px;
+  min-width: 50px;
+}
+
+.footer-item i {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.main-cta {
+  transform: translateY(-18px);
+}
+
+.main-cta a {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
+  100% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+}
+    </style>
+  </head>
+  
+  <body>
+  
+  <div class="container">
+    {{header_logo_card}}
+  
+    {{top_slider_card_tow}}
+  
+    {{about_brand}}
+  
+    {{our_collection}}
+  
+   
+  
+    {{product_spotlight}}
+  
+
+  
+    {{join_club}}
+  
+    {{natural_ingredients}}
+   
+    {{social_media}}
+  
+    {{contact}}
+  
+    {{rate_experience}}
+  
+  </div>
+  
+  <!-- Floating Buttons -->
+  <div class="footer-actions">
+    <button onclick="alert('QR Code Shown')"><i class="fas fa-qrcode"></i></button>
+    <button onclick="if(navigator.share){navigator.share({title:'Page', url:location.href})}">
+      <i class="fas fa-share-alt"></i>
+    </button>
+  </div>
+  
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    // Hero Fade Slider
+    new Swiper('.hero-slider', {
+        effect: 'fade',
+        loop: true,
+        autoplay: { delay: 4000 },
+        pagination: { el: '.swiper-pagination', clickable: true }
+    });
+
+    // Gallery & Products
+    new Swiper('.gallery-swiper, .products-swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 15,
+        centeredSlides: false,
+        loop: true,
+        autoplay: { delay: 3500 }
+    });
+        new Swiper('.gallery-header', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          loop: true,
+          autoplay: { delay: 3000 },
+          coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+          },
+          pagination: { el: '.swiper-pagination' },
+      });
+  
+      new Swiper('.products-swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: 15,
+          pagination: { el: '.swiper-pagination' },
+      });
+      function rate(n) {
+        document.querySelectorAll('.stars i').forEach((star, i) => {
+          star.className = i < n ? 'fas fa-star active' : 'far fa-star';
+        });
+      }
+</script>
+  
+  </body>
+  </html>`,
+    protemplete: `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {{meta_seo}}
+  
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <style>
+      :root {
+        --primary: #061244;
+        --primary-light: #B7E6FF;
+      
+        --text: #091042;
+        --bg: #ffffff;
+      
+        --radius: 0.875rem;            /* 14px */
+        --shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
+      
+        --h2: 1.5rem;                  /* 24px */
+        --qrc_contact_hdr_text: 1.875rem; /* 30px */
+        --p: 1.625rem;                 /* 26px */
+      }
+      
+  
+      * { margin:0; padding:0; box-sizing:border-box; }
+      body {
+        font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+        background:#a43232;
+        color:var(--text);
+        line-height:1.5;
+      }
+    
+      .container {
+        max-width: 520px;
+        margin: 0 auto;
+        background: #061244;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding:2vh;
+      }
+  
+      /* HEADER */
+      .header { position:relative; overflow:hidden; border-radius:0 0 18px 18px; }
+      .header-swiper .swiper-slide {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      @media (max-width: 390px) {
+        .header-swiper .swiper-slide { height: 240px; }
+      }
+    
+      .header-overlay {
+        position:absolute;
+        bottom:0; left:0; right:0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 30px 15px;
+        text-align:center;
+        color:white;
+      }
+  
+      .header-overlay h1 { font-size:24px; }
+      .header-overlay p { font-size:14px; opacity:.9; }
+  
+      /* SECTIONS */
+      .section {
+        padding: 20px 16px;
+        text-align:center;
+      }
+  
+      .card {
+        background:white;
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        padding:18px;
+        margin-bottom:18px;
+      }
+  
+      h2 {
+        font-size:20px;
+        color:var(--primary);
+        margin-bottom:10px;
+        font-weight:700;
+      }
+  
+      p { font-size:14px; color:#555; }
+  
+      /* GALLERY */
+      .gallery-swiper img {
+        width:100%; height:300px; object-fit:cover;
+        border-radius:12px;
+      }
+  
+      @media (max-width:480px) {
+        .gallery-swiper img 
+      }
+  
+      /* VIDEO */
+      .video-wrapper {
+        position:relative; padding-bottom:56%; height:0;
+        border-radius:12px; overflow:hidden; box-shadow:var(--shadow);
+        margin-bottom:20px;
+      }
+  
+      /* PRODUCTS */
+      .product {
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:var(--shadow);
+        background:white;
+        margin:12px 8px;
+      }
+  
+      .product img {
+        width:100%;  object-fit:cover;
+      }
+  
+      .product-info { padding:16px; text-align:center; }
+  
+      .product-title { font-weight:600; font-size:15px; margin-bottom:6px; }
+      .rating { font-size:13px; color:#ffc107; }
+      .price { font-size:18px; font-weight:bold; color:var(--primary); }
+  
+      .buy-btn {
+        width:100%; padding:12px;
+        background:var(--primary); color:white;
+        border:none; border-radius:8px;
+        font-size:15px; cursor:pointer;
+        margin-top:12px;
+      }
+  
+      /* CTA BUTTON */
+      .cta-btn {
+        display:block;
+        margin:20px auto;
+        padding:15px 40px;
+        background:var(--primary);
+        color:white;
+        text-decoration:none;
+        border-radius:40px;
+        font-size:17px;
+        box-shadow:0 4px 12px rgba(6,18,68,.25);
+      }
+  
+      /* SOCIAL LINKS */
+      .social-item {
+       
+        background:#f7f7f7;
+        padding:14px;
+        margin:10px 0;
+        border-radius:12px;
+        align-items:center;
+      }
+  
+      .social-icon {
+        width:42px; height:42px;
+        background-size:cover;
+        border-radius:10px;
+      }
+  
+      .social-text { margin-left:14px; flex:1; text-align:left; }
+      .social-text h4 { font-size:15px; font-weight:600; }
+      .social-text p { font-size:12px; color:#777; }
+  
+      /* CONTACT CARD */
+      .ql-contact-wrapper {
+        padding:20px; margin:20px; border-radius:12px;
+        background:white; box-shadow:var(--shadow);
+      }
+  
+      .qrc_contact_hdr_text { font-size:18px; font-weight:700; }
+  
+      .qrc_contact_number a, .qrc_email_id a {
+        font-size:13px; color:#666; text-decoration:none;
+      }
+  
+      /* RATING */
+      .stars { display:flex; justify-content:center; gap:12px; margin-top:20px; }
+      .stars i {
+        font-size:34px;
+        color:#ddd;
+        transition:.3s;
+      }
+      .stars i.active { color:#ffc107; }
+  
+      /* FLOATING BUTTONS */
+      .footer-actions {
+        position:fixed; bottom:18px; left:50%;
+        transform:translateX(-50%);
+        background:white;
+        border-radius:50px;
+        box-shadow:0 8px 20px rgba(0,0,0,.15);
+        padding:10px 20px;
+        display:flex; gap:25px;
+        z-index:100;
+      }
+  
+      .footer-actions i {
+        font-size:22px;
+        color:var(--primary);
+      }
+      /* FOLLOW US SECTION */
+.section.card {
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.section.card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #061244;
+  margin-bottom: 16px;
+}
+
+/* SOCIAL LIST */
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-item {
+  margin-bottom: 14px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  background: #f8f9fc;
+  border-radius: 14px;
+  padding: 14px;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Hover / Mobile Tap Feel */
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* ICON */
+.social-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 14px;
+}
+
+/* TEXT */
+.social-text {
+  flex: 1;
+  text-align: left;
+}
+
+.social-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.social-text p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ARROW ICON */
+.social-link i {
+  font-size: 16px;
+  color: #999;
+}
+
+/* MOBILE OPTIMIZED */
+@media (max-width: 480px) {
+  .social-link {
+    padding: 12px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-text h4 {
+    font-size: 14px;
+  }
+
+  .social-text p {
+    font-size: 12px;
+  }
+}
+/* CONTACT CARD WRAPPER */
+.qrc_contact.qr_cc_card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin: 20px 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  font-family: "Inter", "SF Pro Text", sans-serif;
+  text-align: left;  /* LEFT ALIGN EVERYTHING */
+}
+
+/* HEADER */
+.qrc_contact_header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px dashed #e6e7ef;
+}
+
+.qrc_contact_hdr_img {
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
+
+.qrc_contact_hdr_text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* INFO BLOCKS (Call, Email, Address) */
+.qrc_contact_info,
+.qrc_email_info,
+.qrc_address_info {
+  margin-bottom: 20px;
+}
+
+.qrc_contact_info_title,
+.qrc_email_info_title,
+.qrc_address_info_title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* TEXT VALUES */
+.qrc_contact_number a,
+.qrc_email_id a {
+  font-size: 14px;
+  color: #777;
+  text-decoration: none;
+  display: block;
+  margin-top: 2px;
+}
+
+.qrc_contact_number a:hover,
+.qrc_email_id a:hover {
+  text-decoration: underline;
+}
+
+/* ADDRESS TEXT */
+.qrc_address_text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* DIRECTION BUTTON */
+.qrc_direction_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0b57cf;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .2s ease;
+}
+
+.qrc_direction_btn:hover {
+  background: #0947ad;
+}
+
+.qrc_direction_btn .icon-direction_1 {
+  font-size: 16px;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .qrc_contact.qr_cc_card {
+    padding: 16px;
+  }
+
+  .qrc_contact_hdr_text {
+    font-size: 18px;
+  }
+
+  .qrc_contact_hdr_img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .qrc_address_text,
+  .qrc_contact_number a,
+  .qrc_email_id a {
+    font-size: 13px;
+  }
+}
+.premium-header-section {
+  text-align: center;
+  padding: 40px 20px 30px;
+  
+}
+
+.logo-wrapper {
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(6, 18, 68, 0.15);
+  padding: 12px;
+  background: #188ca2;
+  border: 1px solid #f0f0f0;
+  transition: all 0.4s ease;
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+/* Subtle bottom divider */
+.header-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0e0e0 30%, #e0e0e0 70%, transparent);
+  margin: 35px auto 0;
+  width: 60%;
+  border-radius: 1px;
+}
+
+/* Extra polish on small phones */
+@media (max-width: 480px) {
+  .premium-header-section { padding: 35px 15px 25px; }
+  .brand-logo { width: 100px; height: 100px; }
+  .brand-title { font-size: 26px; }
+  .brand-tagline { font-size: 15.5px; }
+}
+.luxury-floating-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 18px;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #333;
+  font-weight: 500;
+  gap: 6px;
+  min-width: 50px;
+}
+
+.footer-item i {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.main-cta {
+  transform: translateY(-18px);
+}
+
+.main-cta a {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
+  100% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+}
+    </style>
+  </head>
+  
+  <body>
+  
+  <div class="container">
+    {{header_logo_card}}
+    {{top_slider_card_tow}}
+  
+    {{about_brand}}
+  
+   
+  
+   
+  
+    {{product_spotlight}}
+  
+   
+  
+    {{join_club}}
+  
+    
+    {{youtube}}
+    {{social_media}}
+  
+    {{contact}}
+  
+    
+  
+  </div>
+  
+  <!-- Floating Buttons -->
+  <div class="footer-actions">
+    <button onclick="alert('QR Code Shown')"><i class="fas fa-qrcode"></i></button>
+    <button onclick="if(navigator.share){navigator.share({title:'Page', url:location.href})}">
+      <i class="fas fa-share-alt"></i>
+    </button>
+  </div>
+  
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    // Hero Fade Slider
+    new Swiper('.hero-slider', {
+        effect: 'fade',
+        loop: true,
+        autoplay: { delay: 4000 },
+        pagination: { el: '.swiper-pagination', clickable: true }
+    });
+
+    // Gallery & Products
+    new Swiper('.gallery-swiper, .products-swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 15,
+        centeredSlides: false,
+        loop: true,
+        autoplay: { delay: 3500 }
+    });
+        new Swiper('.gallery-header', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          loop: true,
+          autoplay: { delay: 3000 },
+          coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+          },
+          pagination: { el: '.swiper-pagination' },
+      });
+  
+      new Swiper('.products-swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: 15,
+          pagination: { el: '.swiper-pagination' },
+      });
+      function rate(n) {
+        document.querySelectorAll('.stars i').forEach((star, i) => {
+          star.className = i < n ? 'fas fa-star active' : 'far fa-star';
+        });
+      }
+</script>
+  
+  </body>
+  </html>`,
+    protemplete2: `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {{meta_seo}}
+  
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <style>
+      :root {
+        --primary: #061244;
+        --primary-light: #B7E6FF;
+      
+        --text: #091042;
+        --bg: #ffffff;
+      
+        --radius: 0.875rem;            /* 14px */
+        --shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
+      
+        --h2: 1.5rem;                  /* 24px */
+        --qrc_contact_hdr_text: 1.875rem; /* 30px */
+        --p: 1.625rem;                 /* 26px */
+      }
+      
+  
+      * { margin:0; padding:0; box-sizing:border-box; }
+      body {
+        font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+        background:#edeef4;
+        color:var(--text);
+        line-height:1.5;
+      }
+    
+      .container {
+        max-width: 520px;
+        margin: 0 auto;
+        background: #061244;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding:2vh;
+      }
+  
+      /* HEADER */
+      .header { position:relative; overflow:hidden; border-radius:0 0 18px 18px; }
+      .header-swiper .swiper-slide {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      @media (max-width: 390px) {
+        .header-swiper .swiper-slide { height: 240px; }
+      }
+    
+      .header-overlay {
+        position:absolute;
+        bottom:0; left:0; right:0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 30px 15px;
+        text-align:center;
+        color:white;
+      }
+  
+      .header-overlay h1 { font-size:24px; }
+      .header-overlay p { font-size:14px; opacity:.9; }
+  
+      /* SECTIONS */
+      .section {
+        padding: 20px 16px;
+        text-align:center;
+      }
+  
+      .card {
+        background:white;
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        padding:18px;
+        margin-bottom:18px;
+      }
+  
+      h2 {
+        font-size:20px;
+        color:var(--primary);
+        margin-bottom:10px;
+        font-weight:700;
+      }
+  
+      p { font-size:14px; color:#555; }
+  
+      /* GALLERY */
+      .gallery-swiper img {
+        width:100%; height:300px; object-fit:cover;
+        border-radius:12px;
+      }
+  
+      @media (max-width:480px) {
+        .gallery-swiper img 
+      }
+  
+      /* VIDEO */
+      .video-wrapper {
+        position:relative; padding-bottom:56%; height:0;
+        border-radius:12px; overflow:hidden; box-shadow:var(--shadow);
+        margin-bottom:20px;
+      }
+  
+      /* PRODUCTS */
+      .product {
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:var(--shadow);
+        background:white;
+        margin:12px 8px;
+      }
+  
+      .product img {
+        width:100%;  object-fit:cover;
+      }
+  
+      .product-info { padding:16px; text-align:center; }
+  
+      .product-title { font-weight:600; font-size:15px; margin-bottom:6px; }
+      .rating { font-size:13px; color:#ffc107; }
+      .price { font-size:18px; font-weight:bold; color:var(--primary); }
+  
+      .buy-btn {
+        width:100%; padding:12px;
+        background:var(--primary); color:white;
+        border:none; border-radius:8px;
+        font-size:15px; cursor:pointer;
+        margin-top:12px;
+      }
+  
+      /* CTA BUTTON */
+      .cta-btn {
+        display:block;
+        margin:20px auto;
+        padding:15px 40px;
+        background:var(--primary);
+        color:white;
+        text-decoration:none;
+        border-radius:40px;
+        font-size:17px;
+        box-shadow:0 4px 12px rgba(6,18,68,.25);
+      }
+  
+      /* SOCIAL LINKS */
+      .social-item {
+       
+        background:#f7f7f7;
+        padding:14px;
+        margin:10px 0;
+        border-radius:12px;
+        align-items:center;
+      }
+  
+      .social-icon {
+        width:42px; height:42px;
+        background-size:cover;
+        border-radius:10px;
+      }
+  
+      .social-text { margin-left:14px; flex:1; text-align:left; }
+      .social-text h4 { font-size:15px; font-weight:600; }
+      .social-text p { font-size:12px; color:#777; }
+  
+      /* CONTACT CARD */
+      .ql-contact-wrapper {
+        padding:20px; margin:20px; border-radius:12px;
+        background:white; box-shadow:var(--shadow);
+      }
+  
+      .qrc_contact_hdr_text { font-size:18px; font-weight:700; }
+  
+      .qrc_contact_number a, .qrc_email_id a {
+        font-size:13px; color:#666; text-decoration:none;
+      }
+  
+      /* RATING */
+      .stars { display:flex; justify-content:center; gap:12px; margin-top:20px; }
+      .stars i {
+        font-size:34px;
+        color:#ddd;
+        transition:.3s;
+      }
+      .stars i.active { color:#ffc107; }
+  
+      /* FLOATING BUTTONS */
+      .footer-actions {
+        position:fixed; bottom:18px; left:50%;
+        transform:translateX(-50%);
+        background:white;
+        border-radius:50px;
+        box-shadow:0 8px 20px rgba(0,0,0,.15);
+        padding:10px 20px;
+        display:flex; gap:25px;
+        z-index:100;
+      }
+  
+      .footer-actions i {
+        font-size:22px;
+        color:var(--primary);
+      }
+      /* FOLLOW US SECTION */
+.section.card {
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.section.card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #061244;
+  margin-bottom: 16px;
+}
+
+/* SOCIAL LIST */
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-item {
+  margin-bottom: 14px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  background: #f8f9fc;
+  border-radius: 14px;
+  padding: 14px;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Hover / Mobile Tap Feel */
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* ICON */
+.social-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 14px;
+}
+
+/* TEXT */
+.social-text {
+  flex: 1;
+  text-align: left;
+}
+
+.social-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.social-text p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ARROW ICON */
+.social-link i {
+  font-size: 16px;
+  color: #999;
+}
+
+/* MOBILE OPTIMIZED */
+@media (max-width: 480px) {
+  .social-link {
+    padding: 12px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-text h4 {
+    font-size: 14px;
+  }
+
+  .social-text p {
+    font-size: 12px;
+  }
+}
+/* CONTACT CARD WRAPPER */
+.qrc_contact.qr_cc_card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin: 20px 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  font-family: "Inter", "SF Pro Text", sans-serif;
+  text-align: left;  /* LEFT ALIGN EVERYTHING */
+}
+
+/* HEADER */
+.qrc_contact_header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px dashed #e6e7ef;
+}
+
+.qrc_contact_hdr_img {
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
+
+.qrc_contact_hdr_text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* INFO BLOCKS (Call, Email, Address) */
+.qrc_contact_info,
+.qrc_email_info,
+.qrc_address_info {
+  margin-bottom: 20px;
+}
+
+.qrc_contact_info_title,
+.qrc_email_info_title,
+.qrc_address_info_title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* TEXT VALUES */
+.qrc_contact_number a,
+.qrc_email_id a {
+  font-size: 14px;
+  color: #777;
+  text-decoration: none;
+  display: block;
+  margin-top: 2px;
+}
+
+.qrc_contact_number a:hover,
+.qrc_email_id a:hover {
+  text-decoration: underline;
+}
+
+/* ADDRESS TEXT */
+.qrc_address_text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* DIRECTION BUTTON */
+.qrc_direction_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0b57cf;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .2s ease;
+}
+
+.qrc_direction_btn:hover {
+  background: #0947ad;
+}
+
+.qrc_direction_btn .icon-direction_1 {
+  font-size: 16px;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .qrc_contact.qr_cc_card {
+    padding: 16px;
+  }
+
+  .qrc_contact_hdr_text {
+    font-size: 18px;
+  }
+
+  .qrc_contact_hdr_img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .qrc_address_text,
+  .qrc_contact_number a,
+  .qrc_email_id a {
+    font-size: 13px;
+  }
+}
+.premium-header-section {
+  text-align: center;
+  padding: 40px 20px 30px;
+  
+}
+
+.logo-wrapper {
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(6, 18, 68, 0.15);
+  padding: 12px;
+  background: #188ca2;
+  border: 1px solid #f0f0f0;
+  transition: all 0.4s ease;
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+/* Subtle bottom divider */
+.header-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0e0e0 30%, #e0e0e0 70%, transparent);
+  margin: 35px auto 0;
+  width: 60%;
+  border-radius: 1px;
+}
+
+/* Extra polish on small phones */
+@media (max-width: 480px) {
+  .premium-header-section { padding: 35px 15px 25px; }
+  .brand-logo { width: 100px; height: 100px; }
+  .brand-title { font-size: 26px; }
+  .brand-tagline { font-size: 15.5px; }
+}
+.luxury-floating-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 18px;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #333;
+  font-weight: 500;
+  gap: 6px;
+  min-width: 50px;
+}
+
+.footer-item i {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.main-cta {
+  transform: translateY(-18px);
+}
+
+.main-cta a {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
+  100% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+}
+    </style>
+  </head>
+  
+  <body>
+  
+  <div class="container">
+    
+    {{top_slider_card_tow}}
+  
+    {{about_brand}}
+  
+   
+  
+   
+  
+    {{product_spotlight}}
+  
+    {{featured_products}}
+  
+    {{join_club}}
+  
   
     {{social_media}}
   
@@ -2166,7 +4047,37 @@ function LandingPagesPage() {
             conversions: 187,
             status: "published",
             lastModified: "2024-01-15",
+            template: "modern"
+        },
+        {
+            id: 2,
+            name: "Premium Headphones Store",
+            url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-wine.png",
+            views: 1823,
+            conversions: 142,
+            status: "published",
+            lastModified: "2024-01-18",
             template: "ecommerce"
+        },
+        {
+            id: 3,
+            name: "Pro Tempalte Landing Page",
+            url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-watch.png",
+            views: 1823,
+            conversions: 142,
+            status: "published",
+            lastModified: "2024-01-18",
+            template: "protemplete"
+        },
+        {
+            id: 4,
+            name: "Pro Template 2 Landing Page",
+            url: "https://cdn0070.qrcodechimp.com/images/digitalCard/dbcv2/digital-business-cards-template-event.webp",
+            views: 1823,
+            conversions: 142,
+            status: "published",
+            lastModified: "2024-01-18",
+            template: "protemplete2"
         }
     ];
     const generateDynamicURL = (page, template)=>{
@@ -2232,7 +4143,7 @@ function LandingPagesPage() {
                                     children: "Landing Pages"
                                 }, void 0, false, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 177,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2240,13 +4151,13 @@ function LandingPagesPage() {
                                     children: "Create and manage product landing pages"
                                 }, void 0, false, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 178,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/page.tsx",
-                            lineNumber: 147,
+                            lineNumber: 176,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2258,25 +4169,25 @@ function LandingPagesPage() {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 155,
+                                        lineNumber: 184,
                                         columnNumber: 15
                                     }, this),
                                     "Create Landing Page"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 154,
+                                lineNumber: 183,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/landing-pages/page.tsx",
-                            lineNumber: 153,
+                            lineNumber: 182,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 146,
+                    lineNumber: 175,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2292,20 +4203,20 @@ function LandingPagesPage() {
                                             children: "Total Pages"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 165,
+                                            lineNumber: 194,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$panels$2d$top$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Layout$3e$__["Layout"], {
                                             className: "h-4 w-4 text-muted-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 166,
+                                            lineNumber: 195,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 164,
+                                    lineNumber: 193,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2315,7 +4226,7 @@ function LandingPagesPage() {
                                             children: landingPages.length
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 169,
+                                            lineNumber: 198,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2326,19 +4237,19 @@ function LandingPagesPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 199,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 168,
+                                    lineNumber: 197,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/page.tsx",
-                            lineNumber: 163,
+                            lineNumber: 192,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -2351,20 +4262,20 @@ function LandingPagesPage() {
                                             children: "Total Views"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 175,
+                                            lineNumber: 204,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
                                             className: "h-4 w-4 text-muted-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 176,
+                                            lineNumber: 205,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 174,
+                                    lineNumber: 203,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2374,7 +4285,7 @@ function LandingPagesPage() {
                                             children: "45.2K"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 208,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2382,19 +4293,19 @@ function LandingPagesPage() {
                                             children: "+12.5% from last month"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 180,
+                                            lineNumber: 209,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 207,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/page.tsx",
-                            lineNumber: 173,
+                            lineNumber: 202,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -2407,20 +4318,20 @@ function LandingPagesPage() {
                                             children: "Conversions"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 214,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chart$2d$column$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BarChart3$3e$__["BarChart3"], {
                                             className: "h-4 w-4 text-muted-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 186,
+                                            lineNumber: 215,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 213,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2430,7 +4341,7 @@ function LandingPagesPage() {
                                             children: "1,234"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 189,
+                                            lineNumber: 218,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2438,19 +4349,19 @@ function LandingPagesPage() {
                                             children: "Conversion rate: 2.7%"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 219,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 188,
+                                    lineNumber: 217,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/page.tsx",
-                            lineNumber: 183,
+                            lineNumber: 212,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -2463,20 +4374,20 @@ function LandingPagesPage() {
                                             children: "Avg. Time"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 224,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chart$2d$column$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BarChart3$3e$__["BarChart3"], {
                                             className: "h-4 w-4 text-muted-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 225,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 194,
+                                    lineNumber: 223,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2486,7 +4397,7 @@ function LandingPagesPage() {
                                             children: "2:34"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 199,
+                                            lineNumber: 228,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2494,25 +4405,25 @@ function LandingPagesPage() {
                                             children: "Minutes per visit"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 229,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 198,
+                                    lineNumber: 227,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/page.tsx",
-                            lineNumber: 193,
+                            lineNumber: 222,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 162,
+                    lineNumber: 191,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2524,7 +4435,7 @@ function LandingPagesPage() {
                                 className: "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
                             }, void 0, false, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 208,
+                                lineNumber: 237,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2532,18 +4443,18 @@ function LandingPagesPage() {
                                 className: "pl-9"
                             }, void 0, false, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 209,
+                                lineNumber: 238,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/landing-pages/page.tsx",
-                        lineNumber: 207,
+                        lineNumber: 236,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 206,
+                    lineNumber: 235,
                     columnNumber: 9
                 }, this),
                 showTemplateModal && selectedPage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2561,7 +4472,7 @@ function LandingPagesPage() {
                                                 className: "h-8 w-8 text-purple-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 250,
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2571,7 +4482,7 @@ function LandingPagesPage() {
                                                         children: "Choose Template Design"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 223,
+                                                        lineNumber: 252,
                                                         columnNumber: 13
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2579,19 +4490,19 @@ function LandingPagesPage() {
                                                         children: selectedPage.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 224,
+                                                        lineNumber: 253,
                                                         columnNumber: 13
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 251,
                                                 columnNumber: 11
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 220,
+                                        lineNumber: 249,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2602,18 +4513,18 @@ function LandingPagesPage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 228,
+                                            lineNumber: 257,
                                             columnNumber: 11
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 256,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 219,
+                                lineNumber: 248,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2624,7 +4535,7 @@ function LandingPagesPage() {
                                         children: "Select a template design for your landing page:"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 234,
+                                        lineNumber: 263,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2641,7 +4552,7 @@ function LandingPagesPage() {
                                                                 children: getTemplateIcon(key)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 250,
+                                                                lineNumber: 279,
                                                                 columnNumber: 17
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2649,13 +4560,13 @@ function LandingPagesPage() {
                                                                 children: key
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 251,
+                                                                lineNumber: 280,
                                                                 columnNumber: 17
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 249,
+                                                        lineNumber: 278,
                                                         columnNumber: 15
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2663,31 +4574,31 @@ function LandingPagesPage() {
                                                         children: key[0].toUpperCase() + key.slice(1)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 253,
+                                                        lineNumber: 282,
                                                         columnNumber: 15
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "mt-3 aspect-video bg-slate-50 rounded flex items-center justify-center text-xs font-medium text-slate-600"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 255,
+                                                        lineNumber: 284,
                                                         columnNumber: 15
                                                     }, this)
                                                 ]
                                             }, key, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 240,
+                                                lineNumber: 269,
                                                 columnNumber: 13
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 238,
+                                        lineNumber: 267,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 233,
+                                lineNumber: 262,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2700,7 +4611,7 @@ function LandingPagesPage() {
                                         children: "Cancel"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 294,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2712,24 +4623,24 @@ function LandingPagesPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 268,
+                                        lineNumber: 297,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 264,
+                                lineNumber: 293,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/landing-pages/page.tsx",
-                        lineNumber: 216,
+                        lineNumber: 245,
                         columnNumber: 5
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 215,
+                    lineNumber: 244,
                     columnNumber: 3
                 }, this),
                 showPreviewModal && selectedPage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2751,7 +4662,7 @@ function LandingPagesPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 284,
+                                                lineNumber: 313,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2763,13 +4674,13 @@ function LandingPagesPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 285,
+                                                lineNumber: 314,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 283,
+                                        lineNumber: 312,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2780,18 +4691,18 @@ function LandingPagesPage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 290,
+                                            lineNumber: 319,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 289,
+                                        lineNumber: 318,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 282,
+                                lineNumber: 311,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2803,7 +4714,7 @@ function LandingPagesPage() {
                                         children: "📱 Mobile"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 296,
+                                        lineNumber: 325,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2812,7 +4723,7 @@ function LandingPagesPage() {
                                         children: "📱 Tablet"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 303,
+                                        lineNumber: 332,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2821,13 +4732,13 @@ function LandingPagesPage() {
                                         children: "🖥️ Desktop"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 310,
+                                        lineNumber: 339,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 295,
+                                lineNumber: 324,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2841,23 +4752,23 @@ function LandingPagesPage() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 349,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 319,
+                                lineNumber: 348,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/landing-pages/page.tsx",
-                        lineNumber: 281,
+                        lineNumber: 310,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 280,
+                    lineNumber: 309,
                     columnNumber: 11
                 }, this),
                 showLinkModal && selectedPage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2875,7 +4786,7 @@ function LandingPagesPage() {
                                                 className: "h-8 w-8 text-green-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 344,
+                                                lineNumber: 373,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2885,7 +4796,7 @@ function LandingPagesPage() {
                                                         children: "Landing Page Link Generated"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 346,
+                                                        lineNumber: 375,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2896,7 +4807,7 @@ function LandingPagesPage() {
                                                                 children: selectedPage.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 348,
+                                                                lineNumber: 377,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2908,25 +4819,25 @@ function LandingPagesPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 349,
+                                                                lineNumber: 378,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 347,
+                                                        lineNumber: 376,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 345,
+                                                lineNumber: 374,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 343,
+                                        lineNumber: 372,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2937,18 +4848,18 @@ function LandingPagesPage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 356,
+                                            lineNumber: 385,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 355,
+                                        lineNumber: 384,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 342,
+                                lineNumber: 371,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2959,7 +4870,7 @@ function LandingPagesPage() {
                                         children: "Your Link"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 361,
+                                        lineNumber: 390,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2971,7 +4882,7 @@ function LandingPagesPage() {
                                                 className: "flex-1 font-mono text-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 363,
+                                                lineNumber: 392,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2980,13 +4891,13 @@ function LandingPagesPage() {
                                                 children: copied ? "Copied!" : "Copy"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 364,
+                                                lineNumber: 393,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 362,
+                                        lineNumber: 391,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2997,31 +4908,31 @@ function LandingPagesPage() {
                                                 className: "h-4 w-4 mr-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 370,
+                                                lineNumber: 399,
                                                 columnNumber: 19
                                             }, this),
                                             " Open in New Tab"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 369,
+                                        lineNumber: 398,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 360,
+                                lineNumber: 389,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/landing-pages/page.tsx",
-                        lineNumber: 341,
+                        lineNumber: 370,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 340,
+                    lineNumber: 369,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3044,12 +4955,12 @@ function LandingPagesPage() {
                                                                 children: page.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 386,
+                                                                lineNumber: 415,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                            lineNumber: 385,
+                                                            lineNumber: 414,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -3061,7 +4972,7 @@ function LandingPagesPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                            lineNumber: 388,
+                                                            lineNumber: 417,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -3072,18 +4983,18 @@ function LandingPagesPage() {
                                                                 src: page.url
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 392,
+                                                                lineNumber: 421,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                            lineNumber: 391,
+                                                            lineNumber: 420,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                    lineNumber: 384,
+                                                    lineNumber: 413,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DropdownMenu"], {
@@ -3097,17 +5008,17 @@ function LandingPagesPage() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                                    lineNumber: 404,
+                                                                    lineNumber: 433,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 403,
+                                                                lineNumber: 432,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                            lineNumber: 402,
+                                                            lineNumber: 431,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DropdownMenuContent"], {
@@ -3120,14 +5031,14 @@ function LandingPagesPage() {
                                                                             className: "h-4 w-4 mr-2"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                                            lineNumber: 409,
+                                                                            lineNumber: 438,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         " Generate Link"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                                    lineNumber: 408,
+                                                                    lineNumber: 437,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -3140,14 +5051,14 @@ function LandingPagesPage() {
                                                                             className: "h-4 w-4 mr-2"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                                            lineNumber: 418,
+                                                                            lineNumber: 447,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         " Preview"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                                    lineNumber: 412,
+                                                                    lineNumber: 441,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -3156,14 +5067,14 @@ function LandingPagesPage() {
                                                                             className: "h-4 w-4 mr-2"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                                            lineNumber: 422,
+                                                                            lineNumber: 451,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         " Edit"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                                    lineNumber: 421,
+                                                                    lineNumber: 450,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -3173,37 +5084,37 @@ function LandingPagesPage() {
                                                                             className: "h-4 w-4 mr-2"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                                            lineNumber: 426,
+                                                                            lineNumber: 455,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         "Delete"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                                    lineNumber: 425,
+                                                                    lineNumber: 454,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                                            lineNumber: 407,
+                                                            lineNumber: 436,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/landing-pages/page.tsx",
-                                                    lineNumber: 401,
+                                                    lineNumber: 430,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/landing-pages/page.tsx",
-                                            lineNumber: 383,
+                                            lineNumber: 412,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 382,
+                                        lineNumber: 411,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3219,7 +5130,7 @@ function LandingPagesPage() {
                                                                 children: "Views:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 437,
+                                                                lineNumber: 466,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3227,13 +5138,13 @@ function LandingPagesPage() {
                                                                 children: page.views.toLocaleString()
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 438,
+                                                                lineNumber: 467,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 436,
+                                                        lineNumber: 465,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3244,7 +5155,7 @@ function LandingPagesPage() {
                                                                 children: "Conversions:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 441,
+                                                                lineNumber: 470,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3252,13 +5163,13 @@ function LandingPagesPage() {
                                                                 children: page.conversions
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 442,
+                                                                lineNumber: 471,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 440,
+                                                        lineNumber: 469,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3269,7 +5180,7 @@ function LandingPagesPage() {
                                                                 children: "Status:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 445,
+                                                                lineNumber: 474,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -3278,19 +5189,19 @@ function LandingPagesPage() {
                                                                 children: page.status
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                                lineNumber: 446,
+                                                                lineNumber: 475,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 444,
+                                                        lineNumber: 473,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 435,
+                                                lineNumber: 464,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3302,47 +5213,47 @@ function LandingPagesPage() {
                                                         className: "h-4 w-4 mr-2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                                        lineNumber: 457,
+                                                        lineNumber: 486,
                                                         columnNumber: 21
                                                     }, this),
                                                     " Generate Preview Link"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                                lineNumber: 452,
+                                                lineNumber: 481,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/landing-pages/page.tsx",
-                                        lineNumber: 434,
+                                        lineNumber: 463,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, page.id, true, {
                                 fileName: "[project]/app/landing-pages/page.tsx",
-                                lineNumber: 381,
+                                lineNumber: 410,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/landing-pages/page.tsx",
-                        lineNumber: 379,
+                        lineNumber: 408,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/page.tsx",
-                    lineNumber: 378,
+                    lineNumber: 407,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/landing-pages/page.tsx",
-            lineNumber: 145,
+            lineNumber: 174,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/landing-pages/page.tsx",
-        lineNumber: 144,
+        lineNumber: 173,
         columnNumber: 5
     }, this);
 }

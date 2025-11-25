@@ -477,8 +477,9 @@ const OUR_COLLECTION_CARD_TWO = `
 
   const NATURAL_INGREDIENTS_CARD = `
 <div class="section card">
-  <h2>100% Natural Ingredients</h2>
-  <p>We believe in clean beauty. No parabens, sulfates, or synthetic fragrances.</p>
+<h2>Perfect for Everyday Wear</h2>
+<p>Stylish, versatile, and durable—ideal for work, travel, and casual outings.</p>
+
   <img src="/F4.jpg"
     style="width:100%; border-radius:12px; margin-top:15px;">
 </div>`;
