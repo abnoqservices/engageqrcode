@@ -72,15 +72,44 @@ export default function LandingPagesPage() {
   const landingPages: LandingPageItem[] = [
     {
       id: 1,
-      name: "Pro Landing Page",
+      name: "MacBook Pro Landing Page",
       url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-fashion.png",
       views: 2543,
       conversions: 187,
       status: "published",
       lastModified: "2024-01-15",
+      template: "modern"
+    },
+    {
+      id: 2,
+      name: "Premium Headphones Store",
+      url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-wine.png",
+      views: 1823,
+      conversions: 142,
+      status: "published",
+      lastModified: "2024-01-18",
       template: "ecommerce"
     },
-   
+     {
+      id: 3,
+      name: "Pro Tempalte Landing Page",
+      url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-watch.png",
+      views: 1823,
+      conversions: 142,
+      status: "published",
+      lastModified: "2024-01-18",
+      template: "protemplete"
+    },
+    {
+      id: 4,
+      name: "Pro Template 2 Landing Page",
+      url: "https://cdn0070.qrcodechimp.com/images/digitalCard/dbcv2/digital-business-cards-template-event.webp",
+      views: 1823,
+      conversions: 142,
+      status: "published",
+      lastModified: "2024-01-18",
+      template: "protemplete2"
+    }
   ];
 
   const generateDynamicURL = (page: LandingPageItem, template?: string) => {
