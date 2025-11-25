@@ -49,363 +49,6 @@ __turbopack_context__.s([
     ()=>__TURBOPACK__default__export__
 ]);
 const templates = {
-    modern: `<!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Cool Watches | Digital Business Card</title>
-      <meta name="description" content="Discover our premium watch collection">
-      
-      <!-- Swiper CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-      <!-- Swiper CSS -->
-
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-      <style>
-          :root {
-              --primary: #FF5800;
-              --text: #333;
-              --light: #f9f9f9;
-              --dark: #000;
-              --radius: 16px;
-          }
-          * { margin:0; padding:0; box-sizing:border-box; }
-          body {
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-              background: #fff;
-              color: var(--text);
-              line-height: 1.5;
-              overflow-x: hidden;
-          }
-          .container {
-              max-width: 480px;
-              margin: 0 auto;
-              padding: 0 15px;
-          }
-          .header {
-              text-align: center;
-              padding: 30px 0 20px;
-          }
-          .header img.logo {
-              width: 90px;
-              height: 90px;
-              border-radius: 50%;
-              object-fit: cover;
-              border: 4px solid #fff;
-              box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-          }
-          .header h1 {
-              font-size: 26px;
-              margin: 15px 0 8px;
-              color: var(--primary);
-          }
-          .header p {
-              font-size: 16px;
-              color: #666;
-          }
-  
-          /* Swiper Gallery */
-          .swiper {
-              width: 100%;
-              padding: 20px 0;
-          }
-          .gallery-header .swiper-slide {
-              border-radius: var(--radius);
-              overflow: hidden;
-              box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-          }
-          .gallery-header img, .slide {
-              width: 100%;
-              height: 300px;
-              object-fit: cover;
-          }
-          .section {
-              background: #fff;
-              margin: 20px 0;
-              border-radius: var(--radius);
-              padding: 20px;
-              box-shadow: 0 7px 29px rgba(100,100,100,0.1);
-          }
-          .section h2 {
-              font-size: 22px;
-              text-align: center;
-              margin-bottom: 10px;
-              color: var(--primary);
-          }
-          .section p {
-              text-align: center;
-              color: #666;
-              margin-bottom: 15px;
-          }
-  
-          /* Products */
-          .product {
-              background: #fff;
-              border-radius: var(--radius);
-              overflow: hidden;
-              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-              margin-bottom: 15px;
-          }
-          .product img {
-              width: 100%;
-              height: 220px;
-              object-fit: cover;
-          }
-          .product-info {
-              padding: 15px;
-          }
-          .product-title {
-              font-weight: bold;
-              font-size: 18px;
-          }
-          .price {
-              color: var(--primary);
-              font-size: 20px;
-              font-weight: bold;
-              margin: 8px 0;
-          }
-          .btn {
-              display: block;
-              width: 100%;
-              padding: 14px;
-              background: var(--primary);
-              color: white;
-              border: none;
-              border-radius: 50px;
-              font-size: 16px;
-              font-weight: bold;
-              text-align: center;
-              text-decoration: none;
-              margin-top: 10px;
-          }
-  
-          /* Social Links */
-          .social-list {
-              list-style: none;
-          }
-          .social-list li {
-              margin: 12px 0;
-          }
-          .social-list a {
-              display: flex;
-              align-items: center;
-              padding: 15px;
-              background: #f8f8f8;
-              border-radius: var(--radius);
-              text-decoration: none;
-              color: var(--text);
-          }
-          .social-icon {
-              width: 50px;
-              height: 50px;
-              background: var(--primary);
-              border-radius: 12px;
-              margin-right: 15px;
-              background-size: 30px;
-              background-position: center;
-              background-repeat: no-repeat;
-          }
-          .fb { background-image: url('https://cdn.qrcodechimp.com/images/digitalCard/fb_icon@72x.png'); background-color:#1877f2; }
-          .ig { background-image: url('https://cdn.qrcodechimp.com/images/digitalCard/insta_icon@72x.png'); background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-  
-          /* Contact */
-          .contact-info {
-              text-align: center;
-              padding: 20px;
-              background: #f8f8f8;
-              border-radius: var(--radius);
-          }
-          .contact-info a {
-              color: var(--primary);
-              text-decoration: none;
-              font-weight: bold;
-          }
-  
-          /* Footer Buttons */
-          .footer-btns {
-              position: fixed;
-              bottom: 20px;
-              left: 50%;
-              transform: translateX(-50%);
-              display: flex;
-              gap: 15px;
-              z-index: 100;
-          }
-          .footer-btns button {
-              width: 60px;
-              height: 60px;
-              border-radius: 50%;
-              background: var(--primary);
-              color: white;
-              border: none;
-              font-size: 24px;
-              box-shadow: 0 5px 20px rgba(255,88,0,0.4);
-          }
-          .add-contact {
-              position: fixed;
-              bottom: 20px;
-              right: 20px;
-              background: #fff;
-              color: var(--primary);
-              border: 2px solid var(--primary);
-              padding: 12px 20px;
-              border-radius: 50px;
-              font-weight: bold;
-              box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-              z-index: 100;
-          }
-      </style>
-  </head>
-  <body>
-  
-  <div class="container">
-  
-      <!-- Header -->
-      <div class="header">
-          <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/furniture_logo.png" alt="Logo" class="logo">
-          <h1>Cool Watches</h1>
-          <p>Premium Timepieces Since 1990</p>
-      </div>
-  
-      <!-- Main Gallery (Coverflow) -->
-      <div class="gallery-header swiper">
-          <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2.png" alt="Watch 1"></div>
-              <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_1.png" alt="Watch 2"></div>
-              <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3.png" alt="Watch 3"></div>
-          </div>
-          <div class="swiper-pagination"></div>
-      </div>
-  
-      <!-- About -->
-      <div class="section">
-          <h2>About Us</h2>
-          <p>We craft timeless watches with precision engineering and elegant design. Every piece tells a story.</p>
-      </div>
-  
-      <!-- Image Gallery -->
-      <div class="section">
-          <div class="swiper">
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt=""></div>
-                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt=""></div>
-                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt=""></div>
-              </div>
-          </div>
-      </div>
-  
-      <!-- Video -->
-      <div class="section">
-          <h2>Watch Our Story</h2>
-          <iframe width="100%" height="230" src="https://www.youtube.com/embed/bOuLmR8K5Tk" frameborder="0" allowfullscreen></iframe>
-      </div>
-  
-      <!-- Products -->
-      <div class="section">
-          <h2>Featured Collection</h2>
-          <div class="swiper products-swiper">
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                      <div class="product">
-                          <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_1.png" alt="Watch">
-                          <div class="product-info">
-                              <div class="product-title">Chronos Elite</div>
-                              <div>★★★★☆</div>
-                              <div class="price">$899</div>
-                              <a href="https://example.com" class="btn">Buy Now</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="product">
-                          <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_2.png" alt="Watch">
-                          <div class="product-info">
-                              <div class="product-title">Lunar Phase</div>
-                              <div>★★★★★</div>
-                              <div class="price">$1,299</div>
-                              <a href="https://example.com" class="btn">Buy Now</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="product">
-                          <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_3.png" alt="Watch">
-                          <div class="product-info">
-                              <div class="product-title">Titanium Diver</div>
-                              <div>★★★★☆</div>
-                              <div class="price">$699</div>
-                              <a href="https://example.com" class="btn">Buy Now</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  
-      <!-- CTA -->
-      <div class="section">
-          <h2>Join the Club</h2>
-          <p>Get exclusive offers and early access to new releases</p>
-          <a href="#" class="btn">Register Now</a>
-      </div>
-  
-      <!-- Social Links -->
-      <div class="section">
-          <h2>Follow Us</h2>
-          <ul class="social-list">
-              <li><a href="https://facebook.com"><div class="social-icon fb"></div> <strong>Facebook</strong> - Follow us</a></li>
-              <li><a href="https://instagram.com"><div class="social-icon ig"></div> <strong>Instagram</strong> - See our latest</a></li>
-          </ul>
-      </div>
-  
-      <!-- Contact -->
-      <div class="section contact-info">
-          <h2>Contact Us</h2>
-          <p><strong>Call:</strong> <a href="tel:+1234567890">+1 234 567 890</a></p>
-          <p><strong>Email:</strong> <a href="mailto:hello@coolwatches.com">hello@coolwatches.com</a></p>
-          <p><strong>Address:</strong> 817 N Ave, California, Chicago, 60622, US</p>
-      </div>
-  
-  </div>
-  
-  <!-- Floating Action Buttons -->
-  <div class="footer-btns">
-      <button onclick="alert('QR Code')">QR</button>
-      <button onclick="navigator.share ? navigator.share({title: 'Cool Watches', url: location.href}) : alert('Share not supported')">Share</button>
-  </div>
-  <a href="#" class="add-contact">Add to Contacts</a>
-  
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-      new Swiper('.gallery-header', {
-          effect: 'coverflow',
-          grabCursor: true,
-          centeredSlides: true,
-          slidesPerView: 'auto',
-          loop: true,
-          autoplay: { delay: 3000 },
-          coverflowEffect: {
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-          },
-          pagination: { el: '.swiper-pagination' },
-      });
-  
-      new Swiper('.products-swiper', {
-          slidesPerView: 'auto',
-          spaceBetween: 15,
-          pagination: { el: '.swiper-pagination' },
-      });
-  </script>
-  
-  </body>
-  </html>`,
     ecommerce: `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -414,7 +57,6 @@ const templates = {
   
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
@@ -427,7 +69,8 @@ const templates = {
         --text: #292929;
         --bg: #ffffff;
         --radius: 14px;
-        --shadow: 0 6px 20px rgba(0,0,0,.08);
+        --shadow: 0 6px 20px rgba(0, 0, 0, .08);
+     
       }
   
       * { margin:0; padding:0; box-sizing:border-box; }
@@ -437,13 +80,14 @@ const templates = {
         color:var(--text);
         line-height:1.5;
       }
-  
+    
       .container {
         max-width: 520px;
         margin: 0 auto;
-        background: white;
+        background: #061244;
         min-height: 100vh;
         overflow-x: hidden;
+        padding:2vh;
       }
   
       /* HEADER */
@@ -822,15 +466,126 @@ const templates = {
     font-size: 13px;
   }
 }
+.premium-header-section {
+  text-align: center;
+  padding: 40px 20px 30px;
+  
+}
 
+.logo-wrapper {
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(6, 18, 68, 0.15);
+  padding: 12px;
+  background: #188ca2;
+  border: 1px solid #f0f0f0;
+  transition: all 0.4s ease;
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+/* Subtle bottom divider */
+.header-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0e0e0 30%, #e0e0e0 70%, transparent);
+  margin: 35px auto 0;
+  width: 60%;
+  border-radius: 1px;
+}
+
+/* Extra polish on small phones */
+@media (max-width: 480px) {
+  .premium-header-section { padding: 35px 15px 25px; }
+  .brand-logo { width: 100px; height: 100px; }
+  .brand-title { font-size: 26px; }
+  .brand-tagline { font-size: 15.5px; }
+}
+.luxury-floating-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 18px;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #333;
+  font-weight: 500;
+  gap: 6px;
+  min-width: 50px;
+}
+
+.footer-item i {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.main-cta {
+  transform: translateY(-18px);
+}
+
+.main-cta a {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
+  100% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+}
     </style>
   </head>
   
   <body>
   
   <div class="container">
-  
-    {{top_slider_card}}
+    {{header_logo_card}}
+    {{top_slider_card_tow}}
   
     {{about_brand}}
   
@@ -866,623 +621,6 @@ const templates = {
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   
   <script>
-    new Swiper(".header-swiper", {
-      loop:true,
-      autoplay:{delay:3500},
-      pagination:{el:".swiper-pagination"},
-    });
-  
-    new Swiper(".gallery-swiper", {
-      slidesPerView:1.15,
-      spaceBetween:12,
-      loop:true,
-      centeredSlides:true
-    });
-  
-    new Swiper(".products-swiper", {
-      slidesPerView:1.15,
-      spaceBetween:12,
-    });
-  
-    function rate(n){
-      document.querySelectorAll('.stars i').forEach((star,i)=>{
-        star.className = i < n ? "fas fa-star active" : "far fa-star";
-      });
-    }
-  </script>
-  
-  </body>
-  </html>`,
-    standerd: `<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Luxury Cosmetics | Premium Beauty Products</title>
-    <meta name="description" content="Discover luxury skincare and cosmetics made with natural ingredients."/>
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  
-    <style>
-      :root {
-        --primary: #061244;
-        --primary-light: #B7E6FF;
-        --text: #292929;
-        --bg: #ffffff;
-        --radius: 16px;
-        --shadow: 0 7px 29px rgba(100,100,111,.2);
-      }
-      * { margin:0; padding:0; box-sizing:border-box; }
-      body { font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:#f9f9fb; color:var(--text); line-height:1.6; }
-      .container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; overflow-x: hidden; }
-  
-      /* Header */
-      .header { position:relative; border-radius: 0 0 20px 20px; overflow:hidden; }
-      .header-swiper .swiper-slide { height: 340px; background-size: cover; background-position: center; }
-      .header-overlay { position:absolute; bottom:0; left:0; right:0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding:40px 20px 20px; color:white; text-align:center; }
-      .header-overlay h1 { font-size:28px; margin-bottom:8px; }
-      .header-overlay p { font-size:16px; opacity:0.9; }
-  
-      /* Sections */
-      .section { padding:30px 20px; text-align:center; }
-      .card { background:var(--bg); border-radius:var(--radius); box-shadow:var(--shadow); padding:24px; margin-bottom:20px; }
-      h2 { font-size:22px; color:var(--primary); margin-bottom:12px; font-weight:700; }
-      p { font-size:15px; color:#555; }
-  
-      /* Gallery */
-      .gallery-swiper .swiper-slide { border-radius:12px; overflow:hidden; }
-      .gallery-swiper img { width:100%; height:220px; object-fit:cover; }
-  
-      /* Video */
-      .video-wrapper { position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
-      .video-wrapper iframe { position:absolute; top:0; left:0; width:100%; height:100%; }
-  
-      /* Products */
-      .product { background:white; border-radius:12px; overflow:hidden; box-shadow:var(--shadow); margin:10px; }
-      .product img { width:100%; height:200px; object-fit:cover; }
-      .product-info { padding:15px; text-align:left; }
-      .product-title { font-weight:600; font-size:16px; margin-bottom:8px; }
-      .rating { color:#ffc107; font-size:14px; margin-bottom:8px; }
-      .price { font-size:18px; font-weight:bold; color:var(--primary); }
-      .buy-btn { width:100%; padding:12px; background:var(--primary); color:white; border:none; border-radius:8px; font-size:16px; margin-top:10px; cursor:pointer; }
-  
-      /* CTA */
-      .cta-btn { display:block; margin:20px auto; padding:16px 40px; background:var(--primary); color:white; text-decoration:none; border-radius:50px; font-size:18px; max-width:90%; box-shadow:0 4px 15px rgba(6,18,68,.3); }
-  
-      /* Social & Contact */
-      .social-list { list-style:none; }
-      .social-item { background:#f8f9fa; border-radius:12px; margin:12px 0; overflow:hidden; }
-      .social-link { display:flex; align-items:center; padding:16px; text-decoration:none; color:var(--text); }
-      .social-icon { width:50px; height:50px; background-size:cover; margin-right:16px; border-radius:8px; }
-      .social-text h4 { font-size:16px; }
-      .social-text p { font-size:13px; color:#777; }
-  
-      .contact { background:var(--primary); color:white; border-radius:var(--radius); padding:30px 20px; margin:20px; text-align:center; }
-      .contact a { color:#B7E6FF; text-decoration:underline; }
-      .contact { background:#111; color:#fff; padding:30px 20px; border-radius:12px; margin:20px; }
-      .contact h3 { display:flex; align-items:center; font-size:20px; margin-bottom:20px; }
-      .contact h3 i { margin-right:10px; font-size:24px; }
-      .contact a { color:#e91e63; text-decoration:none; }
-      /* Review */
-      .stars { display:flex; justify-content:center; gap:20px; margin:20px 0; }
-      .stars div { text-align:center; cursor:pointer; }
-      .stars i { font-size:44px; color:#ddd; transition:all .3s; }
-      .stars i.active { color:#ffc107; }
-      .stars span { display:block; font-size:12px; margin-top:6px; color:#777; }
-  
-      /* Footer Buttons */
-      .footer-actions { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:white; padding:12px; border-radius:50px; box-shadow:0 8px 25px rgba(0,0,0,.15); display:flex; gap:20px; z-index:100; }
-      .footer-actions button { background:transparent; border:none; font-size:24px; padding:12px; color:var(--primary); }
-  
-      @media (min-width:768px) {
-        .container { max-width:420px; border-radius:20px; margin:20px auto; box-shadow:0 10px 40px rgba(0,0,0,.1); }
-      }
-    </style>
-  </head>
-  <body>
-  
-  <div class="container">
-  
-    <!-- Header Carousel -->
-    <div class="header">
-      <div class="swiper header-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" style="background-image:url('https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2.png')"></div>
-          <div class="swiper-slide" style="background-image:url('https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_1.png')"></div>
-          <div class="swiper-slide" style="background-image:url('https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3.png')"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <div class="header-overlay">
-        <h1>Luxury Cosmetics</h1>
-        <p>Timeless Beauty • Natural Ingredients • Cruelty-Free</p>
-      </div>
-    </div>
-  
-    <!-- About -->
-    <div class="section card">
-      <h2>About Our Brand</h2>
-      <p>We create premium skincare and makeup using only the finest natural and ethically sourced ingredients. Beauty that cares — for you and the planet.</p>
-    </div>
-  
-    <!-- Gallery -->
-    <div class="section">
-      <h2>Our Collection</h2>
-      <div class="swiper gallery-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt="Product"></div>
-          <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt="Product"></div>
-          <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt="Product"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  
-    <!-- Video -->
-    <div class="section card">
-      <h2>Watch Our Story</h2>
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/bOuLmR8K5Tk" allowfullscreen></iframe>
-      </div>
-    </div>
-  
-    <!-- Products -->
-    <div class="section">
-      <h2>Featured Products</h2>
-      <div class="swiper products-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="product">
-              <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_1.png" alt="Serum">
-              <div class="product-info">
-                <div class="product-title">Radiant Glow Serum</div>
-                <div class="rating">★★★★☆</div>
-                <div class="price">$89.00</div>
-                <button class="buy-btn">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product">
-              <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_2.png" alt="Cream">
-              <div class="product-info">
-                <div class="product-title">Hydrating Night Cream</div>
-                <div class="rating">★★★★★</div>
-                <div class="price">$74.50</div>
-                <button class="buy-btn">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="product">
-              <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_3.png" alt="Mask">
-              <div class="product-info">
-                <div class="product-title">Detox Clay Mask</div>
-                <div class="rating">★★★★☆</div>
-                <div class="price">$42.00</div>
-                <button class="buy-btn">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  
-    <!-- CTA -->
-    <div class="section card">
-      <h2>Join the Beauty Club</h2>
-      <p>Get 15% off your first order + exclusive access to new launches</p>
-      <a href="#" class="cta-btn">Register Now</a>
-    </div>
-  
-    <!-- Image + Text -->
-    <div class="section card">
-      <h2>100% Natural Ingredients</h2>
-      <p>We believe in clean beauty. No parabens, sulfates, or synthetic fragrances.</p>
-      <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/cosmatic_gallery_2.png" alt="Natural" style="width:100%; border-radius:12px; margin-top:15px;">
-    </div>
-  
-    <!-- Social -->
-    <div class="section card">
-      <h2>Follow Us</h2>
-      <ul class="social-list">
-        <li class="social-item">
-          <a href="https://facebook.com" class="social-link">
-            <div class="social-icon" style="background-image:url('//cdn0070.qrcodechimp.com/images/digitalCard/fb_icon@72x.png')"></div>
-            <div class="social-text">
-              <h4>Facebook</h4>
-              <p>Follow us for tips & offers</p>
-            </div>
-            <i class="fas fa-chevron-right"></i>
-          </a>
-        </li>
-        <li class="social-item">
-          <a href="https://instagram.com" class="social-link">
-            <div class="social-icon" style="background-image:url('//cdn0070.qrcodechimp.com/images/digitalCard/insta_icon@72x.png')"></div>
-            <div class="social-text">
-              <h4>Instagram</h4>
-              <p>See our latest looks</p>
-            </div>
-            <i class="fas fa-chevron-right"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  
-    <!-- Contact -->
-    <div class="contact">
-      <h2>Contact Us</h2>
-      <div class="section qrc_contact qr_cc_card" data-index="8">
-        <div class="qrc_contact_header">
-           <div class="qrc_contact_hdr_img" style="background-image: url('//cdn0070.qrcodechimp.com/images/digitalCard/contactus.png?v=1763098999');"></div>
-           <div class="qrc_contact_hdr_text ">Contact Us</div>
-       </div>
-       <div class="qrc_contact_info">
-           <div class="qrc_contact_info_title ">Call Us</div>
-           <div class="qrc_contact_number"><a href="tel:123 456 7890">123 456 7890</a></div>
-       </div><div class="qrc_email_info">
-       <div class="qrc_email_info_title ">Email</div>
-       <div class="qrc_email_id"><a href="mailto:contactme@domain.com">contactme@domain.com</a></div>
-   </div><div class="qrc_address_info">
-           <div class="qrc_address_info_title ">Address</div>
-           <div class="qrc_address_text">817 N Ave<br>California, Chicago, 60622<br>US</div>
-           <a class="qrc_direction_btn link_click" type="direction" href="//#" target="_blank"><span class="icon-direction_1"></span>Direction</a>
-       </div>
-       
-   </div>
-    </div>
-  
-    <!-- Review -->
-    <div class="section card">
-      <h2>Rate Your Experience</h2>
-      <p>How satisfied are you with our brand?</p>
-      <div class="stars">
-        <div onclick="rate(1)"><i class="far fa-star"></i><span>Lowest</span></div>
-        <div onclick="rate(2)"><i class="far fa-star"></i><span></span></div>
-        <div onclick="rate(3)"><i class="far fa-star"></i><span></span></div>
-        <div onclick="rate(4)"><i class="far fa-star"></i><span></span></div>
-        <div onclick="rate(5)"><i class="far fa-star"></i><span>Highest</span></div>
-      </div>
-    </div>
-  
-  </div>
-  
-  <!-- Floating Action Buttons -->
-  <div class="footer-actions">
-    <button onclick="alert('QR Code Shown')"><i class="fas fa-qrcode"></i></button>
-    <button onclick="if(navigator.share){navigator.share({title:'Luxury Cosmetics',url:location.href})}"><i class="fas fa-share-alt"></i></button>
-  </div>
-  
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    // Initialize Swipers
-    new Swiper(".header-swiper", { loop:true, autoplay:{delay:4000}, pagination:{el:".swiper-pagination"} });
-    new Swiper(".gallery-swiper", { slidesPerView:1.3, centeredSlides:true, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination"} });
-    new Swiper(".products-swiper", { slidesPerView:1.2, spaceBetween:15, pagination:{el:".swiper-pagination"} });
-  
-    // Star Rating
-    function rate(n) {
-      document.querySelectorAll('.stars i').forEach((star, i) => {
-        star.className = i < n ? 'fas fa-star active' : 'far fa-star';
-      });
-    }
-  </script>
-  
-  </body>
-  </html>`,
-    protemplete: `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Wine Collection</title>
-    <meta name="description" content="Discover our exclusive wine collection">
-
-    <!-- Swiper.js CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <style>
-        :root {
-            --primary: #C1284B;
-            --radius: 16px;
-            --shadow: 0 7px 29px rgba(100,100,100,0.2);
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fff;
-            color: #333;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-        .container { max-width: 480px; margin: 0 auto; padding: 0 15px; }
-
-        /* Header */
-        .header {
-            position: relative;
-            text-align: center;
-            padding: 40px 0 20px;
-        }
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .header h1 {
-            font-size: 28px;
-            margin: 20px 0 10px;
-            color: var(--primary);
-        }
-        .header p { font-size: 17px; color: #666; }
-
-        /* Hero Slider (Fade Effect) */
-        .hero-slider .swiper-slide img {
-            width: 100%;
-            height: 488px;
-            object-fit: cover;
-            border-radius: var(--radius);
-        }
-
-        /* Section Cards */
-        .section {
-            background: #fff;
-            margin: 20px 0;
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        .section h2 {
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        /* Gallery & Products */
-        .gallery-swiper .swiper-slide,
-        .products-swiper .swiper-slide {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .gallery-swiper img,
-        .product-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        /* Product Card */
-        .product {
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        .product-info {
-            padding: 15px;
-        }
-        .product-title { font-weight: bold; font-size: 18px; }
-        .price { color: var(--primary); font-size: 20px; font-weight: bold; margin: 8px 0; }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-top: 10px;
-        }
-
-        /* Video */
-        .video-wrapper iframe {
-            border-radius: var(--radius);
-            width: 100%;
-            height: 220px;
-        }
-
-        /* Image + Text */
-        .img-text img {
-            width: 100%;
-            border-radius: var(--radius);
-            margin-top: 15px;
-        }
-
-        /* Social Links */
-        .social-list {
-            list-style: none;
-        }
-        .social-list a {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            background: #f8f8f8;
-            border-radius: var(--radius);
-            margin: 10px 0;
-            text-decoration: none;
-            color: #333;
-        }
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
-            background-size: 32px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .fb { background: #1877f2 url('https://cdn.qrcodechimp.com/images/digitalCard/fb_icon@72x.png') center/32px no-repeat; border-radius: 12px; }
-        .ig { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-radius: 12px; background-image: url('https://cdn.qrcodechimp.com/images/digitalCard/insta_icon@72x.png'); background-size: 32px; }
-
-        /* Contact */
-        .contact { text-align: center; padding: 20px; background: #f8f8f8; border-radius: var(--radius); }
-        .contact a { color: var(--primary); text-decoration: none; font-weight: bold; }
-
-        /* Floating Buttons */
-        .fab {
-            position: fixed;
-            bottom: 20px;
-            z-index: 1000;
-        }
-        .fab-qr { left: 20px; }
-        .fab-share { left: 90px; }
-        .fab button {
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 24px;
-            box-shadow: 0 5px 20px rgba(193,40,75,0.4);
-        }
-        .add-contact {
-            right: 20px;
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: var(--shadow);
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-
-    <!-- Header -->
-    <div class="header">
-        <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/luxury_wine_logo.png" alt="Logo" class="logo">
-        <h1>Luxury Wines</h1>
-        <p>Exquisite Taste Since 1985</p>
-    </div>
-
-    <!-- Hero Slider (Fade) -->
-    <div class="hero-slider swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2.png" alt="Wine 1"></div>
-            <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_1.png" alt="Wine 2"></div>
-            <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3.png" alt="Wine 3"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <!-- About -->
-    <div class="section">
-        <h2>About Our Winery</h2>
-        <p>Handcrafted wines from the finest vineyards. Every bottle tells a story of passion and tradition.</p>
-    </div>
-
-    <!-- Gallery -->
-    <div class="section gallery-swiper swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt=""></div>
-            <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt=""></div>
-            <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt=""></div>
-        </div>
-    </div>
-
-    <!-- Video -->
-    <div class="section video-wrapper">
-        <h2>Our Story</h2>
-        <iframe src="https://www.youtube.com/embed/bOuLmR8K5Tk" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <!-- Products -->
-    <div class="section">
-        <h2>Featured Wines</h2>
-        <div class="products-swiper swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_1.png" class="product-img" alt="Wine">
-                        <div class="product-info">
-                            <div class="product-title">Reserve Cabernet 2018</div>
-                            <div>★★★★★</div>
-                            <div class="price">$149</div>
-                            <a href="https://example.com" class="btn">Buy Online</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_2.png" class="product-img" alt="Wine">
-                        <div class="product-info">
-                            <div class="product-title">Chardonnay Grand Cru</div>
-                            <div>★★★★☆</div>
-                            <div class="price">$99</div>
-                            <a href="https://example.com" class="btn">Buy Online</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_3.png" class="product-img" alt="Wine">
-                        <div class="product-info">
-                            <div class="product-title">Pinot Noir Limited</div>
-                            <div>★★★★★</div>
-                            <div class="price">$179</div>
-                            <a href="https://example.com" class="btn">Buy Online</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="section">
-        <h2>Join the Wine Club</h2>
-        <p>Exclusive access to rare vintages and member events</p>
-        <a href="#" class="btn">Register Now!</a>
-    </div>
-
-    <!-- Image + Text -->
-    <div class="section img-text">
-        <h2>Our Vineyard</h2>
-        <p>Nestled in the heart of Napa Valley</p>
-        <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/wine_1.png" alt="Vineyard">
-    </div>
-
-    <!-- Social -->
-    <div class="section">
-        <h2>Follow Us</h2>
-        <ul class="social-list">
-            <li><a href="https://facebook.com"><div class="social-icon fb"></div> <strong>Facebook</strong> – Follow our journey</a></li>
-            <li><a href="https://instagram.com"><div class="social-icon ig"></div> <strong>Instagram</strong> – Beautiful moments</a></li>
-        </ul>
-    </div>
-
-    <!-- Contact -->
-    <div class="contact section">
-        <h2>Contact Us</h2>
-        <p><strong>Call:</strong> <a href="tel:1234567890">123 456 7890</a></p>
-        <p><strong>Email:</strong> <a href="mailto:contactme@domain.com">contactme@domain.com</a></p>
-        <p><strong>Address:</strong><br>817 N Ave, California, Chicago, 60622, US</p>
-    </div>
-
-</div>
-
-<!-- Floating Action Buttons -->
-<div class="fab fab-qr"><button onclick="alert('Show QR Code')">QR</button></div>
-<div class="fab fab-share"><button onclick="navigator.share?.({title:'Luxury Wines',url:location.href})">Share</button></div>
-<div class="fab add-contact"><a href="#">Add to Contacts</a></div>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
     // Hero Fade Slider
     new Swiper('.hero-slider', {
         effect: 'fade',
@@ -1499,293 +637,37 @@ const templates = {
         loop: true,
         autoplay: { delay: 3500 }
     });
+        new Swiper('.gallery-header', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          loop: true,
+          autoplay: { delay: 3000 },
+          coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+          },
+          pagination: { el: '.swiper-pagination' },
+      });
+  
+      new Swiper('.products-swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: 15,
+          pagination: { el: '.swiper-pagination' },
+      });
+      function rate(n) {
+        document.querySelectorAll('.stars i').forEach((star, i) => {
+          star.className = i < n ? 'fas fa-star active' : 'far fa-star';
+        });
+      }
 </script>
-
-</body>
-</html>`,
-    protemplete2: `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Name - Digital Business Card</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
-
-  <style>
-    :root {
-      --primary: #FD8031;
-      --secondary: #061244;
-      --text-primary: #FD8031;
-      --text-secondary: #656b6c;
-      --bg: #ffffff;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      background: var(--bg);
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* Header / Hero Section */
-    .hero {
-      position: relative;
-      height: 420px;
-      background: linear-gradient(rgba(6,18,68,0.8), rgba(6,18,68,0.9)), url('https://cdn0070.qrcodechimp.com/images/digitalCard/dbcv2/bg_19.webp') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
-    .profile-pic {
-      position: absolute;
-      bottom: -80px;
-      left: 20px;
-      width: 160px;
-      height: 160px;
-      background: url('https://cdn0070.qrcodechimp.com/images/digitalCard/dbcv2/profile_13.webp') center/cover;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      border: 6px solid white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      z-index: 10;
-    }
-    .brand-logo {
-      position: absolute;
-      top: 60px;
-      right: 15px;
-      width: 80px;
-      height: 80px;
-      background: white url('https://cdn0070.qrcodechimp.com/images/digitalCard/dbcv2/barand_logo_2.webp') center/70% no-repeat;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      border: 4px solid white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      z-index: 10;
-    }
-    .hero-info {
-      padding-top: 140px;
-      padding-bottom: 100px;
-    }
-    .hero h1 {
-      font-size: 34px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .hero p {
-      font-size: 18px;
-      opacity: 0.95;
-    }
-
-    /* Quick Actions */
-    .quick-actions {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 90px 0 30px;
-    }
-    .quick-actions a {
-      width: 56px;
-      height: 56px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(253,128,49,0.4);
-    }
-
-    /* Content Cards */
-    .section {
-      margin: 20px;
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 7px 29px rgba(100,100,111,0.2);
-    }
-    h2 {
-      font-size: 24px;
-      color: var(--secondary);
-      margin-bottom: 12px;
-      text-align: center;
-    }
-    p { color: #555; text-align: center; margin-bottom: 16px; }
-
-    /* Contact Info */
-    .contact-item {
-      display: flex;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .contact-item:last-child { border-bottom: none; }
-    .contact-item i {
-      font-size: 22px;
-      width: 50px;
-      color: var(--primary);
-    }
-    .contact-item a {
-      color: #333;
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    /* Web Links & Buttons */
-    .btn {
-      display: block;
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 16px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 12px 0;
-    }
-
-    /* Footer Buttons */
-    .footer-actions {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 16px;
-      z-index: 100;
-    }
-    .footer-actions button {
-      background: white;
-      border: none;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      font-size: 24px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      color: var(--primary);
-    }
-    .add-contact {
-      background: var(--primary);
-      color: white;
-      padding: 14px 24px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 5px 20px rgba(253,128,49,0.4);
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="brand-logo"></div>
-   
-    <div class="qrc_profile_inner_info">
-      <h1>Name</h1>
-      <p style="color:#fff">Title</p>
-      <p style="color:#fff"><strong>Company</strong></p>
-
-      <div class="quick-actions">
-        <a href="tel:0000000000"><i class="fas fa-phone"></i></a>
-        <a href="mailto:youremail@domain.com"><i class="fas fa-envelope"></i></a>
-        <a href="sms:0000000000"><i class="fas fa-sms"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- About -->
-  <div class="section">
-    <h2>About Me</h2>
-    <p>Description goes here. Write something compelling about yourself, your expertise, and what you do.</p>
-  </div>
-
-  <!-- Contact Info -->
-  <div class="section">
-    <h2>Contact Information</h2>
-    <div class="contact-item">
-      <i class="fas fa-phone"></i>
-      <a href="tel:1234567890">123 456 7890</a>
-    </div>
-    <div class="contact-item">
-      <i class="fas fa-envelope"></i>
-      <a href="mailto:contactme@domain.com">contactme@domain.com</a>
-    </div>
-    <div class="contact-item">
-      <i class="fas fa-map-marker-alt"></i>
-      <div>
-        Street<br>City, State, Zipcode<br>Country
-        <a href="https://maps.google.com/?q=Your+Address" style="color:var(--primary);font-size:14px;display:block;margin-top:8px;">
-          → Get Directions
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Gallery -->
-  <div class="section">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://cdn0070.qrcodechimp.com/images/digitalCard/image_1.png" alt="">
-      <img src="https://cdn0070.qrcodechimp.com/images/digitalCard/image_2.png" alt="">
-      <img src="https://cdn0070.qrcodechimp.com/images/digitalCard/image_1.png" alt="">
-      <img src="https://cdn0070.qrcodechimp.com/images/digitalCard/image_2.png" alt="">
-    </div>
-  </div>
-
-  <!-- Web Links -->
-  <div class="section">
-    <h2>Web Links</h2>
-    <a href="https://www.mycoolbrand.com" class="btn">My Website</a>
-    <a href="#" class="btn">Portfolio</a>
-  </div>
-
-  <!-- Schedule Meeting -->
-  <div class="section">
-    <h2>Schedule a Meeting</h2>
-    <p>Schedule a meeting to discuss potential opportunities for collaboration</p>
-    <a href="https://calendly.com/your-link" class="btn">Book on Calendly</a>
-  </div>
-
-  <!-- Floating Action Buttons -->
-  <div class="footer-actions">
-    <button onclick="alert('Share functionality')"><i class="fas fa-share-alt"></i></button>
-    <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Name%0AORG:Company%0ATITLE:Title%0ATEL:0000000000%0AEMAIL:youremail@domain.com%0AEND:VCARD" download="contact.vcf" class="add-contact">
-      Add to Contacts
-    </a>
-  </div>
-
-</div>
-
-</body>
-</html>`
+  
+  </body>
+  </html>`
 };
 const __TURBOPACK__default__export__ = templates;
 }),
@@ -1906,6 +788,21 @@ function renderLanding(raw, templateName) {
     <p>Timeless Beauty • Natural Ingredients • Cruelty-Free</p>
   </div>
 </div>`;
+    const TOP_SLIDER_CARD_TOW = `
+<style>  .hero-slider .swiper-slide img {
+  width: 100%;
+  height: 488px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}</style>
+<div class="hero-slider swiper">
+<div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2.png" alt="Wine 1"></div>
+    <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_1.png" alt="Wine 2"></div>
+    <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3.png" alt="Wine 3"></div>
+</div>
+<div class="swiper-pagination"></div>
+</div>`;
     /* ---------------------------------------------
      ABOUT BRAND -1
   ---------------------------------------------- */ const ABOUT_BRAND_CARD = `
@@ -1914,6 +811,27 @@ function renderLanding(raw, templateName) {
   <p>${product.description || ""}</p>
 </div>`;
     const TOP_HEADER_LOGO = `
+<style>
+.header {
+  position: relative;
+  text-align: center;
+  padding: 40px 0 20px;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.header h1 {
+  font-size: 28px;
+  margin: 20px 0 10px;
+  color: var(--primary);
+}
+.header p { font-size: 17px; color: #666; }
+</style>
 <div class="header">
 <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/luxury_wine_logo.png" alt="Logo" class="logo">
 <h1>Luxury Wines</h1>
@@ -1921,7 +839,12 @@ function renderLanding(raw, templateName) {
 </div>`;
     /* ---------------------------------------------
      PRODUCT SPOTLIGHT
-  ---------------------------------------------- */ // 2. Specifications (dynamic – same as your example)
+  ---------------------------------------------- */ const HEADER_LOGO_CARD_TOW = ` <div class="header">
+  <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/luxury_wine_logo.png" alt="Logo" class="logo">
+  <h1>Luxury Wines</h1>
+  <p>Exquisite Taste Since 1985</p>
+</div>`;
+    // 2. Specifications (dynamic – same as your example)
     const PRODUCT_SPOTLIGHT_DATA = product.custom_fields_meta || [];
     const PRODUCT_SPOTLIGHT_CARD = product.custom_fields_meta.length > 0 ? `
 <div class="section card" style="text-align:left">
@@ -1963,14 +886,101 @@ function renderLanding(raw, templateName) {
     /* ---------------------------------------------
      OUR COLLECTION – DYNAMIC GALLERY
   ---------------------------------------------- */ const OUR_COLLECTION_CARD = `
+  <style>
+  /* Swiper Gallery */
+  .swiper {
+      width: 100%;
+      padding: 20px 0;
+  }
+  .gallery-header .swiper-slide {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  .gallery-header img, .slide {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+  }
+  .section {
+      background: #fff;
+      margin: 20px 0;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 7px 29px rgba(100,100,100,0.1);
+  }
+  .section h2 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 10px;
+      color: var(--primary);
+  }
+  .section p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 15px;
+  }
+
+  </style>
 <div class="section">
   <h2>Our Collection</h2>
   <div class="swiper gallery-swiper">
     <div class="swiper-wrapper">
-      ${product.thumbnails?.map((thumb)=>`<div class="swiper-slide"><img src="${thumb}" /></div>`).join("") || ""}
+    <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt="Product"></div>
+    <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt="Product"></div>
+    <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt="Product"></div>
     </div>
     <div class="swiper-pagination"></div>
   </div>
+</div>`;
+    const OUR_COLLECTION_CARD_TWO = `
+  <style>
+  /* Swiper Gallery */
+  .swiper {
+      width: 100%;
+      padding: 20px 0;
+  }
+  .gallery-header .swiper-slide {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  .gallery-header img, .slide {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+  }
+  .section {
+      background: #fff;
+      margin: 20px 0;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 7px 29px rgba(100,100,100,0.1);
+  }
+  .section h2 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 10px;
+      color: var(--primary);
+  }
+  .section p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 15px;
+  }
+
+  </style>
+
+ 
+  <div class="section">
+          <div class="swiper">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt=""></div>
+                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt=""></div>
+                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt=""></div>
+              </div>
+          </div>
+      
 </div>`;
     /* ---------------------------------------------
      STATIC CARDS (NO CHANGE)
@@ -2041,6 +1051,9 @@ function renderLanding(raw, templateName) {
     style="width:100%; border-radius:12px; margin-top:15px;">
 </div>`;
     const SOCIAL_MEDIA_CARD = `
+  <style>
+  .section p {text-align:left; color:#666; margin:5px 0 0;}
+  </style>
 <div class="section card">
   <h2>Follow Us</h2>
   <ul class="social-list">
@@ -2080,20 +1093,36 @@ function renderLanding(raw, templateName) {
  
 </div>`;
     const RATE_EXPERIENCE_CARD = `
+ 
 <div class="section card">
   <h2>Rate Your Experience</h2>
-  <p>How satisfied are you with our brand?</p>
+  <p style="text-align:center;">How satisfied are you with our brand?</p>
   <div class="stars">
-    <div onclick="rate(1)"><i class="far fa-star"></i><span>Lowest</span></div>
+    <div onclick="rate(1)"><i class="far fa-star"></i></div>
     <div onclick="rate(2)"><i class="far fa-star"></i></div>
     <div onclick="rate(3)"><i class="far fa-star"></i></div>
     <div onclick="rate(4)"><i class="far fa-star"></i></div>
-    <div onclick="rate(5)"><i class="far fa-star"></i><span>Highest</span></div>
+    <div onclick="rate(5)"><i class="far fa-star"></i></div>
   </div>
+</div>`;
+    const HEADER_LOGO_CARD = `<div class="premium-header-section">
+ 
+ <div class="logo-wrapper">
+   <img 
+     src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_logo.png?v=1763098999" 
+     alt="Brand Logo" 
+     >
+ </div>
+
+ <div class="title-desc">
+   <h1 style="color:#fff" >${product.productName}</h1>
+   <p  style="color:#928787">Description – premium quality since 1985</p>
+ </div>
+ <div class="header-divider"></div>
 </div>`;
     /* ---------------------------------------------
      REPLACE TEMPLATE BLOCKS
-  ---------------------------------------------- */ output = output.replace("{{meta_seo}}", Meta_SEO_CARD).replace("{{top_slider_card}}", TOP_SLIDER_CARD).replace("{{about_brand}}", ABOUT_BRAND_CARD).replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD).replace("{{specifications}}", SPECS_CARD).replace("{{our_collection}}", OUR_COLLECTION_CARD).replace("{{youtube}}", YOUTUBE_CARD).replace("{{featured_products}}", FEATURED_PRODUCTS_CARD).replace("{{join_club}}", JOIN_BEAUTY_CLUB_CARD).replace("{{natural_ingredients}}", NATURAL_INGREDIENTS_CARD).replace("{{social_media}}", SOCIAL_MEDIA_CARD).replace("{{contact}}", CONTACT_CARD).replace("{{rate_experience}}", RATE_EXPERIENCE_CARD);
+  ---------------------------------------------- */ output = output.replace("{{meta_seo}}", Meta_SEO_CARD).replace("{{top_slider_card}}", TOP_SLIDER_CARD).replace("{{top_slider_card_tow}}", TOP_SLIDER_CARD_TOW).replace("{{about_brand}}", ABOUT_BRAND_CARD).replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD).replace("{{specifications}}", SPECS_CARD).replace("{{our_collection}}", OUR_COLLECTION_CARD).replace("{{youtube}}", YOUTUBE_CARD).replace("{{featured_products}}", FEATURED_PRODUCTS_CARD).replace("{{join_club}}", JOIN_BEAUTY_CLUB_CARD).replace("{{natural_ingredients}}", NATURAL_INGREDIENTS_CARD).replace("{{social_media}}", SOCIAL_MEDIA_CARD).replace("{{contact}}", CONTACT_CARD).replace("{{rate_experience}}", RATE_EXPERIENCE_CARD).replace("{{header_logo_card}}", HEADER_LOGO_CARD).replace("{{header_logo_card_tow}}", HEADER_LOGO_CARD_TOW);
     return output;
 }
 function renderLandingPreview(product, templateName) {
@@ -2108,7 +1137,7 @@ function renderLandingPreview(product, templateName) {
 }),
 "[project]/data/products.json (json)", ((__turbopack_context__) => {
 
-__turbopack_context__.v(JSON.parse("{\"1\":{\"id\":\"product-1763964582961\",\"formData\":{\"name\":\"Allen Cooper Performance Ankle Boot S3\",\"sku\":\"25006\",\"category\":\"accessories\",\"price\":\"45858\",\"description\":\"MacBook Pro Landing\\nA Global powerhouse in leather, footwear, garments, PPE, safety gear, equestrian products, and premium accessories.\",\"videoUrl\":\"https://youtu.be/lNZq7ElGCxw?si=BTgC2LsAIOqfNGdd\",\"metaTitle\":\"EngageIQ\",\"metaDescription\":\"EngageIQ Description\",\"keywords\":\"keyword1\",\"urlSlug\":\"engageI\",\"isActive\":true},\"images\":[{\"id\":\"img-1763964915601-0\",\"name\":\"IMG-20250728-WA0007.jpg\",\"url\":\"/upload/productgallery/product-1763965014902-fk1s9f.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014902-fk1s9f.jpg\"},{\"id\":\"img-1763964915602-1\",\"name\":\"IMG-20250728-WA0017.jpg\",\"url\":\"/upload/productgallery/product-1763965014903-kju0k2.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014903-kju0k2.jpg\"}],\"pdfs\":[{\"id\":\"pdf-1763964927975-0\",\"name\":\"0bfc8d08faaa7ecf2d6fc4a7c362724c.pdf\",\"url\":\"/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\",\"size\":62220,\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\"}],\"gallery\":[{\"id\":\"gallery-1763964934913-2\",\"name\":\"CZM-X5002GX-WHITE_1_aed6bd10-a6e2-4425-b0ea-26166b945f97.webp\",\"url\":\"/upload/productgallery/gallery-1763965014904-afndfu.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014904-afndfu.webp\"},{\"id\":\"gallery-1763964934913-3\",\"name\":\"CZM-X5002GX-WHITE_3_be88aba7-0f03-4d1f-b7b2-44becff36338.webp\",\"url\":\"/upload/productgallery/gallery-1763965014905-5bvua4.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014905-5bvua4.webp\"}],\"tags\":[\"myshoe\"],\"custom_fields\":{\"9\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\",\"10\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\",\"11\":\"Breathable Functional Textile Lining\",\"12\":\"PU Cushioned Custom Fit\",\"13\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\",\"14\":\"Non-Metal Fittings\",\"15\":\"\"},\"custom_fields_meta\":[{\"id\":9,\"name\":\"Protection\",\"type\":\"text\",\"required\":false,\"value\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\"},{\"id\":10,\"name\":\"Upper\",\"type\":\"text\",\"required\":true,\"value\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\"},{\"id\":11,\"name\":\"Lining\",\"type\":\"text\",\"required\":true,\"value\":\"Breathable Functional Textile Lining\"},{\"id\":12,\"name\":\"Footbed\",\"type\":\"text\",\"required\":false,\"value\":\"PU Cushioned Custom Fit\"},{\"id\":13,\"name\":\"Sole\",\"type\":\"text\",\"required\":false,\"value\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\"},{\"id\":14,\"name\":\"Fitting\",\"type\":\"text\",\"required\":false,\"value\":\"Non-Metal Fittings\"},{\"id\":15,\"name\":\"Price\",\"type\":\"number\",\"required\":true,\"value\":\"\"}],\"createdAt\":\"2025-11-24T06:16:54.881Z\",\"updatedAt\":\"2025-11-24T06:16:54.881Z\",\"version\":\"1.0\",\"status\":\"published\",\"landing_page_id\":\"2\"},\"2\":{\"id\":\"product-1763964582961\",\"formData\":{\"name\":\"Allen Cooper Performance Ankle Boot S3\",\"sku\":\"25006\",\"category\":\"accessories\",\"price\":\"45858\",\"description\":\"MacBook Pro Landing – redefining safety footwear through innovation, quality, and sustainability.\",\"videoUrl\":\"https://youtu.be/rVGddQ1MpMk?si=1bZdwFeMYEt1xsdr\",\"metaTitle\":\"EngageIQ\",\"metaDescription\":\"EngageIQ Description\",\"keywords\":\"keyword1\",\"urlSlug\":\"engageI\",\"isActive\":true},\"images\":[{\"id\":\"img-1763964915601-0\",\"name\":\"IMG-20250728-WA0007.jpg\",\"url\":\"/upload/productgallery/product-1763965014902-fk1s9f.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014902-fk1s9f.jpg\"},{\"id\":\"img-1763964915602-1\",\"name\":\"IMG-20250728-WA0017.jpg\",\"url\":\"/upload/productgallery/product-1763965014903-kju0k2.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014903-kju0k2.jpg\"}],\"pdfs\":[{\"id\":\"pdf-1763964927975-0\",\"name\":\"0bfc8d08faaa7ecf2d6fc4a7c362724c.pdf\",\"url\":\"/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\",\"size\":62220,\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\"}],\"gallery\":[{\"id\":\"gallery-1763964934913-2\",\"name\":\"CZM-X5002GX-WHITE_1_aed6bd10-a6e2-4425-b0ea-26166b945f97.webp\",\"url\":\"/upload/productgallery/gallery-1763965014904-afndfu.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014904-afndfu.webp\"},{\"id\":\"gallery-1763964934913-3\",\"name\":\"CZM-X5002GX-WHITE_3_be88aba7-0f03-4d1f-b7b2-44becff36338.webp\",\"url\":\"/upload/productgallery/gallery-1763965014905-5bvua4.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014905-5bvua4.webp\"}],\"tags\":[\"myshoe\"],\"custom_fields\":{\"9\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\",\"10\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\",\"11\":\"Breathable Functional Textile Lining\",\"12\":\"PU Cushioned Custom Fit\",\"13\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\",\"14\":\"Non-Metal Fittings\",\"15\":\"\"},\"custom_fields_meta\":[{\"id\":9,\"name\":\"Protection\",\"type\":\"text\",\"required\":false,\"value\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\"},{\"id\":10,\"name\":\"Upper\",\"type\":\"text\",\"required\":true,\"value\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\"},{\"id\":11,\"name\":\"Lining\",\"type\":\"text\",\"required\":true,\"value\":\"Breathable Functional Textile Lining\"},{\"id\":12,\"name\":\"Footbed\",\"type\":\"text\",\"required\":false,\"value\":\"PU Cushioned Custom Fit\"},{\"id\":13,\"name\":\"Sole\",\"type\":\"text\",\"required\":false,\"value\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\"},{\"id\":14,\"name\":\"Fitting\",\"type\":\"text\",\"required\":false,\"value\":\"Non-Metal Fittings\"},{\"id\":15,\"name\":\"Price\",\"type\":\"number\",\"required\":true,\"value\":\"\"}],\"createdAt\":\"2025-11-24T06:16:54.881Z\",\"updatedAt\":\"2025-11-24T06:16:54.881Z\",\"version\":\"1.0\",\"status\":\"published\",\"landing_page_id\":\"2\"},\"3\":{\"id\":\"product-1763964582961\",\"formData\":{\"name\":\"Allen Cooper Performance Ankle Boot S3\",\"sku\":\"25006\",\"category\":\"accessories\",\"price\":\"45858\",\"description\":\"MacBook Pro Landing\\nA Global powerhouse in leather, footwear, garments, PPE, safety gear, equestrian products, and premium accessories, MacBook Pro Landing Limited stands at the forefront of craftsmanship and innovation. With 22+ state-of-the-art manufacturing units and a presence in 50+ countries, we combine traditional expertise with modern technology to deliver products that reflect quality, durability, and performance.\\n\\nSpecial Focus: Safety Footwear – Innovation Meets Protection\\nAt MacBook Pro Landing , safety footwear means confidence, comfort, and innovation. As a major supplier to global brands like Portwest, Uvex-Heckel, Feldtmann, Wurth, Stabilus, Coverguard, Itturi, and MTS, we produce footwear meeting EN ISO 20345, ASTM, and CSA standards.\\n\\nHigh-grade materials: leather, microfiber & eco-synthetics,Ergonomic comfort with ankle support & cushioning,Steel/composite toe, anti-penetration & electrical resistance,Slip, oil & heat-resistant outsoles,Waterproof, breathable & eco-conscious design\\nIdeal for construction, mining, oil & gas, logistics, and manufacturing, our footwear combines protection, durability, and style. MacBook Pro Landing – redefining safety footwear through innovation, quality, and sustainability.\",\"videoUrl\":\"https://youtu.be/rVGddQ1MpMk?si=1bZdwFeMYEt1xsdr\",\"metaTitle\":\"EngageIQ\",\"metaDescription\":\"EngageIQ Description\",\"keywords\":\"keyword1\",\"urlSlug\":\"engageI\",\"isActive\":true},\"images\":[{\"id\":\"img-1763964915601-0\",\"name\":\"IMG-20250728-WA0007.jpg\",\"url\":\"/upload/productgallery/product-1763965014902-fk1s9f.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014902-fk1s9f.jpg\"},{\"id\":\"img-1763964915602-1\",\"name\":\"IMG-20250728-WA0017.jpg\",\"url\":\"/upload/productgallery/product-1763965014903-kju0k2.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014903-kju0k2.jpg\"}],\"pdfs\":[{\"id\":\"pdf-1763964927975-0\",\"name\":\"0bfc8d08faaa7ecf2d6fc4a7c362724c.pdf\",\"url\":\"/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\",\"size\":62220,\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\"}],\"gallery\":[{\"id\":\"gallery-1763964934913-2\",\"name\":\"CZM-X5002GX-WHITE_1_aed6bd10-a6e2-4425-b0ea-26166b945f97.webp\",\"url\":\"/upload/productgallery/gallery-1763965014904-afndfu.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014904-afndfu.webp\"},{\"id\":\"gallery-1763964934913-3\",\"name\":\"CZM-X5002GX-WHITE_3_be88aba7-0f03-4d1f-b7b2-44becff36338.webp\",\"url\":\"/upload/productgallery/gallery-1763965014905-5bvua4.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014905-5bvua4.webp\"}],\"tags\":[\"myshoe\"],\"custom_fields\":{\"9\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\",\"10\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\",\"11\":\"Breathable Functional Textile Lining\",\"12\":\"PU Cushioned Custom Fit\",\"13\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\",\"14\":\"Non-Metal Fittings\",\"15\":\"\"},\"custom_fields_meta\":[{\"id\":9,\"name\":\"Protection\",\"type\":\"text\",\"required\":false,\"value\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\"},{\"id\":10,\"name\":\"Upper\",\"type\":\"text\",\"required\":true,\"value\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\"},{\"id\":11,\"name\":\"Lining\",\"type\":\"text\",\"required\":true,\"value\":\"Breathable Functional Textile Lining\"},{\"id\":12,\"name\":\"Footbed\",\"type\":\"text\",\"required\":false,\"value\":\"PU Cushioned Custom Fit\"},{\"id\":13,\"name\":\"Sole\",\"type\":\"text\",\"required\":false,\"value\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\"},{\"id\":14,\"name\":\"Fitting\",\"type\":\"text\",\"required\":false,\"value\":\"Non-Metal Fittings\"},{\"id\":15,\"name\":\"Price\",\"type\":\"number\",\"required\":true,\"value\":\"\"}],\"createdAt\":\"2025-11-24T06:16:54.881Z\",\"updatedAt\":\"2025-11-24T06:16:54.881Z\",\"version\":\"1.0\",\"status\":\"published\",\"landing_page_id\":\"2\"},\"4\":{\"id\":\"product-1763964582961\",\"formData\":{\"name\":\"Allen Cooper Performance Ankle Boot S3\",\"sku\":\"25006\",\"category\":\"accessories\",\"price\":\"45858\",\"description\":\"MacBook Pro Landing\\nA Global powerhouse in leather, footwear, garments, PPE, safety gear, equestrian products, and premium accessories, MacBook Pro Landing Limited stands at the forefront of craftsmanship and innovation. With 22+ state-of-the-art manufacturing units and a presence in 50+ countries, we combine traditional expertise with modern technology to deliver products that reflect quality, durability, and performance.\\n\\nSpecial Focus: Safety Footwear – Innovation Meets Protection\\nAt MacBook Pro Landing , safety footwear means confidence, comfort, and innovation. As a major supplier to global brands like Portwest, Uvex-Heckel, Feldtmann, Wurth, Stabilus, Coverguard, Itturi, and MTS, we produce footwear meeting EN ISO 20345, ASTM, and CSA standards.\\n\\nHigh-grade materials: leather, microfiber & eco-synthetics,Ergonomic comfort with ankle support & cushioning,Steel/composite toe, anti-penetration & electrical resistance,Slip, oil & heat-resistant outsoles,Waterproof, breathable & eco-conscious design\\nIdeal for construction, mining, oil & gas, logistics, and manufacturing, our footwear combines protection, durability, and style. MacBook Pro Landing – redefining safety footwear through innovation, quality, and sustainability.\",\"videoUrl\":\"https://youtu.be/lNZq7ElGCxw?si=BTgC2LsAIOqfNGdd\",\"metaTitle\":\"EngageIQ\",\"metaDescription\":\"EngageIQ Description\",\"keywords\":\"keyword1\",\"urlSlug\":\"engageI\",\"isActive\":true},\"images\":[{\"id\":\"img-1763964915601-0\",\"name\":\"IMG-20250728-WA0007.jpg\",\"url\":\"/upload/productgallery/product-1763965014902-fk1s9f.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014902-fk1s9f.jpg\"},{\"id\":\"img-1763964915602-1\",\"name\":\"IMG-20250728-WA0017.jpg\",\"url\":\"/upload/productgallery/product-1763965014903-kju0k2.jpg\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014903-kju0k2.jpg\"}],\"pdfs\":[{\"id\":\"pdf-1763964927975-0\",\"name\":\"0bfc8d08faaa7ecf2d6fc4a7c362724c.pdf\",\"url\":\"/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\",\"size\":62220,\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf\"}],\"gallery\":[{\"id\":\"gallery-1763964934913-2\",\"name\":\"CZM-X5002GX-WHITE_1_aed6bd10-a6e2-4425-b0ea-26166b945f97.webp\",\"url\":\"/upload/productgallery/gallery-1763965014904-afndfu.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014904-afndfu.webp\"},{\"id\":\"gallery-1763964934913-3\",\"name\":\"CZM-X5002GX-WHITE_3_be88aba7-0f03-4d1f-b7b2-44becff36338.webp\",\"url\":\"/upload/productgallery/gallery-1763965014905-5bvua4.webp\",\"savedPath\":\"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014905-5bvua4.webp\"}],\"tags\":[\"myshoe\"],\"custom_fields\":{\"9\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\",\"10\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\",\"11\":\"Breathable Functional Textile Lining\",\"12\":\"PU Cushioned Custom Fit\",\"13\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\",\"14\":\"Non-Metal Fittings\",\"15\":\"\"},\"custom_fields_meta\":[{\"id\":9,\"name\":\"Protection\",\"type\":\"text\",\"required\":false,\"value\":\"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection\"},{\"id\":10,\"name\":\"Upper\",\"type\":\"text\",\"required\":true,\"value\":\"Genuine Full Grain Nubuck Leather with Cushioned Lycra\"},{\"id\":11,\"name\":\"Lining\",\"type\":\"text\",\"required\":true,\"value\":\"Breathable Functional Textile Lining\"},{\"id\":12,\"name\":\"Footbed\",\"type\":\"text\",\"required\":false,\"value\":\"PU Cushioned Custom Fit\"},{\"id\":13,\"name\":\"Sole\",\"type\":\"text\",\"required\":false,\"value\":\"Dual-Density PU Outsole – Slip & Abrasion Resistant\"},{\"id\":14,\"name\":\"Fitting\",\"type\":\"text\",\"required\":false,\"value\":\"Non-Metal Fittings\"},{\"id\":15,\"name\":\"Price\",\"type\":\"number\",\"required\":true,\"value\":\"\"}],\"createdAt\":\"2025-11-24T06:16:54.881Z\",\"updatedAt\":\"2025-11-24T06:16:54.881Z\",\"version\":\"1.0\",\"status\":\"published\",\"landing_page_id\":\"2\"}}"));}),
+__turbopack_context__.v({"1":{"id":"product-1763964582961","formData":{"name":"Allen Cooper Ankle Boot S3","sku":"25006","category":"accessories","price":"45858","description":"MacBook Pro Landing\nA Global powerhouse in leather, footwear, garments, PPE, safety gear, equestrian products, and premium accessories.","videoUrl":"https://youtu.be/lNZq7ElGCxw?si=BTgC2LsAIOqfNGdd","metaTitle":"EngageIQ","metaDescription":"EngageIQ Description","keywords":"keyword1","urlSlug":"engageI","isActive":true},"images":[{"id":"img-1763964915601-0","name":"IMG-20250728-WA0007.jpg","url":"/upload/productgallery/product-1763965014902-fk1s9f.jpg","savedPath":"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014902-fk1s9f.jpg"},{"id":"img-1763964915602-1","name":"IMG-20250728-WA0017.jpg","url":"/upload/productgallery/product-1763965014903-kju0k2.jpg","savedPath":"/Volumes/D/next/engage-update/public/upload/productgallery/product-1763965014903-kju0k2.jpg"}],"pdfs":[{"id":"pdf-1763964927975-0","name":"0bfc8d08faaa7ecf2d6fc4a7c362724c.pdf","url":"/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf","size":62220,"savedPath":"/Volumes/D/next/engage-update/public/upload/productdocs/0bfc8d08faaa7ecf2d6fc4a7c362724c-1763965014905-mrp9xy.pdf"}],"gallery":[{"id":"gallery-1763964934913-2","name":"CZM-X5002GX-WHITE_1_aed6bd10-a6e2-4425-b0ea-26166b945f97.webp","url":"/upload/productgallery/gallery-1763965014904-afndfu.webp","savedPath":"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014904-afndfu.webp"},{"id":"gallery-1763964934913-3","name":"CZM-X5002GX-WHITE_3_be88aba7-0f03-4d1f-b7b2-44becff36338.webp","url":"/upload/productgallery/gallery-1763965014905-5bvua4.webp","savedPath":"/Volumes/D/next/engage-update/public/upload/productgallery/gallery-1763965014905-5bvua4.webp"}],"tags":["myshoe"],"custom_fields":{"9":"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection","10":"Genuine Full Grain Nubuck Leather with Cushioned Lycra","11":"Breathable Functional Textile Lining","12":"PU Cushioned Custom Fit","13":"Dual-Density PU Outsole – Slip & Abrasion Resistant","14":"Non-Metal Fittings","15":""},"custom_fields_meta":[{"id":9,"name":"Protection","type":"text","required":false,"value":"Fiberglass Toe Cap and Metal-Free, Anti Puncture & Penetration Protection"},{"id":10,"name":"Upper","type":"text","required":true,"value":"Genuine Full Grain Nubuck Leather with Cushioned Lycra"},{"id":11,"name":"Lining","type":"text","required":true,"value":"Breathable Functional Textile Lining"},{"id":12,"name":"Footbed","type":"text","required":false,"value":"PU Cushioned Custom Fit"},{"id":13,"name":"Sole","type":"text","required":false,"value":"Dual-Density PU Outsole – Slip & Abrasion Resistant"},{"id":14,"name":"Fitting","type":"text","required":false,"value":"Non-Metal Fittings"},{"id":15,"name":"Price","type":"number","required":true,"value":""}],"createdAt":"2025-11-24T06:16:54.881Z","updatedAt":"2025-11-24T06:16:54.881Z","version":"1.0","status":"published","landing_page_id":"2"}});}),
 "[project]/app/api/landing-html/[slug]/route.ts [app-route] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
