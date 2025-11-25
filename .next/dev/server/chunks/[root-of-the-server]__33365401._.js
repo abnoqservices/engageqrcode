@@ -101,7 +101,7 @@ const templates = {
       @media (max-width: 390px) {
         .header-swiper .swiper-slide { height: 240px; }
       }
-  
+    
       .header-overlay {
         position:absolute;
         bottom:0; left:0; right:0;
@@ -139,12 +139,12 @@ const templates = {
   
       /* GALLERY */
       .gallery-swiper img {
-        width:100%; height:200px; object-fit:cover;
+        width:100%; height:300px; object-fit:cover;
         border-radius:12px;
       }
   
       @media (max-width:480px) {
-        .gallery-swiper img { height:180px; }
+        .gallery-swiper img 
       }
   
       /* VIDEO */
@@ -164,10 +164,10 @@ const templates = {
       }
   
       .product img {
-        width:100%; height:180px; object-fit:cover;
+        width:100%;  object-fit:cover;
       }
   
-      .product-info { padding:16px; text-align:left; }
+      .product-info { padding:16px; text-align:center; }
   
       .product-title { font-weight:600; font-size:15px; margin-bottom:6px; }
       .rating { font-size:13px; color:#ffc107; }
@@ -791,15 +791,15 @@ function renderLanding(raw, templateName) {
     const TOP_SLIDER_CARD_TOW = `
 <style>  .hero-slider .swiper-slide img {
   width: 100%;
-  height: 488px;
+  
   object-fit: cover;
   border-radius: var(--radius);
 }</style>
 <div class="hero-slider swiper">
 <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2.png" alt="Wine 1"></div>
-    <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_1.png" alt="Wine 2"></div>
-    <div class="swiper-slide"><img src="https://www.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3.png" alt="Wine 3"></div>
+    <div class="swiper-slide"><img src="/F2.jpg" alt="Wine 1"></div>
+    <div class="swiper-slide"><img src="/F1.jpg" alt="Wine 2"></div>
+    <div class="swiper-slide"><img src="/F3.jpg" alt="Wine 3"></div>
 </div>
 <div class="swiper-pagination"></div>
 </div>`;
@@ -926,9 +926,9 @@ function renderLanding(raw, templateName) {
   <h2>Our Collection</h2>
   <div class="swiper gallery-swiper">
     <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt="Product"></div>
-    <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt="Product"></div>
-    <div class="swiper-slide"><img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt="Product"></div>
+    <div class="swiper-slide"><img src="/F1.jpg" alt="Product"></div>
+    <div class="swiper-slide"><img src="/F2.jpg" alt="Product"></div>
+    <div class="swiper-slide"><img src="/F3.jpg" alt="Product"></div>
     </div>
     <div class="swiper-pagination"></div>
   </div>
@@ -975,9 +975,9 @@ function renderLanding(raw, templateName) {
   <div class="section">
           <div class="swiper">
               <div class="swiper-wrapper">
-                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_1.png" alt=""></div>
-                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_2.png" alt=""></div>
-                  <div class="swiper-slide"><img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_2_3.png" alt=""></div>
+                  <div class="swiper-slide"><img src="F1.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="F2.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="F3.jpg" alt=""></div>
               </div>
           </div>
       
@@ -1002,7 +1002,7 @@ function renderLanding(raw, templateName) {
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="product">
-          <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_1.png" alt="Serum">
+          <img src="/F1.jpg" alt="Serum">
           <div class="product-info">
             <div class="product-title">Radiant Glow Serum</div>
             <div class="rating">4.0 stars</div>
@@ -1013,7 +1013,7 @@ function renderLanding(raw, templateName) {
       </div>
       <div class="swiper-slide">
         <div class="product">
-          <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_2.png" alt="Cream">
+          <img src="/F2.jpg" alt="Cream">
           <div class="product-info">
             <div class="product-title">Hydrating Night Cream</div>
             <div class="rating">5.0 stars</div>
@@ -1024,7 +1024,7 @@ function renderLanding(raw, templateName) {
       </div>
       <div class="swiper-slide">
         <div class="product">
-          <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_gallery_3_3.png" alt="Mask">
+          <img src="/F3.jpg" alt="Mask">
           <div class="product-info">
             <div class="product-title">Detox Clay Mask</div>
             <div class="rating">4.0 stars</div>
@@ -1047,7 +1047,7 @@ function renderLanding(raw, templateName) {
 <div class="section card">
   <h2>100% Natural Ingredients</h2>
   <p>We believe in clean beauty. No parabens, sulfates, or synthetic fragrances.</p>
-  <img src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/cosmatic_gallery_2.png"
+  <img src="/F4.jpg"
     style="width:100%; border-radius:12px; margin-top:15px;">
 </div>`;
     const SOCIAL_MEDIA_CARD = `
@@ -1060,14 +1060,14 @@ function renderLanding(raw, templateName) {
     <li class="social-item">
       <a href="https://facebook.com" class="social-link">
         <div class="social-icon" style="background-image:url('//cdn0070.qrcodechimp.com/images/digitalCard/fb_icon@72x.png')"></div>
-        <div class="social-text"><h4>Facebook</h4><p>Follow us for tips & offers</p></div>
+        <div class="social-text"><h3>Facebook</h3><p>Follow us for tips & offers</p></div>
         <i class="fas fa-chevron-right"></i>
       </a>
     </li>
     <li class="social-item">
       <a href="https://instagram.com" class="social-link">
         <div class="social-icon" style="background-image:url('//cdn0070.qrcodechimp.com/images/digitalCard/insta_icon@72x.png')"></div>
-        <div class="social-text"><h4>Instagram</h4><p>See our latest looks</p></div>
+        <div class="social-text"><h3>Instagram</h3><p>See our latest looks</p></div>
         <i class="fas fa-chevron-right"></i>
       </a>
     </li>

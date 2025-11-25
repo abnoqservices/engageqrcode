@@ -53,7 +53,7 @@ const templates = {
       @media (max-width: 390px) {
         .header-swiper .swiper-slide { height: 240px; }
       }
-  
+    
       .header-overlay {
         position:absolute;
         bottom:0; left:0; right:0;
@@ -91,12 +91,12 @@ const templates = {
   
       /* GALLERY */
       .gallery-swiper img {
-        width:100%; height:200px; object-fit:cover;
+        width:100%; height:300px; object-fit:cover;
         border-radius:12px;
       }
   
       @media (max-width:480px) {
-        .gallery-swiper img { height:180px; }
+        .gallery-swiper img 
       }
   
       /* VIDEO */
@@ -116,10 +116,10 @@ const templates = {
       }
   
       .product img {
-        width:100%; height:180px; object-fit:cover;
+        width:100%;  object-fit:cover;
       }
   
-      .product-info { padding:16px; text-align:left; }
+      .product-info { padding:16px; text-align:center; }
   
       .product-title { font-weight:600; font-size:15px; margin-bottom:6px; }
       .rating { font-size:13px; color:#ffc107; }

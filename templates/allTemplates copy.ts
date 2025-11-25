@@ -441,17 +441,24 @@ const templates = {
         margin-bottom:10px;
         font-weight:700;
       }
-  
+  .hero-slider .swiper-slide img
+  {
+    width: 100%;
+    /* height: 488px; */
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+  }
       p { font-size:14px; color:#555; }
   
       /* GALLERY */
       .gallery-swiper img {
-        width:100%; height:200px; object-fit:cover;
+        width:100; height:200px; object-fit:cover;
         border-radius:12px;
       }
   
       @media (max-width:480px) {
-        .gallery-swiper img { height:180px; }
+        .gallery-swiper img { height:100%; }
       }
   
       /* VIDEO */
