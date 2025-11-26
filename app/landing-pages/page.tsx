@@ -421,7 +421,7 @@ export default function LandingPagesPage() {
           </Badge>
 
           <CardDescription className="mt-3">
-          <img src={`/api/thumbnail?url=${encodeURIComponent(`http://localhost:3000/api/landing-html/${page.id}?template=${page.template}`)}`}
+          <img src={`/api/thumbnail?url=${encodeURIComponent(`https://engageqrcode.vercel.app//api/landing-html/${page.id}?template=${page.template}`)}`}
 className="w-full h-[220px] object-cover border rounded bg-white"
 />
 
