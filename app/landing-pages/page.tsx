@@ -121,7 +121,8 @@ export default function LandingPagesPage() {
   const handleGenerateLink = (page: LandingPageItem) => {
     setSelectedPage(page);
     setSelectedTemplate(page.template || "modern");
-    setShowTemplateModal(true);
+   // setShowTemplateModal(true);
+    handleConfirmTemplate();
   };
 
   const handleConfirmTemplate = () => {
