@@ -407,88 +407,90 @@ export default function LandingPagesPage() {
         {/* ---------------- MAIN PAGE CONTENT ---------------- */}
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {landingPages.map((page) => (
-              <Card key={page.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <CardTitle>{page.name}</CardTitle>
-                      </div>
-                      <Badge className={getTemplateBadgeColor(page.template)}>
-                        {getTemplateIcon(page.template)} {page.template}
-                      </Badge>
-                      <CardDescription className="mt-3">
-                        <img 
-                          alt={page.name} 
-                          className="w-100 h-50 object-cover rounded-lg" 
-                          src={page.url}
-                        />
-                      </CardDescription>
-                    </div>
+          {landingPages.map((page) => (
+  <Card key={page.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+    <CardHeader>
+      <div className="flex justify-between">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <CardTitle>{page.name}</CardTitle>
+          </div>
 
-                    {/* Dropdown */}
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
-                          <MoreVertical className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => handleGenerateLink(page)}>
-                          <Link2 className="h-4 w-4 mr-2" /> Generate Link
-                        </DropdownMenuItem>
+          <Badge className={getTemplateBadgeColor(page.template)}>
+            {getTemplateIcon(page.template)} {page.template}
+          </Badge>
 
-                        <DropdownMenuItem
-                          onClick={() => {
-                            setSelectedPage(page);
-                            setShowPreviewModal(true);
-                          }}
-                        >
-                          <Eye className="h-4 w-4 mr-2" /> Preview
-                        </DropdownMenuItem>
+          <CardDescription className="mt-3">
+          <img src={`/api/thumbnail?url=${encodeURIComponent(`http://localhost:3000/api/landing-html/${page.id}?template=${page.template}`)}`}
+className="w-full h-[220px] object-cover border rounded bg-white"
+/>
 
-                        <DropdownMenuItem>
-                          <Edit className="h-4 w-4 mr-2" /> Edit
-                        </DropdownMenuItem>
+          </CardDescription>
+        </div>
 
-                        <DropdownMenuItem className="text-destructive">
-                          <Trash2 className="h-4 w-4 mr-2" />
-                          Delete
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </CardHeader>
+        {/* Dropdown */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <MoreVertical className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => handleGenerateLink(page)}>
+              <Link2 className="h-4 w-4 mr-2" /> Generate Link
+            </DropdownMenuItem>
 
-                <CardContent>
-                  <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Views:</span>
-                      <span className="font-medium">{page.views.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Conversions:</span>
-                      <span className="font-medium">{page.conversions}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Status:</span>
-                      <Badge variant="outline" className="text-green-600 border-green-200">
-                        {page.status}
-                      </Badge>
-                    </div>
-                  </div>
-                  
-                  <Button
-                    variant="default"
-                    className="w-full"
-                    onClick={() => handleGenerateLink(page)}
-                  >
-                    <Link2 className="h-4 w-4 mr-2" /> Generate Preview Link
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+            <DropdownMenuItem
+              onClick={() => {
+                setSelectedPage(page);
+                setShowPreviewModal(true);
+              }}
+            >
+              <Eye className="h-4 w-4 mr-2" /> Preview
+            </DropdownMenuItem>
+
+            <DropdownMenuItem>
+              <Edit className="h-4 w-4 mr-2" /> Edit
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="text-destructive">
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    </CardHeader>
+
+    <CardContent>
+      <div className="space-y-2 mb-4">
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">Views:</span>
+          <span className="font-medium">{page.views.toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">Conversions:</span>
+          <span className="font-medium">{page.conversions}</span>
+        </div>
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">Status:</span>
+          <Badge variant="outline" className="text-green-600 border-green-200">
+            {page.status}
+          </Badge>
+        </div>
+      </div>
+
+      <Button
+        variant="default"
+        className="w-full"
+        onClick={() => handleGenerateLink(page)}
+      >
+        <Link2 className="h-4 w-4 mr-2" /> Generate Preview Link
+      </Button>
+    </CardContent>
+  </Card>
+))}
+
           </div>
         </div>
       </div>
