@@ -13,6 +13,11 @@ export async function GET(
     // Get query parameters
     const { searchParams } = new URL(request.url);
     const templateName = searchParams.get("template") || "";
+    const bg = searchParams.get("bg") || "000000";
+    const hSize = searchParams.get("hSize") || "28";
+    const pSize = searchParams.get("pSize") || "18";
+    const tColor = searchParams.get("tColor") || "a97d38";
+    const bColor = searchParams.get("bColor") || "061244";
     const { slug } = await params as { slug: keyof typeof productsDatabase };
     // Fetch product data (replace with your database query)
     const productData = productsDatabase[slug];
@@ -28,7 +33,7 @@ export async function GET(
     }
 
     // Render the landing page with selected template
-    const html = renderLanding(productData, templateName);
+    const html = renderLanding(productData, templateName, bg, hSize, pSize, tColor, bColor);
 
     // Return HTML response
     return new NextResponse(html, {

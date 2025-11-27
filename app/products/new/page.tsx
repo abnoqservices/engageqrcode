@@ -1047,11 +1047,11 @@ const clearForm = () => {
         </div>
 
         {/* Right Side: Large Mobile Preview (75%) */}
-        <div className="lg:col-span-3 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center p-10">
+        <div className="lg:col-span-3 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex justify-center no-scrollbar">
           <div className="text-center">
             {/* Super Realistic iPhone 15 Pro Mockup */}
             <div className="relative inline-block">
-              <div className="bg-gradient-to-b from-gray-900 to-black rounded-[60px] p-5 shadow-2xl border-14 border-gray-900 w-[420px] h-[860px]">
+              <div className="bg-gradient-to-b from-gray-900 to-black rounded-[60px] shadow-2xl border-14 border-gray-900  h-[602px]">
                 {/* Notch */}
                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-52 h-10 bg-black rounded-full z-10 shadow-inner"></div>
 
@@ -1080,10 +1080,7 @@ const clearForm = () => {
               </div>
 
               {/* Label */}
-              <div className="mt-8">
-                <p className="text-2xl font-bold text-gray-700">iPhone 15 Pro Preview</p>
-                <p className="text-sm text-gray-500">390 × 844 pixels • Real-time styling</p>
-              </div>
+              
             </div>
           </div>
         </div>
