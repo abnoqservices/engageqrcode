@@ -1,5 +1,8 @@
-// /app/api/landing-html/[id]/route.ts
 
+
+
+// /app/landing-html/[id]/route.ts
+import { loadTemplate } from "@/server/loadTemplates";
 import { NextRequest, NextResponse } from "next/server";
 import { renderLanding } from "@/lib/renderLanding";
 import  productsDatabase  from "@/data/products.json";
@@ -13,13 +16,10 @@ export async function GET(
     // Get query parameters
     const { searchParams } = new URL(request.url);
     const templateName = searchParams.get("template") || "";
-    const bg = searchParams.get("bg") || "000000";
-    const hSize = searchParams.get("hSize") || "28";
-    const pSize = searchParams.get("pSize") || "18";
-    const tColor = searchParams.get("tColor") || "a97d38";
-    const bColor = searchParams.get("bColor") || "061244";
+    const rawData = searchParams.get("data") || "";
     const { slug } = await params as { slug: keyof typeof productsDatabase };
     // Fetch product data (replace with your database query)
+   
     const productData = productsDatabase[slug];
 
     if (!productData) {
@@ -31,9 +31,15 @@ export async function GET(
         }
       );
     }
-
+    let templateHtml = "";
+    try {
+      templateHtml = await loadTemplate(templateName);
+    } catch (e) {
+      console.warn("Template load failed, using fallback:", templateName);
+      templateHtml = await loadTemplate("modern");
+    }
     // Render the landing page with selected template
-    const html = renderLanding(productData, templateName, bg, hSize, pSize, tColor, bColor);
+    const html = renderLanding(productData, templateHtml, rawData);
 
     // Return HTML response
     return new NextResponse(html, {

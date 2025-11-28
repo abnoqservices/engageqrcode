@@ -1,4 +1,5 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/landing-html/[slug]/route": "app/api/landing-html/[slug]/route.js",
-  "/products/new/page": "app/products/new/page.js"
+  "/landing-pages/new/page": "app/landing-pages/new/page.js"
 }

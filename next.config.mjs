@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+  typescript: { ignoreBuildErrors: true },
+  images: { unoptimized: true },
 
-export default nextConfig
+  // 👇 This forces Webpack mode so your webpack rule works
+  experimental: {
+    webpackBuildWorker: true,
+  },
+
+  turbopack: {},
+};
+
+export default nextConfig;
+

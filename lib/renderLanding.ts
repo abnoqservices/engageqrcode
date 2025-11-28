@@ -1,1133 +1,200 @@
-import templates from "@/templates/allTemplates";
+// /lib/renderLanding.ts
+// object of templates (TEMPLATES)
+import { SECTION_MAP } from "./sectionMap";
+import { removeDuplicates, filterEnabled } from "./sectionUtils";
+import * as CARDS from "@/templates/cards"; // imports all exported card strings
 
-type TemplateMap = Record<string, string>;
-const TEMPLATES: TemplateMap = templates;
+type Product = any;
 
-type Spec = { label?: string; name?: string; value: string };
+function applyTemplate(template: string, data: any): string {
+  if (!template) return "";
+  // handle array blocks {{#arr}}...{{/arr}}
+  template = template.replace(/{{#(\w+)}}([\s\S]*?){{\/\1}}/g, (_, arrKey, block) => {
+    const arr = data[arrKey];
+    if (!arr || !Array.isArray(arr)) return "";
+    return arr
+      .map((item: any) => {
+        if (typeof item === "string") {
+          return block.replace(/{{\.}}/g, item);
+        }
+        return block.replace(/{{(.*?)}}/g, (_, k) => {
+          const key = k.trim();
+          return item[key] ?? "";
+        });
+      })
+      .join("");
+  });
 
-type Product = {
-  id: string | number;
+  // replace simple {{field}} placeholders
+  template = template.replace(/{{(.*?)}}/g, (_, key) => {
+    const k = key.trim();
+    // allow nested values like product.images? Not needed here — use flat map
+    return (data as any)[k] ?? "";
+  });
 
-  pageTitle?: string;
-  metaDescription?: string;
-  metaKeywords?: string;
-  metaAuthor?: string;
+  return template;
+}
 
-  brandLogo?: string;
-  productName?: string;
-  productSubtitle?: string;
-  styleName?: string;
-  category?: string;
-  price?: string;
-
-  images?: string[];
-  thumbnails?: string[];
-  custom_fields_meta?: Spec[];
-  bulletPoints?: string[];
-
-  companyTitle?: string;
-  companyDescription?: string;
-  focusTitle?: string;
-  focusDescription?: string;
-  finalNote?: string;
-
-  pdfDownloadUrl?: string;
-  pdfButtonText?: string;
-
-  footerLogo?: string;
-  companyName?: string;
-  contactPhone?: string;
-  contactWhatsapp?: string;
-  contactEmail?: string;
-  footerCopyright?: string;
-
-  customStyles?: string;
-  externalCSS?: string;
-  externalJS?: string;
-  og_image?: string;
-
-  description?: string;
-  videoUrl?: string;
-};
-
-/* ---------------------------------------------
-   JSON → PRODUCT FORMAT MAPPER
----------------------------------------------- */
 export function mapJsonToProduct(json: any): Product {
+  console.log("Mapping JSON to Product:", json);
   return {
     id: json.id,
-
     pageTitle: json.formData?.metaTitle || json.formData?.name || "",
     metaDescription: json.formData?.metaDescription || "",
     metaKeywords: json.formData?.keywords || "",
-
     productName: json.formData?.name || "",
+    productSubtitle: json.formData?.subtitle || "",
     category: json.formData?.category || "",
     price: json.formData?.price || "",
     description: json.formData?.description || "",
     videoUrl: json.formData?.videoUrl || "",
-
-    // Primary image
     brandLogo: json.images?.[0]?.url || "",
-
-    // All images for slider
-    images: json.images?.map((img: any) => img.url) || [],
-
-    // Gallery thumbnails
+    images: json.images?.map((i: any) => ({ url: i.url })) || [],
     thumbnails: json.gallery?.map((g: any) => g.url) || [],
-
-    // Specifications
     custom_fields_meta: json.custom_fields_meta || [],
-
-    // PDFs
     pdfDownloadUrl: json.pdfs?.[0]?.url || "",
     pdfButtonText: "Download PDF",
-
-    // OG image
     og_image: json.images?.[0]?.url || ""
   };
 }
-
-/* ---------------------------------------------
-   GET ALL TEMPLATE NAMES
----------------------------------------------- */
-export function getAvailableTemplates(): string[] {
-  return Object.keys(TEMPLATES);
-}
-
-/* ---------------------------------------------
-   GET SINGLE TEMPLATE
----------------------------------------------- */
-export function getTemplate(templateName: string): string | null {
-  return TEMPLATES[templateName] || null;
-}
-
 function convertToEmbedUrl(url: string): string {
   if (!url) return "";
-
-  // Format: https://youtu.be/XXXXXXXX
   if (url.includes("youtu.be/")) {
     const id = url.split("youtu.be/")[1].split("?")[0];
     return `https://www.youtube.com/embed/${id}`;
   }
-
-  // Format: https://www.youtube.com/watch?v=XXXXXXXX
   if (url.includes("watch?v=")) {
     const id = url.split("watch?v=")[1].split("&")[0];
     return `https://www.youtube.com/embed/${id}`;
   }
-
-  // If already embed format, return as-is
-  if (url.includes("/embed/")) {
-    return url;
-  }
-
+  if (url.includes("/embed/")) return url;
   return url;
 }
 
-/* ---------------------------------------------
-   MAIN TEMPLATE RENDER FUNCTION (DYNAMIC)
----------------------------------------------- */
-export function renderLanding(raw: any, templateName?: string,bg?: string,hsize?: string,psize?: string,tColor?: string,bColor?: string): string {
+export function renderLanding(raw: any, templateHtml?: string, rawDataBase64?: string): string {
   const product = mapJsonToProduct(raw);
 
-  const selectedTemplate =
-    templateName && TEMPLATES[templateName]
-      ? TEMPLATES[templateName]
-      : TEMPLATES.modern;
-
+  const selectedTemplate = templateHtml;
   let output = selectedTemplate;
 
-  // Field replacements
+  // Standard simple replacements that don't depend on sections
   const fields = [
-    "pageTitle",
-    "metaDescription",
-    "metaKeywords",
-    "brandLogo",
-    "productName",
-    "price",
-    "description",
-    "videoUrl",
-    "category",
-    "pdfDownloadUrl",
-    "pdfButtonText",
-    "og_image"
+    "pageTitle", "metaDescription", "metaKeywords", "brandLogo", "productName", "price",
+    "description", "videoUrl", "category", "pdfDownloadUrl", "pdfButtonText", "og_image"
   ];
-
-  fields.forEach((k) => {
+  fields.forEach(k => {
     const val = (product as any)[k] ?? "";
     output = output.replaceAll(`{{${k}}}`, String(val));
   });
 
-  // Product ID
+  // decode fullData (sections + styles) if provided as base64
+  let fullData: any = null;
+  if (rawDataBase64) {
+    try {
+      fullData = JSON.parse(Buffer.from(rawDataBase64, "base64").toString("utf-8"));
+    } catch (e) {
+      console.error("Invalid Base64 JSON:", e);
+    }
+  } 
+
+  console.log("Full data for rendering:", fullData);
+  // build a dynamic data map used by applyTemplate
+  const dynamicValues = {
+    ...product,
+    images: product.images || [],
+    custom_fields_meta: product.custom_fields_meta || [],
+    videoEmbedUrl: convertToEmbedUrl(product.videoUrl || ""),
+    // override with styles from fullData if present
+    ...(fullData?.styles || {})
+  };
+console.log("Full data for rendering:", fullData);
+  // inject global css vars (use either fullData.styles or url params)
+  const globalCssInjected = applyTemplate(CARDS.GLOBAL_CSS, {
+    primaryColor: (fullData?.styles?.primaryColor || "6366f1").replace("#", ""),
+    backgroundColor: (fullData?.styles?.backgroundColor || "0f0a0a").replace("#", ""),
+    textColor: (fullData?.styles?.textColor || "a97d38").replace("#", ""),
+    hsize: fullData?.styles?.headlineSize || 28,
+    psize: fullData?.styles?.paragraphSize || 16
+  });
+  output = output.replaceAll("{{global_css}}", globalCssInjected);
+
+  // If fullData.sections is provided, process it
+  if (fullData && Array.isArray(fullData.sections)) {
+    // remove duplicates, keep first occurrence
+    const cleaned = removeDuplicates(fullData.sections);
+    // keep only enabled items
+    const enabled = filterEnabled(cleaned);
+
+    // for each enabled section, replace the corresponding placeholder using SECTION_MAP
+    for (const sec of enabled) {
+      const placeholder = SECTION_MAP[sec.section];
+      if (!placeholder) continue; // no mapping for this named section
+      // find corresponding card in CARDS by placeholder name
+      // map placeholder -> card content string; we can use a switch or mapping:
+      console.log("Processing section:", placeholder);
+
+      let cardHtml = "";
+      switch (placeholder) {
+        case "{{meta_seo}}":
+          cardHtml = applyTemplate(CARDS.Meta_SEO_CARD, dynamicValues);
+          break;
+        case "{{top_slider_card}}":
+          cardHtml = applyTemplate(CARDS.TOP_SLIDER_CARD, dynamicValues);
+          break;
+        case "{{about_brand}}":
+          cardHtml = applyTemplate(CARDS.ABOUT_BRAND_CARD, dynamicValues);
+          break;
+        case "{{product_spotlight}}":
+          cardHtml = applyTemplate(CARDS.PRODUCT_SPOTLIGHT_CARD, dynamicValues);
+          break;
+        case "{{our_collection}}":
+          cardHtml = applyTemplate(CARDS.OUR_COLLECTION_CARD, dynamicValues);
+          break;
+        case "{{youtube}}":
+          cardHtml = applyTemplate(CARDS.YOUTUBE_CARD, dynamicValues);
+          break;
+        case "{{featured_products}}":
+          cardHtml = applyTemplate(CARDS.FEATURED_PRODUCTS_CARD, dynamicValues);
+          break;
+        case "{{join_club}}":
+          cardHtml = applyTemplate(CARDS.JOIN_BEAUTY_CLUB_CARD, dynamicValues);
+          break;
+        case "{{natural_ingredients}}":
+          cardHtml = applyTemplate(CARDS.NATURAL_INGREDIENTS_CARD, dynamicValues);
+          break;
+        case "{{social_media}}":
+          cardHtml = applyTemplate(CARDS.SOCIAL_MEDIA_CARD, dynamicValues);
+          break;
+        case "{{contact}}":
+          cardHtml = applyTemplate(CARDS.CONTACT_CARD, dynamicValues);
+          break;
+        case "{{rate_experience}}":
+          cardHtml = applyTemplate(CARDS.RATE_EXPERIENCE_CARD, dynamicValues);
+          break;
+        case "{{header_logo_card}}":
+          cardHtml = applyTemplate(CARDS.HEADER_LOGO_CARD, dynamicValues);
+          break;
+       
+        default:
+          cardHtml = "";
+      }
+
+      // Replace only the first occurrence of placeholder with component HTML
+      output = output.replace(placeholder, cardHtml);
+    }
+  }
+
+  // After processing enabled ones, remove any leftover placeholders (disabled or unused)
+  const allPlaceholders = Object.values(SECTION_MAP);
+  for (const ph of allPlaceholders) {
+    output = output.replace(new RegExp(ph, "g"), "");
+  }
+
+  // finally replace any remaining simple dynamic placeholders (images array, etc.)
+  output = applyTemplate(output, dynamicValues);
+
+  // product id
   output = output.replaceAll("{{productId}}", String(product.id ?? ""));
 
-  /* ---------------------------------------------
-     SEO TAGS
-  ---------------------------------------------- */
-  const Meta_SEO_CARD = `
-<title>${product.pageTitle}</title>
-<meta name="description" content="${product.metaDescription}">
-<meta property="og:title" content="${product.pageTitle}">
-<meta property="og:description" content="${product.metaDescription}">
-<meta property="og:image" content="${product.og_image}">
-`;
-
-  /* ---------------------------------------------
-     DYNAMIC TOP SLIDER IMAGES
-  ---------------------------------------------- */
-  const TOP_SLIDER_CARD = `
-<div class="header">
-  <div class="swiper header-swiper">
-    <div class="swiper-wrapper">
-      ${product.images
-        .map(
-          (img) =>
-            `<div class="swiper-slide" style="background-image:url('${img}')"></div>`
-        )
-        .join("")}
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-  <div class="header-overlay">
-    <h1>${product.productName}</h1>
-    <p>Timeless Beauty • Natural Ingredients • Cruelty-Free</p>
-  </div>
-</div>`;
-
-const TOP_SLIDER_CARD_TOW = `
-<style>  .hero-slider .swiper-slide img {
-  width: 100%;
-  
-  object-fit: cover;
-  border-radius: var(--radius);
-}</style>
-<div class="hero-slider swiper">
-<div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="/F2.jpg" alt="Wine 1"></div>
-    <div class="swiper-slide"><img src="/F1.jpg" alt="Wine 2"></div>
-    <div class="swiper-slide"><img src="/F3.jpg" alt="Wine 3"></div>
-</div>
-<div class="swiper-pagination"></div>
-</div>`;
-  /* ---------------------------------------------
-     ABOUT BRAND -1
-  ---------------------------------------------- */
-  const ABOUT_BRAND_CARD = `
-<div class="section card">
-  <h2>About Our Brand</h2>
-  <p>${product.description || ""}</p>
-</div>`;
-
-const TOP_HEADER_LOGO = `
-<style>
-.header {
-  position: relative;
-  text-align: center;
-  padding: 40px 0 20px;
-}
-.logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.header h1 {
-  font-size: 28px;
-  margin: 20px 0 10px;
-  color: var(--primary);
-}
-.header p { font-size: 17px; color: #666; }
-</style>
-<div class="header">
-<img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/luxury_wine_logo.png" alt="Logo" class="logo">
-<h1>Luxury Wines</h1>
-<p>Exquisite Taste Since 1985</p>
-</div>`;
-
-  /* ---------------------------------------------
-     PRODUCT SPOTLIGHT
-  ---------------------------------------------- */
-
-  const HEADER_LOGO_CARD_TOW = ` <div class="header">
-  <img src="https://cdn0070.qrcodechimp.com/images/defaultImages/product-page/luxury_wine_logo.png" alt="Logo" class="logo">
-  <h1>Luxury Wines</h1>
-  <p>Exquisite Taste Since 1985</p>
-</div>`;
-// 2. Specifications (dynamic – same as your example)
-const PRODUCT_SPOTLIGHT_DATA = product.custom_fields_meta || [];
-
-const PRODUCT_SPOTLIGHT_CARD = product.custom_fields_meta.length > 0 ? `
-<div class="section card" style="text-align:left">
-  <!-- AI Badge -->
- 
-
-  <div>
-    <h2 style="font-size:22px; margin:0 0 20px; font-weight:800;">
-      Product Spotlights
-    </h2>
-
-    <!-- Dynamic Label : Value Rows -->
-    ${PRODUCT_SPOTLIGHT_DATA.map(item => `
-      <div style="margin-bottom:18px; line-height:1.7; font-size:15px;">
-        <strong >${item.name}:</strong> 
-        <span style="color:#000;">${item.value}</span>
-      </div>`).join('')}
-  </div>
-</div>` : '';
-
-
-  /* ---------------------------------------------
-     SPECIFICATIONS TABLE
-  ---------------------------------------------- */
-  const SPECS_CARD =
-    product.custom_fields_meta && product.custom_fields_meta.length > 0
-      ? `
-<div class="section card">
-  <h2>Specifications</h2>
-  <table class="specs-table">
-    ${product.custom_fields_meta
-      .map(
-        (f) => `
-      <tr>
-        <td class="product--properties-label">${f.name}</td>
-        <td class="product--properties-value">${f.value}</td>
-      </tr>`
-      )
-      .join("")}
-  </table>
-</div>`
-      : "";
-
-  /* ---------------------------------------------
-     OUR COLLECTION – DYNAMIC GALLERY
-  ---------------------------------------------- */
-  const OUR_COLLECTION_CARD = `
-  <style>
-  /* Swiper Gallery */
-  .swiper {
-      width: 100%;
-      padding: 20px 0;
-  }
-  .gallery-header .swiper-slide {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  }
-  .gallery-header img, .slide {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-  }
-  .section {
-      background: #fff;
-      margin: 20px 0;
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 7px 29px rgba(100,100,100,0.1);
-  }
-  .section h2 {
-      font-size: 22px;
-      text-align: center;
-      margin-bottom: 10px;
-      color: var(--primary);
-  }
-  .section p {
-      text-align: center;
-      color: #666;
-      margin-bottom: 15px;
-  }
-
-  </style>
-<div class="section">
-  <h2>Our Collection</h2>
-  <div class="swiper gallery-swiper">
-    <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="/F1.jpg" alt="Product"></div>
-    <div class="swiper-slide"><img src="/F2.jpg" alt="Product"></div>
-    <div class="swiper-slide"><img src="/F3.jpg" alt="Product"></div>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-</div>`;
-
-const OUR_COLLECTION_CARD_TWO = `
-  <style>
-  /* Swiper Gallery */
-  .swiper {
-      width: 100%;
-      padding: 20px 0;
-  }
-  .gallery-header .swiper-slide {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  }
-  .gallery-header img, .slide {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-  }
-  .section {
-      background: #fff;
-      margin: 20px 0;
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 7px 29px rgba(100,100,100,0.1);
-  }
-  .section h2 {
-      font-size: 22px;
-      text-align: center;
-      margin-bottom: 10px;
-      color: var(--primary);
-  }
-  .section p {
-      text-align: center;
-      color: #666;
-      margin-bottom: 15px;
-  }
-
-  </style>
-
- 
-  <div class="section">
-          <div class="swiper">
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide"><img src="F1.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="F2.jpg" alt=""></div>
-                  <div class="swiper-slide"><img src="F3.jpg" alt=""></div>
-              </div>
-          </div>
-      
-</div>`;
-
-  /* ---------------------------------------------
-     STATIC CARDS (NO CHANGE)
-  ---------------------------------------------- */
-  const videoEmbedUrl = convertToEmbedUrl(product.videoUrl || "");
-
-  const YOUTUBE_CARD = `
-  <div class="section card">
-    <h2>Watch Our Story</h2>
-    
-      <iframe 
-        src="${videoEmbedUrl || "https://www.youtube.com/embed/bOuLmR8K5Tk"}" 
-        allowfullscreen
-      ></iframe>
-   
-  </div>`;
-  
-  const FEATURED_PRODUCTS_CARD = `
-<div class="section">
-  <h2>Featured Products</h2>
-  <div class="swiper products-swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="product">
-          <img src="/F1.jpg" alt="Serum">
-          <div class="product-info">
-            <div class="product-title">Radiant Glow Serum</div>
-            <div class="rating">4.0 stars</div>
-            <div class="price">$89.00</div>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="product">
-          <img src="/F2.jpg" alt="Cream">
-          <div class="product-info">
-            <div class="product-title">Hydrating Night Cream</div>
-            <div class="rating">5.0 stars</div>
-            <div class="price">$74.50</div>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="product">
-          <img src="/F3.jpg" alt="Mask">
-          <div class="product-info">
-            <div class="product-title">Detox Clay Mask</div>
-            <div class="rating">4.0 stars</div>
-            <div class="price">$42.00</div>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-</div>`;
-
-  const JOIN_BEAUTY_CLUB_CARD = `
-<div class="section card">
-  <h2>Join the Beauty Club</h2>
-  <p>Get 15% off your first order + exclusive access to new launches</p>
-  <a href="#" class="cta-btn">Register Now</a>
-</div>`;
-
-  const NATURAL_INGREDIENTS_CARD = `
-<div class="section card">
-<h2>Perfect for Everyday Wear</h2>
-<p>Stylish, versatile, and durable—ideal for work, travel, and casual outings.</p>
-
-  <img src="/F4.jpg"
-    style="width:100%; border-radius:12px; margin-top:15px;">
-</div>`;
-
-  const SOCIAL_MEDIA_CARD = `
-  <style>
-  .section p {text-align:left; color:#666; margin:5px 0 0;}
-  </style>
-<div class="section card">
-  <h2>Follow Us</h2>
-  <ul class="social-list">
-    <li class="social-item">
-      <a href="https://facebook.com" class="social-link">
-        <div class="social-icon" style="background-image:url('//cdn0070.qrcodechimp.com/images/digitalCard/fb_icon@72x.png')"></div>
-        <div class="social-text"><h3>Facebook</h3><p>Follow us for tips & offers</p></div>
-        <i class="fas fa-chevron-right"></i>
-      </a>
-    </li>
-    <li class="social-item">
-      <a href="https://instagram.com" class="social-link">
-        <div class="social-icon" style="background-image:url('//cdn0070.qrcodechimp.com/images/digitalCard/insta_icon@72x.png')"></div>
-        <div class="social-text"><h3>Instagram</h3><p>See our latest looks</p></div>
-        <i class="fas fa-chevron-right"></i>
-      </a>
-    </li>
-  </ul>
-</div>`;
-
-  const CONTACT_CARD = `
-  <style>
-  .section p{
-    line-height: 1;
-  }
- 
-  </style>
-  <div class="section qrc_contact qr_cc_card" data-index="8">
-  <div class="qrc_contact_header">
-     <div class="qrc_contact_hdr_img" style="background-image: url('//cdn0070.qrcodechimp.com/images/digitalCard/contactus.png?v=1763098999');"></div>
-     <h1>Contact Us</h1>
- </div>
- <div class="qrc_contact_info">
-     <div class="qrc_contact_info_title"><p>Call Us</p></div>
-     <div class="qrc_contact_number"><a href="tel:123 456 7890"><p>123 456 7890</p></a></div>
- </div><div class="qrc_email_info">
- <div class="qrc_email_info_title "><p>Email</p></div>
- <div class="qrc_email_id"><a href="mailto:contactme@domain.com"><p>contactme@domain.com</p></a></div>
-</div><div class="qrc_address_info">
-     <div class="qrc_address_info_title ">Address</div>
-     <div class="qrc_address_text"><p>817 N Ave<br>California, Chicago, 60622<br>US</p></div>
-     <a class="cta-btn" type="direction" href="//#" target="_blank" style="text-align:center"><span class="icon-direction_1">Direction</span></a>
- </div>
- 
-</div>`;
-
-  const RATE_EXPERIENCE_CARD = `
- 
-<div class="section card">
-  <h2>Rate Your Experience</h2>
-  <p style="text-align:center;">How satisfied are you with our brand?</p>
-  <div class="stars">
-    <div onclick="rate(1)"><i class="far fa-star"></i></div>
-    <div onclick="rate(2)"><i class="far fa-star"></i></div>
-    <div onclick="rate(3)"><i class="far fa-star"></i></div>
-    <div onclick="rate(4)"><i class="far fa-star"></i></div>
-    <div onclick="rate(5)"><i class="far fa-star"></i></div>
-  </div>
-</div>`;
- const HEADER_LOGO_CARD = `<div class="premium-header-section">
- 
- <div class="logo-wrapper">
-   <img 
-     src="//cdn0070.qrcodechimp.com/images/defaultImages/product-page/watch_logo.png?v=1763098999" 
-     alt="Brand Logo" 
-     >
- </div>
-
- <div class="title-desc">
-   <h1 style="color:#${tColor}" >${product.productName}</h1>
-   <p style="color:#${tColor}">Description – premium quality since 1985</p>
- </div>
- <div class="header-divider"></div>
-</div>`;
-  /* ---------------------------------------------
-     REPLACE TEMPLATE BLOCKS
-  ---------------------------------------------- */
-
-  const GLOBAL_CSS=` :root {
-    --theme-bg: #${bg}; /* background */
-    --theme-text: #${tColor}; /* text color */
-    --theme-heading-size: ${hsize}px; /* heading size */
-    --theme-para-size:  ${psize}px;    /* pare size */
-    --theme-primary: #000;    
-    --primary: #${bColor};           /* button */
-    --radius: 0.875rem;            /* 14px */
-    --shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
-   }
-   body {
-    background: var(--theme-bg) !important;
-    color: var(--theme-text) !important;
-  }
-
-  h1, h2, h3 {
-    color: var(--theme-text) !important;
-    font-size: var(--theme-heading-size) !important;
-  }
-
-  p {
-    font-size: var(--theme-para-size) !important;
- 
-  }
-
-  .container {
-    background: var(--theme-bg) !important;
-  }
-  
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
-    color:var(--text);
-    line-height:1.5;
-  }
-
-  .container {
-    max-width: 520px;
-    margin: 0 auto;
-    min-height: 100vh;
-    overflow-x: hidden;
-    padding:2vh;
-  }
-
-  /* HEADER */
-  .header { position:relative; overflow:hidden; border-radius:0 0 18px 18px; }
-  .header-swiper .swiper-slide {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-  }
-
-  @media (max-width: 390px) {
-    .header-swiper .swiper-slide { height: 240px; }
-  }
-
-  .header-overlay {
-    position:absolute;
-    bottom:0; left:0; right:0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.7));
-    padding: 30px 15px;
-    text-align:center;
-    color:white;
-  }
-
-  .header-overlay h1 { font-size:24px; }
-  .header-overlay p { font-size:14px; opacity:.9; }
-
-  /* SECTIONS */
-  .section {
-    padding: 20px 16px;
-    text-align:center;
-  }
-
-  .card {
-    background:white;
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:18px;
-    margin-bottom:18px;
-  }
-
-  h2 {
-    font-size:20px;
-    color:var(--primary);
-    margin-bottom:10px;
-    font-weight:700;
-  }
-
-  p { font-size:14px; color:#555; }
-
-  /* GALLERY */
-  .gallery-swiper img {
-    width:100%; height:300px; object-fit:cover;
-    border-radius:12px;
-  }
-
-  @media (max-width:480px) {
-    .gallery-swiper img 
-  }
-
-  /* VIDEO */
-  .video-wrapper {
-    position:relative; padding-bottom:56%; height:0;
-    border-radius:12px; overflow:hidden; box-shadow:var(--shadow);
-    margin-bottom:20px;
-  }
-
-  /* PRODUCTS */
-  .product {
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-    background:white;
-    margin:12px 8px;
-  }
-
-  .product img {
-    width:100%;  object-fit:cover;
-  }
-
-  .product-info { padding:16px; text-align:center; }
-
-  .product-title { font-weight:600; font-size:15px; margin-bottom:6px; }
-  .rating { font-size:13px; color:#ffc107; }
-  .price { font-size:18px; font-weight:bold; color:var(--primary); }
-
-  .buy-btn {
-    width:100%; padding:12px;
-    background:var(--primary); color:white;
-    border:none; border-radius:8px;
-    font-size:15px; cursor:pointer;
-    margin-top:12px;
-  }
-
-  /* CTA BUTTON */
-  .cta-btn {
-    display:block;
-    margin:20px auto;
-    padding:15px 40px;
-    background:var(--primary);
-    color:white;
-    text-decoration:none;
-    border-radius:40px;
-    font-size:17px;
-    box-shadow:0 4px 12px rgba(6,18,68,.25);
-  }
-
-  /* SOCIAL LINKS */
-  .social-item {
-   
-    background:#f7f7f7;
-    padding:14px;
-    margin:10px 0;
-    border-radius:12px;
-    align-items:center;
-  }
-
-  .social-icon {
-    width:42px; height:42px;
-    background-size:cover;
-    border-radius:10px;
-  }
-
-  .social-text { margin-left:14px; flex:1; text-align:left; }
-  .social-text h4 { font-size:15px; font-weight:600; }
-  .social-text p { font-size:12px; color:#777; }
-
-  /* CONTACT CARD */
-  .ql-contact-wrapper {
-    padding:20px; margin:20px; border-radius:12px;
-    background:white; box-shadow:var(--shadow);
-  }
-
-  .qrc_contact_hdr_text { font-size:18px; font-weight:700; }
-
-  .qrc_contact_number a, .qrc_email_id a {
-    font-size:13px; color:#666; text-decoration:none;
-  }
-
-  /* RATING */
-  .stars { display:flex; justify-content:center; gap:12px; margin-top:20px; }
-  .stars i {
-    font-size:34px;
-    color:#ddd;
-    transition:.3s;
-  }
-  .stars i.active { color:#ffc107; }
-
-  /* FLOATING BUTTONS */
-  .footer-actions {
-    position:fixed; bottom:18px; left:50%;
-    transform:translateX(-50%);
-    background:white;
-    border-radius:50px;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-    padding:10px 20px;
-    display:flex; gap:25px;
-    z-index:100;
-  }
-
-  .footer-actions i {
-    font-size:22px;
-    color:var(--primary);
-  }
-  /* FOLLOW US SECTION */
-.section.card {
-padding: 22px 18px;
-border-radius: 16px;
-background: #ffffff;
-box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-margin-bottom: 20px;
-}
-
-.section.card h2 {
-font-size: 20px;
-font-weight: 700;
-color: #061244;
-margin-bottom: 16px;
-}
-
-/* SOCIAL LIST */
-.social-list {
-list-style: none;
-padding: 0;
-margin: 0;
-}
-
-.social-item {
-margin-bottom: 14px;
-}
-
-.social-link {
-display: flex;
-align-items: center;
-background: #f8f9fc;
-border-radius: 14px;
-padding: 14px;
-text-decoration: none;
-color: #222;
-box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-transition: transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-/* Hover / Mobile Tap Feel */
-.social-link:hover {
-transform: translateY(-2px);
-box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-
-/* ICON */
-.social-icon {
-width: 46px;
-height: 46px;
-border-radius: 12px;
-background-size: cover;
-background-position: center;
-margin-right: 14px;
-}
-
-/* TEXT */
-.social-text {
-flex: 1;
-text-align: left;
-}
-
-.social-text h4 {
-font-size: 15px;
-font-weight: 600;
-margin-bottom: 4px;
-}
-
-.social-text p {
-font-size: 13px;
-color: #777;
-}
-
-/* ARROW ICON */
-.social-link i {
-font-size: 16px;
-color: #999;
-}
-
-/* MOBILE OPTIMIZED */
-@media (max-width: 480px) {
-.social-link {
-padding: 12px;
-}
-
-.social-icon {
-width: 40px;
-height: 40px;
-}
-
-.social-text h4 {
-font-size: 14px;
-}
-
-.social-text p {
-font-size: 12px;
-}
-}
-/* CONTACT CARD WRAPPER */
-.qrc_contact.qr_cc_card {
-background: #ffffff;
-border-radius: 14px;
-padding: 20px 18px;
-margin: 20px 0;
-box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-font-family: "Inter", "SF Pro Text", sans-serif;
-text-align: left;  /* LEFT ALIGN EVERYTHING */
-}
-
-/* HEADER */
-.qrc_contact_header {
-display: flex;
-align-items: center;
-gap: 14px;
-padding-bottom: 18px;
-margin-bottom: 22px;
-border-bottom: 1px dashed #e6e7ef;
-}
-
-.qrc_contact_hdr_img {
-width: 48px;
-height: 48px;
-background-size: cover;
-background-position: center;
-border-radius: 12px;
-}
-
-.qrc_contact_hdr_text {
-font-size: 20px;
-font-weight: 700;
-color: #111;
-}
-
-/* INFO BLOCKS (Call, Email, Address) */
-.qrc_contact_info,
-.qrc_email_info,
-.qrc_address_info {
-margin-bottom: 20px;
-}
-
-.qrc_contact_info_title,
-.qrc_email_info_title,
-.qrc_address_info_title {
-font-size: 15px;
-font-weight: 600;
-color: #333;
-margin-bottom: 6px;
-}
-
-/* TEXT VALUES */
-.qrc_contact_number a,
-.qrc_email_id a {
-font-size: 14px;
-color: #777;
-text-decoration: none;
-display: block;
-margin-top: 2px;
-}
-
-.qrc_contact_number a:hover,
-.qrc_email_id a:hover {
-text-decoration: underline;
-}
-
-/* ADDRESS TEXT */
-.qrc_address_text {
-font-size: 14px;
-color: #555;
-line-height: 1.5;
-margin-bottom: 12px;
-}
-
-/* DIRECTION BUTTON */
-.qrc_direction_btn {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-background: #0b57cf;
-color: #fff !important;
-text-decoration: none;
-padding: 10px 18px;
-border-radius: 8px;
-font-size: 14px;
-font-weight: 500;
-transition: background .2s ease;
-}
-
-.qrc_direction_btn:hover {
-background: #0947ad;
-}
-
-.qrc_direction_btn .icon-direction_1 {
-font-size: 16px;
-}
-
-/* MOBILE OPTIMIZATION */
-@media (max-width: 480px) {
-.qrc_contact.qr_cc_card {
-padding: 16px;
-}
-
-.qrc_contact_hdr_text {
-font-size: 18px;
-}
-
-.qrc_contact_hdr_img {
-width: 42px;
-height: 42px;
-}
-
-.qrc_address_text,
-.qrc_contact_number a,
-.qrc_email_id a {
-font-size: 13px;
-}
-}
-.premium-header-section {
-text-align: center;
-padding: 40px 20px 30px;
-
-}
-
-.logo-wrapper {
-margin-bottom: 20px;
-}
-
-.brand-logo {
-width: 110px;
-height: 110px;
-object-fit: contain;
-border-radius: 20px;
-box-shadow: 0 10px 30px rgba(6, 18, 68, 0.15);
-padding: 12px;
-background: #188ca2;
-border: 1px solid #f0f0f0;
-transition: all 0.4s ease;
-}
-
-.brand-title {
-font-size: 28px;
-font-weight: 700;
-color: #111;
-margin: 0 0 12px 0;
-letter-spacing: -0.5px;
-line-height: 1.2;
-}
-
-.brand-tagline {
-font-size: 16px;
-color: #555;
-margin: 0;
-line-height: 1.5;
-max-width: 90%;
-margin-left: auto;
-margin-right: auto;
-font-weight: 400;
-}
-
-/* Subtle bottom divider */
-.header-divider {
-height: 1px;
-background: linear-gradient(to right, transparent, #e0e0e0 30%, #e0e0e0 70%, transparent);
-margin: 35px auto 0;
-width: 60%;
-border-radius: 1px;
-}
-
-/* Extra polish on small phones */
-@media (max-width: 480px) {
-.premium-header-section { padding: 35px 15px 25px; }
-.brand-logo { width: 100px; height: 100px; }
-.brand-title { font-size: 26px; }
-.brand-tagline { font-size: 15.5px; }
-}
-.luxury-floating-footer {
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
-background: rgba(255, 255, 255, 0.95);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border-top: 1px solid #eee;
-display: flex;
-justify-content: space-around;
-padding: 12px 0 18px;
-box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
-z-index: 999;
-}
-
-.footer-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-font-size: 11px;
-color: #333;
-font-weight: 500;
-gap: 6px;
-min-width: 50px;
-}
-
-.footer-item i {
-font-size: 22px;
-color: var(--primary);
-}
-
-.main-cta {
-transform: translateY(-18px);
-}
-
-.main-cta a {
-background: linear-gradient(135deg, #25d366, #128c7e);
-width: 64px;
-height: 64px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 32px;
-box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-0% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
-70% { box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
-100% { box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
-}
-  `;
-
-  output = output
-    .replace("{{meta_seo}}", Meta_SEO_CARD)
-    .replace("{{top_slider_card}}", TOP_SLIDER_CARD)
-    .replace("{{top_slider_card_tow}}", TOP_SLIDER_CARD_TOW)
-    .replace("{{about_brand}}", ABOUT_BRAND_CARD)
-    .replace('{{product_spotlight}}', PRODUCT_SPOTLIGHT_CARD)
-    .replace("{{specifications}}", SPECS_CARD)
-    .replace("{{our_collection}}", OUR_COLLECTION_CARD)
-    .replace("{{youtube}}", YOUTUBE_CARD)
-    .replace("{{featured_products}}", FEATURED_PRODUCTS_CARD)
-    .replace("{{join_club}}", JOIN_BEAUTY_CLUB_CARD)
-    .replace("{{natural_ingredients}}", NATURAL_INGREDIENTS_CARD)
-    .replace("{{social_media}}", SOCIAL_MEDIA_CARD)
-    .replace("{{contact}}", CONTACT_CARD)
-    .replace("{{rate_experience}}", RATE_EXPERIENCE_CARD)
-    .replace("{{header_logo_card}}", HEADER_LOGO_CARD)
-    .replace("{{header_logo_card_tow}}", HEADER_LOGO_CARD_TOW)
-    .replace("{{global_css}}", GLOBAL_CSS);
   return output;
-}
-
-/* ---------------------------------------------
-   RENDER PREVIEW (ADMIN)
----------------------------------------------- */
-export function renderLandingPreview(
-  product: any,
-  templateName: string
-): { html: string; templateName: string; isValid: boolean } {
-  const isValid = !!TEMPLATES[templateName];
-  const html = renderLanding(product, templateName);
-
-  return {
-    html,
-    templateName: isValid ? templateName : "ecommerce",
-    isValid
-  };
 }

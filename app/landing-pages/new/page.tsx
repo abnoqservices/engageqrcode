@@ -1,340 +1,393 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { DashboardLayout } from "@/components/dashboard/layout"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Switch } from "@/components/ui/switch"
-import { Sparkles, LayoutTemplate, Check, GripVertical, ArrowLeft } from 'lucide-react'
-import { cn } from "@/lib/utils"
-import Link from "next/link"
+import * as React from "react";
+import { DashboardLayout } from "@/components/dashboard/layout";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
+import { GripVertical } from "lucide-react";
+import { useParams } from "next/navigation";
 
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
+// -----------------------------
+// Sortable Item Component
+// -----------------------------
+function SortableItem({ item, toggle }: { item: any; toggle: any }) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: item.section });
+
+  const style = { transform: CSS.Transform.toString(transform), transition };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="flex items-center justify-between rounded-lg border border-slate-200 p-3 bg-white"
+    >
+      <div className="flex items-center gap-3">
+        <GripVertical
+          className="h-4 w-4 text-muted-foreground cursor-grab"
+          {...attributes}
+          {...listeners}
+        />
+        <span className="text-sm font-medium">{item.section}</span>
+      </div>
+      <Switch checked={item.enabled} onCheckedChange={() => toggle(item.section)} />
+    </div>
+  );
+}
+
+// -----------------------------
+// Mobile Frame
+// -----------------------------
+const MobileFrame = ({ url }: { url: string }) => {
+  return (
+    <div className="w-[330px] h-[650px] mx-auto rounded-[45px] bg-black shadow-xl relative border-[10px] border-black overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-3xl z-20"></div>
+
+      <div className="w-[105%] h-full overflow-scroll no-scrollbar">
+        <iframe src={url} className="w-full h-full" style={{ border: "none" }} />
+      </div>
+
+      <style jsx>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+// -----------------------------
+// Main Component
+// -----------------------------
 export default function NewLandingPagePage() {
-  const [landingPageMethod, setLandingPageMethod] = React.useState<"template" | "ai" | null>(null)
-  const [selectedTemplate, setSelectedTemplate] = React.useState<string | null>(null)
-  const [aiPrompt, setAiPrompt] = React.useState("")
-  const [isGenerating, setIsGenerating] = React.useState(false)
+  const params = useParams();
+  const id = params?.id;
+  const isEditMode = Boolean(id);
 
-  const handleGenerateWithAI = () => {
-    setIsGenerating(true)
-    setTimeout(() => {
-      setIsGenerating(false)
-      setSelectedTemplate("ai-generated")
-    }, 2000)
-  }
+  // Dummy data for EDIT mode
+  const dummySaved = {
+    userId: 10,
+    templateName: "corporate",
+    sections: [
+      { "section": "Hero Banner", "enabled": true },
+  
 
-  const templates = [
-    {
-      id: "modern",
-      name: "Modern Tech",
-      description: "Clean, minimalist design perfect for tech products",
-      preview: "/modern-tech-event-landing-page.jpg",
+    // Customer Reviews (NOT in SECTION_MAP → removed)
+
+    // Product Highlights (NOT in SECTION_MAP → removed)
+
+    { "section": "Featured Products", "enabled": true },
+
+    // Special Offers (NOT in SECTION_MAP → removed)
+
+    { "section": "About Brand", "enabled": true },
+    { "section": "Product Spotlight", "enabled": true },
+    { "section": "Our Collection", "enabled": true },
+    { "section": "Video Demo", "enabled": true },
+    { "section": "Join Club", "enabled": true },
+    { "section": "Natural Ingredients", "enabled": true },
+    { "section": "Social Media", "enabled": true },
+    { "section": "Contact Form", "enabled": true },
+    { "section": "Rate Experience", "enabled": true },
+    { "section": "Header Logo", "enabled": true },
+ 
+   
+    ],
+    styles: {
+      primaryColor: "#ff0000",
+      backgroundColor: "#f7f7f7",
+      textColor: "#a97d38",
+      headlineSize: 32,
+      paragraphSize: 18,
     },
-    {
-      id: "corporate",
-      name: "Corporate Professional",
-      description: "Professional layout ideal for business products",
-      preview: "/corporate-event-landing-page.jpg",
+  };
+
+  // Default for NEW mode
+  const defaultSections = [
+    { "section": "Hero Banner", "enabled": true },
+  
+
+    // Customer Reviews (NOT in SECTION_MAP → removed)
+
+    // Product Highlights (NOT in SECTION_MAP → removed)
+
+    { "section": "Featured Products", "enabled": true },
+
+    // Special Offers (NOT in SECTION_MAP → removed)
+
+    { "section": "About Brand", "enabled": true },
+    { "section": "Product Spotlight", "enabled": true },
+    { "section": "Our Collection", "enabled": true },
+    { "section": "Video Demo", "enabled": true },
+    { "section": "Join Club", "enabled": true },
+    { "section": "Natural Ingredients", "enabled": true },
+    { "section": "Social Media", "enabled": true },
+    { "section": "Contact Form", "enabled": true },
+    { "section": "Rate Experience", "enabled": true },
+    { "section": "Header Logo", "enabled": true },
+
+  
+  ];
+
+  const defaultStyles = {
+    primaryColor: "#091144",
+    backgroundColor: "#000000",
+    textColor: "#a97d38",
+    headlineSize: 28,
+    paragraphSize: 16,
+  };
+
+  const [sections, setSections] = React.useState<any[]>([]);
+  const [styles, setStyles] = React.useState<any>({});
+  const [templateName, setTemplateName] = React.useState("modern");
+  const [ready, setReady] = React.useState(false);
+
+  // Load initial data
+  React.useEffect(() => {
+    if (isEditMode) {
+      setSections(dummySaved.sections);
+      setStyles(dummySaved.styles);
+      setTemplateName(dummySaved.templateName);
+    } else {
+      setSections(defaultSections);
+      setStyles(defaultStyles);
+      setTemplateName("modern");
     }
-  ]
+    setReady(true);
+  }, [isEditMode]);
+
+  // Toggle enabled
+  const toggleEnabled = (name: string) => {
+    setSections((prev) =>
+      prev.map((s) => (s.section === name ? { ...s, enabled: !s.enabled } : s))
+    );
+  };
+
+  // Sorting
+  const sensors = useSensors(useSensor(PointerSensor));
+
+  const onDragEnd = (event: any) => {
+    const { active, over } = event;
+    if (!over) return;
+
+    if (active.id !== over.id) {
+      setSections((prev) => {
+        const oldIndex = prev.findIndex((s) => s.section === active.id);
+        const newIndex = prev.findIndex((s) => s.section === over.id);
+        return arrayMove(prev, oldIndex, newIndex);
+      });
+    }
+  };
+
+  // Prepare Preview Data
+  const userId = isEditMode ? dummySaved.userId : 1;
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+
+  const previewPayload = ready
+    ? btoa(
+        JSON.stringify({
+          userId,
+          templateName,
+          sections,
+          styles,
+        })
+      )
+    : "";
 
   return (
     <DashboardLayout>
       <div className="max-w-6xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/landing-pages">
-              <Button variant="ghost" size="icon">
-                <ArrowLeft className="h-5 w-5" />
-              </Button>
-            </Link>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">Create Landing Page</h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                Choose a template or generate with AI
-              </p>
-            </div>
-          </div>
-          {selectedTemplate && (
-            <div className="flex gap-2">
-              <Button variant="outline">Save Draft</Button>
-              <Button>Publish</Button>
-            </div>
-          )}
-        </div>
+        <h1 className="text-3xl font-bold mt-4">
+          {isEditMode ? "Edit Landing Page" : "Create Landing Page"}
+        </h1>
 
-        {/* Method Selection */}
-        {!landingPageMethod ? (
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card className="cursor-pointer border-2 hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <LayoutTemplate className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Choose Template</CardTitle>
-                    <CardDescription className="text-sm">
-                      Select from pre-designed templates
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  className="w-full gap-2"
-                  onClick={() => setLandingPageMethod("template")}
-                >
-                  <LayoutTemplate className="h-4 w-4" />
-                  Browse Templates
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="cursor-pointer border-2 hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-purple-100">
-                    <Sparkles className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Generate with AI</CardTitle>
-                    <CardDescription className="text-sm">
-                      Let AI create a custom design
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  className="w-full gap-2 bg-purple-600 hover:bg-purple-700"
-                  onClick={() => setLandingPageMethod("ai")}
-                >
-                  <Sparkles className="h-4 w-4" />
-                  Create with AI
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        ) : landingPageMethod === "template" && !selectedTemplate ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
+          {/* LEFT */}
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle>Choose a Template</CardTitle>
-                  <CardDescription>
-                    Select a pre-designed template for your landing page
-                  </CardDescription>
-                </div>
-                <Button 
-                  variant="outline" 
-                  onClick={() => setLandingPageMethod(null)}
-                >
-                  Back
-                </Button>
-              </div>
+              <CardTitle>Sections</CardTitle>
+              <CardDescription>Enable, disable, reorder sections</CardDescription>
             </CardHeader>
+
             <CardContent>
-              <div className="grid gap-6 md:grid-cols-2">
-                {templates.map((template) => (
-                  <Card
-                    key={template.id}
-                    className={cn(
-                      "cursor-pointer transition-all hover:shadow-lg",
-                      selectedTemplate === template.id && "ring-2 ring-primary"
-                    )}
-                    onClick={() => setSelectedTemplate(template.id)}
-                  >
-                    <div className="relative">
-                      <img
-                        src={template.preview || "/placeholder.svg"}
-                        alt={template.name}
-                        className="w-full h-48 object-cover rounded-t-lg"
-                      />
-                      {selectedTemplate === template.id && (
-                        <div className="absolute top-2 right-2 bg-primary text-white rounded-full p-1">
-                          <Check className="h-4 w-4" />
-                        </div>
-                      )}
-                    </div>
-                    <CardHeader>
-                      <CardTitle className="text-base">{template.name}</CardTitle>
-                      <CardDescription className="text-sm">
-                        {template.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                ))}
-              </div>
+              <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+                <SortableContext items={sections.map((s) => s.section)} strategy={verticalListSortingStrategy}>
+                  <div className="space-y-2">
+                    {sections.map((s) => (
+                      <SortableItem key={s.section} item={s} toggle={toggleEnabled} />
+                    ))}
+                  </div>
+                </SortableContext>
+              </DndContext>
+
+              {/* Styling */}
+              <Card className="mt-6">
+                <CardHeader>
+                  <CardTitle>Styling</CardTitle>
+                </CardHeader>
+
+                <CardContent className="space-y-8 px-4 py-2">
+
+{/* Primary + Background */}
+<div className="grid sm:grid-cols-2 gap-8">
+
+  {/* Primary Color */}
+  <div className="space-y-2">
+    <Label className="text-sm font-medium">Primary Button Color</Label>
+
+    <div className="flex items-center gap-3">
+      <Input
+        type="color"
+        className="w-12 h-10 p-1 rounded-md border"
+        value={styles.primaryColor}
+        onChange={(e) =>
+          setStyles({ ...styles, primaryColor: e.target.value })
+        }
+      />
+
+      <Input
+        type="text"
+        className="flex-1"
+        value={styles.primaryColor}
+        onChange={(e) =>
+          setStyles({ ...styles, primaryColor: e.target.value })
+        }
+      />
+    </div>
+  </div>
+
+  {/* Background Color */}
+  <div className="space-y-2">
+    <Label className="text-sm font-medium">Background Color</Label>
+
+    <div className="flex items-center gap-3">
+      <Input
+        type="color"
+        className="w-12 h-10 p-1 rounded-md border"
+        value={styles.backgroundColor}
+        onChange={(e) =>
+          setStyles({ ...styles, backgroundColor: e.target.value })
+        }
+      />
+
+      <Input
+        type="text"
+        className="flex-1"
+        value={styles.backgroundColor}
+        onChange={(e) =>
+          setStyles({ ...styles, backgroundColor: e.target.value })
+        }
+      />
+    </div>
+  </div>
+
+</div>
+
+{/* Text Color */}
+<div className="space-y-2">
+  <Label className="text-sm font-medium">Text Color</Label>
+
+  <div className="flex items-center gap-3">
+    <Input
+      type="color"
+      className="w-12 h-10 p-1 rounded-md border"
+      value={styles.textColor}
+      onChange={(e) =>
+        setStyles({ ...styles, textColor: e.target.value })
+      }
+    />
+
+    <Input
+      type="text"
+      className="flex-1"
+      value={styles.textColor}
+      onChange={(e) =>
+        setStyles({ ...styles, textColor: e.target.value })
+      }
+    />
+  </div>
+</div>
+
+{/* Font Sizes */}
+<div className="grid sm:grid-cols-2 gap-8">
+  <div className="space-y-2">
+    <Label className="text-sm font-medium">Headline Size (px)</Label>
+    <Input
+      type="number"
+      min="16"
+      max="72"
+      className="rounded-md"
+      value={styles.headlineSize}
+      onChange={(e) =>
+        setStyles({ ...styles, headlineSize: Number(e.target.value) })
+      }
+    />
+  </div>
+
+  <div className="space-y-2">
+    <Label className="text-sm font-medium">Paragraph Size (px)</Label>
+    <Input
+      type="number"
+      min="12"
+      max="40"
+      className="rounded-md"
+      value={styles.paragraphSize}
+      onChange={(e) =>
+        setStyles({ ...styles, paragraphSize: Number(e.target.value) })
+      }
+    />
+  </div>
+</div>
+
+</CardContent>
+              </Card>
             </CardContent>
           </Card>
-        ) : landingPageMethod === "ai" && !selectedTemplate ? (
+
+          {/* RIGHT */}
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle className="flex items-center gap-2">
-                    <Sparkles className="h-5 w-5 text-purple-600" />
-                    Generate with AI
-                  </CardTitle>
-                  <CardDescription>
-                    Describe your landing page and let AI create it
-                  </CardDescription>
-                </div>
-                <Button 
-                  variant="outline" 
-                  onClick={() => setLandingPageMethod(null)}
-                  disabled={isGenerating}
-                >
-                  Back
-                </Button>
-              </div>
+              <CardTitle>Mobile Preview</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="ai-prompt">Describe Your Landing Page</Label>
-                  <Textarea
-                    id="ai-prompt"
-                    placeholder="Example: Create a modern landing page for a premium laptop with hero section, key features grid, detailed specifications, customer testimonials, and purchase form. Use blue and white colors with a tech-focused feel."
-                    rows={6}
-                    value={aiPrompt}
-                    onChange={(e) => setAiPrompt(e.target.value)}
-                    disabled={isGenerating}
-                  />
-                </div>
 
-                <div className="rounded-lg bg-purple-50 p-4 space-y-2">
-                  <p className="text-sm font-medium text-purple-900">AI will generate:</p>
-                  <ul className="text-sm text-purple-700 space-y-1 ml-4 list-disc">
-                    <li>Custom page layout based on your description</li>
-                    <li>Appropriate sections and components</li>
-                    <li>Color scheme and typography</li>
-                    <li>Content structure and placeholders</li>
-                  </ul>
-                </div>
-
-                <Button 
-                  className="w-full gap-2 bg-purple-600 hover:bg-purple-700"
-                  disabled={!aiPrompt.trim() || isGenerating}
-                  onClick={handleGenerateWithAI}
-                >
-                  {isGenerating ? (
-                    <>
-                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="h-4 w-4" />
-                      Generate Landing Page
-                    </>
-                  )}
-                </Button>
-              </div>
+            <CardContent className="flex justify-center py-6">
+              {ready && (
+                <MobileFrame
+                  key={previewPayload}
+                  url={`${baseUrl}/api/landing-html/${userId}?template=${templateName}&data=${previewPayload}`}
+                />
+              )}
             </CardContent>
           </Card>
-        ) : (
-          <>
-            <div className="flex items-center justify-between">
-              <Badge variant="secondary" className="gap-1">
-                {landingPageMethod === "template" ? (
-                  <>
-                    <LayoutTemplate className="h-3 w-3" />
-                    Template: {templates.find(t => t.id === selectedTemplate)?.name}
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="h-3 w-3" />
-                    AI Generated
-                  </>
-                )}
-              </Badge>
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => {
-                  setLandingPageMethod(null)
-                  setSelectedTemplate(null)
-                  setAiPrompt("")
-                }}
-              >
-                Change Method
-              </Button>
-            </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Landing Page Sections</CardTitle>
-                <CardDescription>Configure your landing page sections</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {[
-                  "Hero Banner",
-                  "Product Highlights",
-                  "Specifications Grid",
-                  "Video Demo",
-                  "Image Gallery",
-                  "Special Offers",
-                  "Customer Reviews",
-                  "Contact Form",
-                ].map((section) => (
-                  <div
-                    key={section}
-                    className="flex items-center justify-between rounded-lg border border-slate-200 p-3"
-                  >
-                    <div className="flex items-center gap-3">
-                      <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
-                      <span className="text-sm font-medium">{section}</span>
-                    </div>
-                    <Switch defaultChecked />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Branding Colors</CardTitle>
-                <CardDescription>Customize your landing page colors</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="primary-color">Primary Color</Label>
-                    <div className="flex gap-2">
-                      <Input
-                        id="primary-color"
-                        type="color"
-                        defaultValue="#6366f1"
-                        className="w-16 h-10 p-1"
-                      />
-                      <Input value="#6366f1" readOnly className="flex-1" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="accent-color">Accent Color</Label>
-                    <div className="flex gap-2">
-                      <Input
-                        id="accent-color"
-                        type="color"
-                        defaultValue="#8b5cf6"
-                        className="w-16 h-10 p-1"
-                      />
-                      <Input value="#8b5cf6" readOnly className="flex-1" />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </>
-        )}
+        </div>
+        
+        {/* JSON RESULT */}
+        <pre className="bg-slate-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto">
+            {JSON.stringify({
+              userId,
+              templateName,
+              sections,
+              styles
+            }, null, 2)}
+        </pre>
       </div>
     </DashboardLayout>
-  )
+  );
 }

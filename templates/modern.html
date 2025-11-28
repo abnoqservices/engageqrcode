@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- SEO -->
+    {{meta_seo}}
+
+    <!-- Global Dynamic CSS -->
+    <style>
+      {{global_css}}
+    </style>
+
+    <!-- Swiper CSS (for sliders) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <body>
+<div class="container">
+    <!-- HEADER LOGOS -->
+    {{header_logo_card}}
+  
+
+    <!-- HERO SECTIONS -->
+    {{top_slider_card}}
+   
+
+    <!-- BRAND SECTION -->
+    {{about_brand}}
+
+    <!-- PRODUCT DETAILS -->
+    {{product_spotlight}}
+
+    <!-- SPECIFICATION TABLE -->
+    {{specifications}}
+
+    <!-- COLLECTION / GALLERY -->
+    {{our_collection}}
+
+    <!-- YOUTUBE VIDEO -->
+    {{youtube}}
+
+    <!-- FEATURED PRODUCTS -->
+    {{featured_products}}
+
+    <!-- JOIN CLUB CTA -->
+    {{join_club}}
+
+    <!-- NATURAL INGREDIENT VISUAL -->
+    {{natural_ingredients}}
+
+    <!-- SOCIAL MEDIA LINKS -->
+    {{social_media}}
+
+    <!-- CONTACT CARD -->
+    {{contact}}
+
+    <!-- RATING SECTION -->
+    {{rate_experience}}
+</div>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+  
+    <script>
+      // Hero Fade Slider
+      new Swiper('.hero-slider', {
+          effect: 'fade',
+          loop: true,
+          autoplay: { delay: 4000 },
+          pagination: { el: '.swiper-pagination', clickable: true }
+      });
+  
+      // Gallery & Products
+      new Swiper('.gallery-swiper, .products-swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: 15,
+          centeredSlides: false,
+          loop: true,
+          autoplay: { delay: 3500 }
+      });
+          new Swiper('.gallery-header', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            autoplay: { delay: 3000 },
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: { el: '.swiper-pagination' },
+        });
+    
+        new Swiper('.products-swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 15,
+            pagination: { el: '.swiper-pagination' },
+        });
+        function rate(n) {
+          document.querySelectorAll('.stars i').forEach((star, i) => {
+            star.className = i < n ? 'fas fa-star active' : 'far fa-star';
+          });
+        }
+  </script>
+  </body>
+</html>

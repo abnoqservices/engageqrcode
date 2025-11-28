@@ -685,13 +685,13 @@ const clearForm = () => {
   
   const params = new URLSearchParams({
     template: selectedPage?.template ?? "",
-    // bg: landingPageStyle.background.replace("#", ""),
-    // hSize: String(landingPageStyle.headingSize),
-    // pSize: String(landingPageStyle.paragraphSize),
+    bg: landingPageStyle.background.replace("#", ""),
+    hSize: String(landingPageStyle.headingSize),
+    pSize: String(landingPageStyle.paragraphSize),
   
-    // // NEW
-    // bColor: landingPageStyle.buttonColor.replace("#", ""),
-    // tColor: landingPageStyle.textColor.replace("#", ""),
+    // NEW
+    bColor: landingPageStyle.buttonColor.replace("#", ""),
+    tColor: landingPageStyle.textColor.replace("#", ""),
   });
   
   

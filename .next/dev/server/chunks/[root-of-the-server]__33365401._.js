@@ -1580,7 +1580,7 @@ function convertToEmbedUrl(url) {
     }
     return url;
 }
-function renderLanding(raw, templateName, bg, hsize, psize, tColor, bColor) {
+function renderLanding(raw, templateName, bg, hsize, psize, tColor, bColor, rawData) {
     const product = mapJsonToProduct(raw);
     const selectedTemplate = templateName && TEMPLATES[templateName] ? TEMPLATES[templateName] : TEMPLATES.modern;
     let output = selectedTemplate;
@@ -1603,6 +1603,15 @@ function renderLanding(raw, templateName, bg, hsize, psize, tColor, bColor) {
         const val = product[k] ?? "";
         output = output.replaceAll(`{{${k}}}`, String(val));
     });
+    let fullData = null;
+    if (rawData) {
+        try {
+            fullData = JSON.parse(Buffer.from(rawData, "base64").toString("utf-8"));
+        } catch (e) {
+            console.error("Invalid Base64 JSON:", e);
+        }
+    }
+    console.log("Full Data checked:", fullData);
     // Product ID
     output = output.replaceAll("{{productId}}", String(product.id ?? ""));
     /* ---------------------------------------------
@@ -2540,6 +2549,8 @@ async function GET(request, { params }) {
         const { slug } = await params;
         // Fetch product data (replace with your database query)
         const productData = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$products$2e$json__$28$json$29$__["default"][slug];
+        const rawData = searchParams.get("data");
+        //console.log("Full Data:", fullData);    
         if (!productData) {
             return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"](`<html><body><h1>Product Not Found</h1><p>Product ID: ${slug} does not exist.</p></body></html>`, {
                 status: 404,
@@ -2549,7 +2560,7 @@ async function GET(request, { params }) {
             });
         }
         // Render the landing page with selected template
-        const html = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$renderLanding$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["renderLanding"])(productData, templateName, bg, hSize, pSize, tColor, bColor);
+        const html = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$renderLanding$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["renderLanding"])(productData, templateName, bg, hSize, pSize, tColor, bColor, rawData);
         // Return HTML response
         return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"](html, {
             status: 200,
