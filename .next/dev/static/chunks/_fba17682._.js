@@ -1790,16 +1790,9 @@ function NewLandingPagePage() {
                 "enabled": true
             },
             {
-                "section": "Specifications Grid",
-                "enabled": false
-            },
-            // Customer Reviews (NOT in SECTION_MAP → removed)
-            // Product Highlights (NOT in SECTION_MAP → removed)
-            {
                 "section": "Featured Products",
                 "enabled": true
             },
-            // Special Offers (NOT in SECTION_MAP → removed)
             {
                 "section": "About Brand",
                 "enabled": true
@@ -1864,16 +1857,9 @@ function NewLandingPagePage() {
             "enabled": true
         },
         {
-            "section": "Specifications Grid",
-            "enabled": false
-        },
-        // Customer Reviews (NOT in SECTION_MAP → removed)
-        // Product Highlights (NOT in SECTION_MAP → removed)
-        {
             "section": "Featured Products",
             "enabled": true
         },
-        // Special Offers (NOT in SECTION_MAP → removed)
         {
             "section": "About Brand",
             "enabled": true
@@ -1986,7 +1972,7 @@ function NewLandingPagePage() {
                     children: isNew ? "Add New Landing Page" : "Edit Landing Page"
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                    lineNumber: 206,
+                    lineNumber: 186,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2000,20 +1986,20 @@ function NewLandingPagePage() {
                                             children: "Sections"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 195,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                                             children: "Drag to reorder and enable/disable"
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 196,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 194,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2033,22 +2019,22 @@ function NewLandingPagePage() {
                                                             toggle: toggleEnabled
                                                         }, sec.section, false, {
                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                            lineNumber: 224,
+                                                            lineNumber: 204,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                    lineNumber: 222,
+                                                    lineNumber: 202,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 201,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                            lineNumber: 220,
+                                            lineNumber: 200,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -2062,20 +2048,20 @@ function NewLandingPagePage() {
                                                             children: "Styling Controls"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                            lineNumber: 238,
+                                                            lineNumber: 218,
                                                             columnNumber: 5
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                             children: "Customize your landing page design"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                            lineNumber: 239,
+                                                            lineNumber: 219,
                                                             columnNumber: 5
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                    lineNumber: 237,
+                                                    lineNumber: 217,
                                                     columnNumber: 3
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2092,7 +2078,7 @@ function NewLandingPagePage() {
                                                                             children: "Primary Button Color"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 249,
+                                                                            lineNumber: 229,
                                                                             columnNumber: 9
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2108,7 +2094,7 @@ function NewLandingPagePage() {
                                                                                         })
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                                    lineNumber: 252,
+                                                                                    lineNumber: 232,
                                                                                     columnNumber: 11
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2121,19 +2107,19 @@ function NewLandingPagePage() {
                                                                                         })
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                                    lineNumber: 261,
+                                                                                    lineNumber: 241,
                                                                                     columnNumber: 11
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 251,
+                                                                            lineNumber: 231,
                                                                             columnNumber: 9
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                    lineNumber: 248,
+                                                                    lineNumber: 228,
                                                                     columnNumber: 7
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2144,7 +2130,7 @@ function NewLandingPagePage() {
                                                                             children: "Background Color"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 274,
+                                                                            lineNumber: 254,
                                                                             columnNumber: 9
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2160,7 +2146,7 @@ function NewLandingPagePage() {
                                                                                         })
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                                    lineNumber: 277,
+                                                                                    lineNumber: 257,
                                                                                     columnNumber: 11
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2173,25 +2159,25 @@ function NewLandingPagePage() {
                                                                                         })
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                                    lineNumber: 286,
+                                                                                    lineNumber: 266,
                                                                                     columnNumber: 11
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 276,
+                                                                            lineNumber: 256,
                                                                             columnNumber: 9
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                    lineNumber: 273,
+                                                                    lineNumber: 253,
                                                                     columnNumber: 7
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                            lineNumber: 245,
+                                                            lineNumber: 225,
                                                             columnNumber: 5
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2202,7 +2188,7 @@ function NewLandingPagePage() {
                                                                     children: "Text Color"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                    lineNumber: 301,
+                                                                    lineNumber: 281,
                                                                     columnNumber: 7
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2218,7 +2204,7 @@ function NewLandingPagePage() {
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 304,
+                                                                            lineNumber: 284,
                                                                             columnNumber: 9
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2231,19 +2217,19 @@ function NewLandingPagePage() {
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 313,
+                                                                            lineNumber: 293,
                                                                             columnNumber: 9
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                    lineNumber: 303,
+                                                                    lineNumber: 283,
                                                                     columnNumber: 7
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                            lineNumber: 300,
+                                                            lineNumber: 280,
                                                             columnNumber: 5
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2257,7 +2243,7 @@ function NewLandingPagePage() {
                                                                             children: "Headline Size (px)"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 327,
+                                                                            lineNumber: 307,
                                                                             columnNumber: 9
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2272,13 +2258,13 @@ function NewLandingPagePage() {
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 328,
+                                                                            lineNumber: 308,
                                                                             columnNumber: 9
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                    lineNumber: 326,
+                                                                    lineNumber: 306,
                                                                     columnNumber: 7
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2289,7 +2275,7 @@ function NewLandingPagePage() {
                                                                             children: "Paragraph Size (px)"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 341,
+                                                                            lineNumber: 321,
                                                                             columnNumber: 9
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2304,43 +2290,43 @@ function NewLandingPagePage() {
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                            lineNumber: 342,
+                                                                            lineNumber: 322,
                                                                             columnNumber: 9
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                                    lineNumber: 340,
+                                                                    lineNumber: 320,
                                                                     columnNumber: 7
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                            lineNumber: 325,
+                                                            lineNumber: 305,
                                                             columnNumber: 5
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                                    lineNumber: 242,
+                                                    lineNumber: 222,
                                                     columnNumber: 3
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                            lineNumber: 236,
+                                            lineNumber: 216,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                    lineNumber: 219,
+                                    lineNumber: 199,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                            lineNumber: 213,
+                            lineNumber: 193,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -2350,12 +2336,12 @@ function NewLandingPagePage() {
                                         children: "Live Preview"
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                        lineNumber: 364,
+                                        lineNumber: 344,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                    lineNumber: 363,
+                                    lineNumber: 343,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2369,24 +2355,24 @@ function NewLandingPagePage() {
                                         }))}`
                                     }, void 0, false, {
                                         fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                        lineNumber: 368,
+                                        lineNumber: 348,
                                         columnNumber: 13
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                                    lineNumber: 367,
+                                    lineNumber: 347,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                            lineNumber: 362,
+                            lineNumber: 342,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                    lineNumber: 210,
+                    lineNumber: 190,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("pre", {
@@ -2400,18 +2386,18 @@ function NewLandingPagePage() {
                     }, null, 2)
                 }, void 0, false, {
                     fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-                    lineNumber: 378,
+                    lineNumber: 358,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-            lineNumber: 204,
+            lineNumber: 184,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/landing-pages/[slug]/page.tsx",
-        lineNumber: 203,
+        lineNumber: 183,
         columnNumber: 5
     }, this);
 }

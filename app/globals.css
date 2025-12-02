@@ -277,3 +277,33 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper-slide {
+  width: 100% !important;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Global card class */
+/* Global card class */
+.card-header {
+  @apply bg-white shadow-lg rounded-2xl p-8 flex flex-col items-center text-center mb-2;
+}
+
+/* Circular logo style */
+.card-header-logo {
+  @apply w-24 h-24 rounded-full overflow-hidden shadow-md mb-4;
+}
+
+/* Title text */
+.card-header-title {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+/* Subtitle text */
+.card-header-subtitle {
+  @apply text-gray-600 mt-2;
+}

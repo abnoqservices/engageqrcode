@@ -28,10 +28,7 @@ import {
   Plus,
   Save,
   Eye,
-  Palette,
   FileText,
-  Type,
-  Smartphone,
   GripVertical,
   Trash2,
   ImagePlus,
@@ -48,7 +45,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { DashboardLayout } from "@/components/dashboard/layout";
 import { Spinner } from "@/components/ui/spinner";
@@ -126,57 +122,11 @@ export default function NewProductPage(): React.ReactElement {
   const [customFieldValues, setCustomFieldValues] = React.useState<Record<string, string>>({});
 
   const [isCustomFieldModalOpen, setIsCustomFieldModalOpen] = React.useState(false);
-// Landing page style settings
-const [landingPageStyle, setLandingPageStyle] = React.useState({
-  background: "#ffffff",
-  headingSize: 24,
-  paragraphSize: 14,
-  buttonColor: "#0000ff",   // NEW
-  textColor: "#000000",     // NEW
-});
-
 
   const [landingPages] = React.useState([
-    {
-      id: 1,
-      name: "Pro Landing Page",
-      url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-fashion.png",
-      views: 2543,
-      conversions: 187,
-      status: "published",
-      lastModified: "2024-01-15",
-      template: "modern"
-    },
-    {
-      id: 2,
-      name: "Premium Headphones Store",
-      url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-wine.png",
-      views: 1823,
-      conversions: 142,
-      status: "published",
-      lastModified: "2024-01-18",
-      template: "ecommerce"
-    },
-     {
-      id: 3,
-      name: "Pro Tempalte Landing Page",
-      url: "https://cdn0070.qrcodechimp.com/images/templates/product-qr-code-for-watch.png",
-      views: 1823,
-      conversions: 142,
-      status: "published",
-      lastModified: "2024-01-18",
-      template: "protemplete"
-    },
-    {
-      id: 4,
-      name: "Pro Template 2 Landing Page",
-      url: "https://cdn0070.qrcodechimp.com/images/digitalCard/dbcv2/digital-business-cards-template-event.webp",
-      views: 1823,
-      conversions: 142,
-      status: "published",
-      lastModified: "2024-01-18",
-      template: "protemplete2"
-    }
+    { id: "1", name: "MacBook Pro Landing Page", thumbnail: "/modern-laptop-workspace.png" },
+    { id: "2", name: "Wireless Headphones Promo", thumbnail: "/diverse-people-listening-headphones.png" },
+    { id: "3", name: "Smart Watch Campaign", thumbnail: "/wrist-watch-close-up.png" },
   ]);
 
   const [activeTab, setActiveTab] = React.useState<string>("basic");
@@ -314,7 +264,6 @@ const [landingPageStyle, setLandingPageStyle] = React.useState({
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       version: "1.0",
-      
     };
   };
 
@@ -533,7 +482,6 @@ const [landingPageStyle, setLandingPageStyle] = React.useState({
         pdfs: uploadedPdfs,
         status: "published",
         landing_page_id: selectedLandingPage,
-        landing_page_style: landingPageStyle
       };
   
       console.log("📦 Final product data being sent:", finalProductData);
@@ -573,16 +521,7 @@ const [landingPageStyle, setLandingPageStyle] = React.useState({
       try {
         const data = JSON.parse(savedDraft);
         const draftDate = timestamp ? new Date(timestamp).toLocaleString() : "Unknown";
-        if (data.landing_page_style) {
-          setLandingPageStyle(data.landing_page_style);
-        }
-        if (data.landing_page_id) {
-          setSelectedLandingPage(String(data.landing_page_id));
-        }
-        if (data.landing_page_style) {
-          setLandingPageStyle(data.landing_page_style);
-        }
-        
+
         if (confirm(`Found a saved draft from ${draftDate}. Would you like to load it?`)) {
           setFormData(data.formData || formData);
           setTags(data.tags || []);
@@ -679,25 +618,7 @@ const clearForm = () => {
     return n.toFixed(2);
   };
 
-  const cleanId = Number(String(selectedLandingPage || "").trim());
 
-  const selectedPage = landingPages.find((p) => p.id === cleanId);
-  
-  const params = new URLSearchParams({
-    template: selectedPage?.template ?? "",
-    bg: landingPageStyle.background.replace("#", ""),
-    hSize: String(landingPageStyle.headingSize),
-    pSize: String(landingPageStyle.paragraphSize),
-  
-    // NEW
-    bColor: landingPageStyle.buttonColor.replace("#", ""),
-    tColor: landingPageStyle.textColor.replace("#", ""),
-  });
-  
-  
-  const cleanUrl = `http://localhost:3000/api/landing-html/${cleanId}?${params.toString()}`;
-  
-  
   return (
     <DashboardLayout>
       <div className="min-h-screen bg-slate-50 p-6">
@@ -738,8 +659,8 @@ const clearForm = () => {
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="basic">Product Specificaton</TabsTrigger>
-              <TabsTrigger value="media">Media</TabsTrigger>
+              <TabsTrigger value="basic">Basic Info</TabsTrigger>
+              <TabsTrigger value="media">Demo Media</TabsTrigger>
               <TabsTrigger value="seo">SEO</TabsTrigger>
             </TabsList>
 
@@ -832,13 +753,13 @@ const clearForm = () => {
                   {/* === NEW: Select Custom Fields Button === */}
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <Label>Product Specification Fields</Label>
+                      <Label>Custom Fields</Label>
                       <Button onClick={() => setIsCustomFieldModalOpen(true)} variant="outline" size="sm">
                         <Plus className="h-4 w-4 mr-2" />
-                        Select Product Specification
+                        Select Custom Fields
                       </Button>
                     </div>
-                   
+
                     {/* Selected Custom Fields Inputs */}
                     {selectedCustomFieldIds.length > 0 && (
                       <div className="space-y-4 border-t pt-4">
@@ -885,211 +806,6 @@ const clearForm = () => {
                         })}
                       </div>
                     )}
-                     <div className="flex gap-2">
-                                                                  <Select
-                                                                    value={selectedLandingPage}
-                                                                    onValueChange={(value) => {
-                                                                      const cleanId = value.trim();      // remove unwanted spaces
-                                                                      setSelectedLandingPage(cleanId);   // store clean ID
-                                                                      setShowLandingPagePreview(true);
-                                                                    }}
-                                                                  >
-                                                                    <SelectTrigger id="landing-page" className="flex-1">
-                                                                      <SelectValue placeholder="Select landing page" />
-                                                                    </SelectTrigger>
-
-                                                                    <SelectContent>
-                                                                      {landingPages.map((page) => (
-                                                                        <SelectItem key={page.id} value={String(page.id)}>
-                                                                          {page.name}
-                                                                        </SelectItem>
-                                                                      ))}
-                                                                    </SelectContent>
-                                                                  </Select>
-
-                                                   {selectedLandingPage && selectedPage && (
-  <Dialog open={showLandingPagePreview} onOpenChange={setShowLandingPagePreview}>
-    <DialogTrigger asChild>
-      <Button variant="outline" size="icon" title="Preview & Customize">
-        <Eye className="h-4 w-4" />
-      </Button>
-    </DialogTrigger>
-
-    {/* FULL LARGE DIALOG */}
-    <DialogContent
-  className="
-    !max-w-4xl 
-    w-full 
-    max-h-[85vh]
-    !rounded-xl
-    overflow-hidden
-    p-0
-  "
->
-
-
-      {/* Header */}
-      <DialogHeader className="px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-          <Smartphone className="w-8 h-8" />
-          Mobile Landing Page Customizer
-        </DialogTitle>
-        <DialogDescription className="text-lg text-blue-100 mt-1">
-          {selectedPage.name} – Real-time styling & preview
-        </DialogDescription>
-      </DialogHeader>
-
-      {/* Main Content: Side-by-side layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 h-[calc(92vh-120px)] bg-gray-50">
-        {/* Left Sidebar: Style Controls (25%) */}
-        <div className="lg:col-span-1 bg-white border-r border-gray-200 p-6 overflow-y-auto">
-          <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-            Styling Controls
-          </h3>
-
-          <div className="space-y-7">
-            {/* Background */}
-            <div>
-              <label className="text-sm font-semibold text-gray-700">Background Color</label>
-              <div className="flex items-center gap-4 mt-2">
-                <input
-                  type="color"
-                  value={landingPageStyle.background}
-                  onChange={(e) => setLandingPageStyle({ ...landingPageStyle, background: e.target.value })}
-                  className="w-20 h-14 rounded-lg cursor-pointer border-4 border-gray-300 shadow-md"
-                />
-                <code className="text-xs bg-gray-100 px-3 py-2 rounded font-mono">
-                  {landingPageStyle.background}
-                </code>
-              </div>
-            </div>
-
-            {/* Text Color */}
-            <div>
-              <label className="text-sm font-semibold text-gray-700">Text Color</label>
-              <div className="flex items-center gap-4 mt-2">
-                <input
-                  type="color"
-                  value={landingPageStyle.textColor}
-                  onChange={(e) => setLandingPageStyle({ ...landingPageStyle, textColor: e.target.value })}
-                  className="w-20 h-14 rounded-lg cursor-pointer border-4 border-gray-300 shadow-md"
-                />
-                <code className="text-xs bg-gray-100 px-3 py-2 rounded font-mono">
-                  {landingPageStyle.textColor}
-                </code>
-              </div>
-            </div>
-
-            {/* Button Color */}
-            <div>
-              <label className="text-sm font-semibold text-gray-700">Button Color</label>
-              <div className="flex items-center gap-4 mt-2">
-                <input
-                  type="color"
-                  value={landingPageStyle.buttonColor}
-                  onChange={(e) => setLandingPageStyle({ ...landingPageStyle, buttonColor: e.target.value })}
-                  className="w-20 h-14 rounded-lg cursor-pointer border-4 border-gray-300 shadow-md"
-                />
-                <code className="text-xs bg-gray-100 px-3 py-2 rounded font-mono">
-                  {landingPageStyle.buttonColor}
-                </code>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-gray-300">
-              <h4 className="font-bold text-gray-800 mb-5">Typography</h4>
-
-              {/* Heading Size */}
-              <div className="mb-6">
-                <div className="flex justify-between text-sm font-medium mb-2">
-                  <span>Heading Size</span>
-                  <span className="text-indigo-600">{landingPageStyle.headingSize}px</span>
-                </div>
-                <input
-                  type="range"
-                  min="24"
-                  max="60"
-                  step="2"
-                  value={landingPageStyle.headingSize}
-                  onChange={(e) => setLandingPageStyle({ ...landingPageStyle, headingSize: Number(e.target.value) })}
-                  className="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-indigo-600"
-                />
-              </div>
-
-              {/* Paragraph Size */}
-              <div>
-                <div className="flex justify-between text-sm font-medium mb-2">
-                  <span>Paragraph Size</span>
-                  <span className="text-indigo-600">{landingPageStyle.paragraphSize}px</span>
-                </div>
-                <input
-                  type="range"
-                  min="12"
-                  max="28"
-                  step="1"
-                  value={landingPageStyle.paragraphSize}
-                  onChange={(e) => setLandingPageStyle({ ...landingPageStyle, paragraphSize: Number(e.target.value) })}
-                  className="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer accent-indigo-600"
-                />
-              </div>
-            </div>
-
-            {/* Save Button */}
-            <Button 
-              size="lg" 
-              className="w-full mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold py-6 text-lg"
-              onClick={() => alert("Styles saved successfully!")}
-            >
-              <Save className="w-5 h-5 mr-3" />
-              Save All Styles
-            </Button>
-          </div>
-        </div>
-
-        {/* Right Side: Large Mobile Preview (75%) */}
-        <div className="lg:col-span-3 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex justify-center no-scrollbar">
-          <div className="text-center">
-            {/* Super Realistic iPhone 15 Pro Mockup */}
-            <div className="relative inline-block">
-              <div className="bg-gradient-to-b from-gray-900 to-black rounded-[60px] shadow-2xl border-14 border-gray-900  h-[602px]">
-                {/* Notch */}
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-52 h-10 bg-black rounded-full z-10 shadow-inner"></div>
-
-                {/* Screen */}
-                <div className="relative bg-gray-100 h-full rounded-[48px] overflow-hidden shadow-2xl">
-                  <iframe
-                    src={cleanUrl}
-                    className="w-full h-full"
-                    title="Live Mobile Preview"
-                    sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-                    style={{
-                      background: landingPageStyle.background,
-                      color: landingPageStyle.textColor,
-                    }}
-                  />
-
-                  {/* Optional placeholder overlay */}
-                  {!cleanUrl || cleanUrl.includes("about:blank") ? (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50/90 backdrop-blur-sm">
-                      <Smartphone className="w-24 h-24 text-gray-300 mb-4" />
-                      <p className="text-xl font-medium text-gray-500">Your beautiful page will appear here</p>
-                      <p className="text-sm text-gray-400 mt-2">Live preview updates instantly</p>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-
-              {/* Label */}
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </DialogContent>
-  </Dialog>
-)}
-
-                      </div>
                   </div>
                 </CardContent>
               </Card>
@@ -1185,7 +901,59 @@ const clearForm = () => {
                     <Label htmlFor="url-slug">URL Slug</Label>
                     <Input id="url-slug" placeholder="product-name" value={formData.urlSlug} onChange={(e) => handleInputChange("urlSlug", e.target.value)} />
                   </div>
-                 
+                  <div className="space-y-2">
+                  <Label htmlFor="landing-page">Landing Page</Label>
+                  <p className="text-sm text-muted-foreground">
+                    Select a landing page to link with this product
+                  </p>
+                  <div className="flex gap-2">
+                    <Select value={selectedLandingPage} onValueChange={setSelectedLandingPage}>
+                      <SelectTrigger id="landing-page" className="flex-1">
+                        <SelectValue placeholder="Select landing page" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {landingPages.map((page) => (
+                          <SelectItem key={page.id} value={page.id}>
+                            {page.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {selectedLandingPage && (
+                      <Dialog open={showLandingPagePreview} onOpenChange={setShowLandingPagePreview}>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="icon">
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                          <DialogHeader>
+                            <DialogTitle>Landing Page Preview</DialogTitle>
+                            <DialogDescription>
+                              {landingPages.find(p => p.id === selectedLandingPage)?.name}
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="relative aspect-video bg-slate-100 rounded-lg overflow-hidden">
+                            <Image
+                              src={landingPages.find(p => p.id === selectedLandingPage)?.thumbnail || "/placeholder.svg"}
+                              alt="Landing page preview"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="flex justify-end gap-2">
+                            <Button variant="outline" asChild>
+                              <a href="#" target="_blank" rel="noopener noreferrer" className="gap-2">
+                                <ExternalLink className="h-4 w-4" />
+                                Open Full Page
+                              </a>
+                            </Button>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
+                    )}
+                  </div>
+                </div>
                   <div className="flex items-center justify-between rounded-lg border border-slate-200 p-4">
                     <div>
                       <p className="font-medium">Product Status</p>
@@ -1348,7 +1116,7 @@ const clearForm = () => {
 
                  {selectedCustomFieldIds.length > 0 && (
                     <div className="space-y-3">
-                      <h3 className="text-lg font-semibold border-b pb-2">Product Specification Fields</h3>
+                      <h3 className="text-lg font-semibold border-b pb-2">Custom Fields</h3>
                       {selectedCustomFieldIds.map((id) => {
                         const field = masterCustomFields.find(f => f.id === id);
                         const value = customFieldValues[id] || "";

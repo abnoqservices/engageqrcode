@@ -7,11 +7,7 @@ import { DashboardLayout } from "@/components/dashboard/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import templates from "@/templates/allTemplates";
 
-// Tell TypeScript that templates is a map of string => string
-type TemplateMap = Record<string, string>;
-const templateDesigns: TemplateMap = templates;
 
 import {
   Card,
@@ -168,7 +164,7 @@ export default function LandingPagesPage() {
   };
 
   // list of available template keys from the templates file
-  const availableTemplateKeys = React.useMemo(() => Object.keys(templateDesigns), []);
+
 
   return (
     <DashboardLayout>

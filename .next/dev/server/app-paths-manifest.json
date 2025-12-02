@@ -1,5 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/landing-html/[slug]/route": "app/api/landing-html/[slug]/route.js",
-  "/landing-pages/new/page": "app/landing-pages/new/page.js"
+  "/catalogs/page": "app/catalogs/page.js",
+  "/forms/page": "app/forms/page.js",
+  "/landing-pages/new/page": "app/landing-pages/new/page.js",
+  "/landing-pages/page": "app/landing-pages/page.js",
+  "/products/import/page": "app/products/import/page.js",
+  "/products/new/page": "app/products/new/page.js",
+  "/products/page": "app/products/page.js",
+  "/products/settings/custom-fields/page": "app/products/settings/custom-fields/page.js"
 }

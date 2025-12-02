@@ -436,12 +436,12 @@ const HEADER_LOGO_CARD_TOW = `
 </div>
 `;
 const GLOBAL_CSS = ` :root {
-  --theme-bg: #{{backgroundColor}}; /* background */
-  --theme-text: #{{textColor}}; /* text color */
-  --theme-heading-size: {{hsize}}px; /* heading size */
-  --theme-para-size:  {{psize}}px;    /* pare size */
-  --theme-primary: #{{primaryColor}};    
-  --primary: #{{primaryColor}};           /* button */
+  --theme-bg: #000; /* background */
+  --theme-text: #000; /* text color */
+  --theme-heading-size: 28px; /* heading size */
+  --theme-para-size: 18px;    /* pare size */
+  --theme-primary: #234567;    
+  --primary: #234567;           /* button */
   --radius: 0.875rem;            /* 14px */
   --shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.08);
  }
